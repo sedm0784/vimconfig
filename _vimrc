@@ -98,8 +98,7 @@ set laststatus=2
 set formatoptions=tcroqnw
 
 "Put all backups in one place
-"FIXME: set backupdir=~/.vim/backups
-set backupdir=f:\\WorkNotBackedUp\\VimBackups
+set backupdir=$HOME/.vim/backups
 
 " PLUGINS AND EXTENSIONS
 " ======================

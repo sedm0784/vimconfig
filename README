@@ -3,6 +3,7 @@ This is just my personal vim config.
 Windows:
 
   mklink /D %HOMEDRIVE%\%HOMEPATH%\vimfiles path_to_repo\vimconfig\vimfiles
+  mklink /D %HOMEDRIVE%\%HOMEPATH%\.vim path_to_repo\vimconfig\vimfiles
   mklink /H %HOMEDRIVE%\%HOMEPATH%\_vimrc path_to_repo\vimconfig\_vimrc
   mklink /H %HOMEDRIVE%\%HOMEPATH%\_gvimrc path_to_repo\vimconfig\_gvimrc
 
