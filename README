@@ -12,7 +12,7 @@ Additionally, note that the links for _vimrc and _gvimrc must be hardlinks, as V
 
 Mac/Unix:
 
-  ln -s path_to_repo\vimconfig\vimfiles ~\vimfiles
-  ln -s path_to_repo\vimconfig\.vimrc ~\_vimrc
-  ln -s path_to_repo\vimconfig\.gvimrc ~\_gvimrc
+  ln -s path_to_repo/vimconfig/vimfiles ~/.vim
+  ln -s path_to_repo/vimconfig/_vimrc ~/.vimrc
+  ln -s path_to_repo/vimconfig/_gvimrc ~/.gvimrc
 
