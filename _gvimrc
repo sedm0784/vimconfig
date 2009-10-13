@@ -1,0 +1,9 @@
+"Anti-aliasing and font choice
+set anti
+set enc=utf-8
+set gfn=Consolas:h10
+
+"colorscheme
+colorscheme inkpot
+"colorscheme MidNight2
+"colorscheme elflord
