@@ -3,10 +3,12 @@ This is just my personal vim config.
 Windows:
 
   mklink /D %HOMEDRIVE%\%HOMEPATH%\vimfiles path_to_repo\vimconfig\vimfiles
-  mklink %HOMEDRIVE%\%HOMEPATH%\_vimrc path_to_repo\vimconfig\_vimrc
-  mklink %HOMEDRIVE%\%HOMEPATH%\_gvimrc path_to_repo\vimconfig\_gvimrc
+  mklink /H %HOMEDRIVE%\%HOMEPATH%\_vimrc path_to_repo\vimconfig\_vimrc
+  mklink /H %HOMEDRIVE%\%HOMEPATH%\_gvimrc path_to_repo\vimconfig\_gvimrc
 
 N.B. I'm not 100% sure that it's correct from a Windows-perspective that I'm using %HOMEDRIVE%\%HOMEPATH% instead of %USERPROFILE%, but as far as I can tell, this is what Vim actually uses for setting $HOME.
+
+Additionally, note that the links for _vimrc and _gvimrc must be hardlinks, as Vim will overwrite symbolic links when saving files! (I'm not sure if this is a configuration error in my Vim setup.)
 
 Mac/Unix:
 
