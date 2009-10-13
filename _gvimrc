@@ -3,7 +3,14 @@ set anti
 set enc=utf-8
 set gfn=Consolas:h10
 
-"colorscheme
+"Font stuff
+" FIXME: set termencoding=macroman gfn=Inconsolata:h18
+
+"Colorscheme
 colorscheme inkpot
 "colorscheme MidNight2
 "colorscheme elflord
+
+"Size
+set lines=50
+

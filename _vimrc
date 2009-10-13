@@ -38,6 +38,9 @@ set smartcase
 "directions can wrap too!
 set whichwrap=b,s,h,l,<,>
 
+"backspace can backspace over anything
+set backspace=indent,eol,start
+
 "only break at word boundaries 
 set linebreak
 
@@ -65,7 +68,7 @@ noremap E e
 noremap ge gE
 noremap gE ge
 
-"Don't highlight searchs
+"Don't highlight searches
 set nohlsearch
 set incsearch
 
@@ -84,7 +87,7 @@ set completeopt=menu,longest
 "Turn off beeps
 set visualbell
 
-"Spell Checking
+"Turn on spell checking
 set spell
 
 "Posh statusline, always present
@@ -95,15 +98,13 @@ set laststatus=2
 set formatoptions=tcroqnw
 
 "Put all backups in one place
+"FIXME: set backupdir=~/.vim/backups
 set backupdir=f:\\WorkNotBackedUp\\VimBackups
 
 " PLUGINS AND EXTENSIONS
 " ======================
 "GetLatestScripts automatic installation
 let g:GetLatestVimScripts_allowautoinstall=1
-
-"Supertab stuff
-"let g:SuperTabDefaultCompletionType = "<C-X><C-O>"
 
 "Use CPP comments in std_c c.vim syntax highlighting
 let c_cpp_comments = 0
@@ -148,32 +149,3 @@ augroup END
 " ******************************************************
 
 set nocompatible
-"source $VIMRUNTIME/vimrc_example.vim
-"source $VIMRUNTIME/mswin.vim
-"behave mswin
-
-"set diffexpr=MyDiff()
-"function MyDiff()
-"  let opt = '-a --binary '
-"  if &diffopt =~ 'icase' | let opt = opt . '-i ' | endif
-"  if &diffopt =~ 'iwhite' | let opt = opt . '-b ' | endif
-"  let arg1 = v:fname_in
-"  if arg1 =~ ' ' | let arg1 = '"' . arg1 . '"' | endif
-"  let arg2 = v:fname_new
-"  if arg2 =~ ' ' | let arg2 = '"' . arg2 . '"' | endif
-"  let arg3 = v:fname_out
-"  if arg3 =~ ' ' | let arg3 = '"' . arg3 . '"' | endif
-"  let eq = ''
-"  if $VIMRUNTIME =~ ' '
-"    if &sh =~ '\<cmd'
-"      let cmd = '""' . $VIMRUNTIME . '\diff"'
-"      let eq = '"'
-"    else
-"      let cmd = substitute($VIMRUNTIME, ' ', '" ', '') . '\diff"'
-"    endif
-"  else
-"    let cmd = $VIMRUNTIME . '\diff'
-"  endif
-"  silent execute '!' . cmd . ' ' . opt . arg1 . ' ' . arg2 . ' > ' . arg3 . eq
-"endfunction
-
