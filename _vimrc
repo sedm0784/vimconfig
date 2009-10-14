@@ -68,9 +68,14 @@ noremap E e
 noremap ge gE
 noremap gE ge
 
-"Don't highlight searches
-set nohlsearch
+"Searching
+"Incremental
 set incsearch
+"Highlighted
+set hlsearch
+"With Esc mapped to turn off highlighting. Genius!
+:nnoremap <esc> :noh<return><esc>
+"(Thanks to http://www.viemu.com/blog/2009/06/16/a-vim-and-viemu-mapping-you-really-cant-miss-never-type-noh-again/)
 
 "Turn on syntax highlighting
 syntax on
