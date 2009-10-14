@@ -96,7 +96,7 @@ set visualbell
 set spell
 
 "Posh statusline, always present
-set statusline=%F%m%r%h%w\ [FMT=%{&ff}]\ [TYPE=%Y]\ [ASCII=\%03.3b]\ [0x=\%02.2B]\ [POS=%04l,%04v][%p%%]\ [LEN=%L]
+set statusline=%f%m%r%h%w\ type:%Y,%{&ff}%=ascii=%b\ hex=%02.2B\ %l(%v)/%L\ %p%%
 set laststatus=2
 
 "format options
