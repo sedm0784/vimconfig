@@ -44,9 +44,11 @@ set backspace=indent,eol,start
 "only break at word boundaries 
 set linebreak
 
-"navigate wrapped lines visually
-map j gj
-map k gk
+"navigate wrapped lines visually by default
+noremap j gj
+noremap gj j
+noremap k gk
+noremap gk k
 
 " disable arrow keys
 map <up> <nop>
