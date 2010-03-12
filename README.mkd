@@ -48,3 +48,4 @@ TODO
 
 2. Should've used Unix filepaths instead of Windows ones. Yuck.
 
+3. Figure out how to do "conditional on OS" in vimrc and merge windows and mac branches into trunk.
