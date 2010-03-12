@@ -107,6 +107,10 @@ set formatoptions=tcroqnw
 "Put all backups in one place
 set backupdir=$HOME/.vim/backups
 
+"This is Windows only (UAC), and shouldn't be merged into the trunk till I've figured out how to do conditional on operating system.
+"Put swap files in current directory, or in $TEMP if that doesn't exist.
+set directory=.,$TEMP
+
 " PLUGINS AND EXTENSIONS
 " ======================
 "GetLatestScripts automatic installation
