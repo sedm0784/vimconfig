@@ -3,11 +3,12 @@ set anti
 set enc=utf-8
 set gfn=Consolas:h10
 
-"Font stuff
-" FIXME: set termencoding=macroman gfn=Inconsolata:h18
+"FIXME: this needs to be called on mac only!
+set gfn=Inconsolata:h18
 
+" N.B. All commented out on Mac. Use default MacVim colours.
 "Colorscheme
-colorscheme inkpot
+"colorscheme inkpot
 "colorscheme MidNight2
 "colorscheme elflord
 
