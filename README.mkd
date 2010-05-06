@@ -26,10 +26,11 @@ In git bash:
 
 Then, from a cmd shell:
 
-    mklink /D %HOMEDRIVE%\%HOMEPATH%\vimfiles path_to_repo\vimconfig\vimfiles
-    mklink /D %HOMEDRIVE%\%HOMEPATH%\.vim path_to_repo\vimconfig\vimfiles
-    mklink %HOMEDRIVE%\%HOMEPATH%\_vimrc path_to_repo\vimconfig\_vimrc
-    mklink %HOMEDRIVE%\%HOMEPATH%\_gvimrc path_to_repo\vimconfig\_gvimrc
+    cd %HOMEDRIVE%\%HOMEPATH%
+    mklink /D vimfiles path_to_repo\vimconfig\vimfiles
+    mklink /D .vim path_to_repo\vimconfig\vimfiles
+    mklink _vimrc path_to_repo\vimconfig\_vimrc
+    mklink _gvimrc path_to_repo\vimconfig\_gvimrc
 
 N.B.
 
