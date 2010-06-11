@@ -98,7 +98,7 @@ set visualbell
 set spell
 
 "Posh statusline, always present
-set statusline=%f%m%r%h%w\ type:%Y,%{&ff}\ %=ascii=%b\ hex=%02.2B\ %l(%v)/%L\ %p%%
+set statusline=%f%m%r%h%w\ type:%Y,%{&ff}\ %=ascii=%b\ hex=%02.2B\ c%v/%{strlen(getline('.'))}\ l%l/%L\ %p%%
 set laststatus=2
 
 "format options
@@ -137,6 +137,12 @@ let g:miniBufExplModSelTarget = 1
 
 "Fuzzyfinder Textmate mode
 :map <leader>tm :FuzzyFinderTextMate<CR>
+
+"TwitVim
+let twitvim_login_b64 = "c2VkbTA3ODQ6cjRpM2MyaDE="
+let twitvim_count = 50
+let twitvim_bitly_user = "sedm0784"
+let twitvim_bitly_key = "R_9dab47b2ba36972d08a4509ef2552156"
 
 " markdown format options
 augroup mkd
