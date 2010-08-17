@@ -94,8 +94,9 @@ set completeopt=menu,longest
 "Turn off beeps
 set visualbell
 
-"Turn on spell checking
+"Turn on British spell checking
 set spell
+set spelllang=en_gb
 
 "Posh statusline, always present
 set statusline=%f%m%r%h%w\ type:%Y,%{&ff}\ %=ascii=%b\ hex=%02.2B\ c%v/%{strlen(getline('.'))}\ l%l/%L\ %p%%
