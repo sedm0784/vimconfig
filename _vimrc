@@ -136,7 +136,8 @@ let g:miniBufExplModSelTarget = 1
 :map <leader>tm :FuzzyFinderTextMate<CR>
 
 "TwitVim
-let twitvim_login_b64 = "c2VkbTA3ODQ6cjRpM2MyaDE="
+let twitvim_enable_python = 1
+let twitvim_browser_cmd = 'firefox.exe'
 let twitvim_count = 50
 let twitvim_bitly_user = "sedm0784"
 let twitvim_bitly_key = "R_9dab47b2ba36972d08a4509ef2552156"
