@@ -53,13 +53,16 @@
 :ATweetburner	twitvim.txt	/*:ATweetburner*
 :AUrlBorg	twitvim.txt	/*:AUrlBorg*
 :AZima	twitvim.txt	/*:AZima*
+:AddToListTwitter	twitvim.txt	/*:AddToListTwitter*
 :BPosttoTwitter	twitvim.txt	/*:BPosttoTwitter*
 :BackTwitter	twitvim.txt	/*:BackTwitter*
 :BitLy	twitvim.txt	/*:BitLy*
+:BlockTwitter	twitvim.txt	/*:BlockTwitter*
 :CPosttoTwitter	twitvim.txt	/*:CPosttoTwitter*
 :Cligs	twitvim.txt	/*:Cligs*
 :DMSentTwitter	twitvim.txt	/*:DMSentTwitter*
 :DMTwitter	twitvim.txt	/*:DMTwitter*
+:FollowTwitter	twitvim.txt	/*:FollowTwitter*
 :ForwardTwitter	twitvim.txt	/*:ForwardTwitter*
 :FriendsTwitter	twitvim.txt	/*:FriendsTwitter*
 :GLVS	pi_getscript.txt	/*:GLVS*
@@ -93,7 +96,9 @@
 :PublicTwitter	twitvim.txt	/*:PublicTwitter*
 :RateLimitTwitter	twitvim.txt	/*:RateLimitTwitter*
 :RefreshTwitter	twitvim.txt	/*:RefreshTwitter*
+:RemoveFromListTwitter	twitvim.txt	/*:RemoveFromListTwitter*
 :RepliesTwitter	twitvim.txt	/*:RepliesTwitter*
+:ReportSpamTwitter	twitvim.txt	/*:ReportSpamTwitter*
 :ResetLoginTwitter	twitvim.txt	/*:ResetLoginTwitter*
 :RetweetedByMeTwitter	twitvim.txt	/*:RetweetedByMeTwitter*
 :RetweetedToMeTwitter	twitvim.txt	/*:RetweetedToMeTwitter*
@@ -121,6 +126,8 @@
 :TlistUpdate	taglist.txt	/*:TlistUpdate*
 :Trim	twitvim.txt	/*:Trim*
 :Tweetburner	twitvim.txt	/*:Tweetburner*
+:UnblockTwitter	twitvim.txt	/*:UnblockTwitter*
+:UnfollowTwitter	twitvim.txt	/*:UnfollowTwitter*
 :UrlBorg	twitvim.txt	/*:UrlBorg*
 :UseVimball	pi_vimball.txt	/*:UseVimball*
 :UserTwitter	twitvim.txt	/*:UserTwitter*
@@ -236,6 +243,8 @@ TwitVim-Leader-g	twitvim.txt	/*TwitVim-Leader-g*
 TwitVim-Leader-p	twitvim.txt	/*TwitVim-Leader-p*
 TwitVim-Leader-r	twitvim.txt	/*TwitVim-Leader-r*
 TwitVim-LongURL	twitvim.txt	/*TwitVim-LongURL*
+TwitVim-OAuth	twitvim.txt	/*TwitVim-OAuth*
+TwitVim-OpenSSL	twitvim.txt	/*TwitVim-OpenSSL*
 TwitVim-add	twitvim.txt	/*TwitVim-add*
 TwitVim-cURL	twitvim.txt	/*TwitVim-cURL*
 TwitVim-contents	twitvim.txt	/*TwitVim-contents*
@@ -247,6 +256,7 @@ TwitVim-hide-header	twitvim.txt	/*TwitVim-hide-header*
 TwitVim-highlight	twitvim.txt	/*TwitVim-highlight*
 TwitVim-history	twitvim.txt	/*TwitVim-history*
 TwitVim-hotkeys	twitvim.txt	/*TwitVim-hotkeys*
+TwitVim-identica	twitvim.txt	/*TwitVim-identica*
 TwitVim-inreplyto	twitvim.txt	/*TwitVim-inreplyto*
 TwitVim-install	twitvim.txt	/*TwitVim-install*
 TwitVim-intro	twitvim.txt	/*TwitVim-intro*
@@ -267,6 +277,7 @@ TwitVim-ssl-curl	twitvim.txt	/*TwitVim-ssl-curl*
 TwitVim-ssl-perl	twitvim.txt	/*TwitVim-ssl-perl*
 TwitVim-ssl-python	twitvim.txt	/*TwitVim-ssl-python*
 TwitVim-ssl-ruby	twitvim.txt	/*TwitVim-ssl-ruby*
+TwitVim-ssl-tcl	twitvim.txt	/*TwitVim-ssl-tcl*
 TwitVim-switch	twitvim.txt	/*TwitVim-switch*
 TwitVim-timeline-commands	twitvim.txt	/*TwitVim-timeline-commands*
 TwitVim-tips	twitvim.txt	/*TwitVim-tips*
@@ -361,7 +372,6 @@ taglist-session	taglist.txt	/*taglist-session*
 taglist-todo	taglist.txt	/*taglist-todo*
 taglist-using	taglist.txt	/*taglist-using*
 taglist.txt	taglist.txt	/*taglist.txt*
-twitvim-identi.ca	twitvim.txt	/*twitvim-identi.ca*
 twitvim.txt	twitvim.txt	/*twitvim.txt*
 twitvim_api_root	twitvim.txt	/*twitvim_api_root*
 twitvim_bitly_key	twitvim.txt	/*twitvim_bitly_key*
@@ -370,6 +380,7 @@ twitvim_browser_cmd	twitvim.txt	/*twitvim_browser_cmd*
 twitvim_cert_insecure	twitvim.txt	/*twitvim_cert_insecure*
 twitvim_cligs_key	twitvim.txt	/*twitvim_cligs_key*
 twitvim_count	twitvim.txt	/*twitvim_count*
+twitvim_disable_token_file	twitvim.txt	/*twitvim_disable_token_file*
 twitvim_enable_perl	twitvim.txt	/*twitvim_enable_perl*
 twitvim_enable_python	twitvim.txt	/*twitvim_enable_python*
 twitvim_enable_ruby	twitvim.txt	/*twitvim_enable_ruby*
@@ -382,6 +393,7 @@ twitvim_proxy_login	twitvim.txt	/*twitvim_proxy_login*
 twitvim_proxy_login_b64	twitvim.txt	/*twitvim_proxy_login_b64*
 twitvim_retweet_format	twitvim.txt	/*twitvim_retweet_format*
 twitvim_show_header	twitvim.txt	/*twitvim_show_header*
+twitvim_token_file	twitvim.txt	/*twitvim_token_file*
 twitvim_trim_login	twitvim.txt	/*twitvim_trim_login*
 twitvim_urlborg_key	twitvim.txt	/*twitvim_urlborg_key*
 vS	surround.txt	/*vS*
