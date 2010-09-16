@@ -3,3 +3,4 @@ getscript.vba: call delete('C:/Users/rcheng.HEADQUARTERS/vimfiles/plugin/getscri
 Decho.vba: call delete('C:\Users\rcheng.HEADQUARTERS\vimfiles/plugin/Decho.vim')|call delete('C:\Users\rcheng.HEADQUARTERS\vimfiles/plugin/cecutil.vim')|call delete('C:\Users\rcheng.HEADQUARTERS\vimfiles/syntax/Decho.vim')|call delete('C:\Users\rcheng.HEADQUARTERS\vimfiles/doc/Decho.txt')
 twitvim-0.4.7.vba: call delete('C:\Users\rcheng.HQ2010\vimfiles/plugin/twitvim.vim')|call delete('C:\Users\rcheng.HQ2010\vimfiles/doc/twitvim.txt')
 twitvim-0.5.5.vba: call delete('C:\Users\rcheng.HQ2010\vimfiles/plugin/twitvim.vim')|call delete('C:\Users\rcheng.HQ2010\vimfiles/doc/twitvim.txt')
+zenburn.vba: call delete('C:\Users\rcheng.HQ2010\vimfiles/colors/zenburn.vim')

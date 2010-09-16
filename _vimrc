@@ -160,7 +160,7 @@ augroup END
 " else later on (visvim, perhaps?)
 ":cd D:\Neuratron\Neuratron\ PhotoScore_Unicode
 :set makeprg=buildAudioScoreDebug.bat
-:set errorformat=1>%f(%l)\ :\ error\ C%n:\ %m
+:set errorformat=1>%f(%l):\ error\ C%n:\ %m
 
 "End of Rich's Stuff
 
