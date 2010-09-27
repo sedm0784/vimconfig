@@ -108,9 +108,10 @@ set formatoptions=tcroqnw
 "Put all backups in one place
 set backupdir=$HOME/.vim/backups
 
-"This is Windows only (UAC), and shouldn't be merged into the trunk till I've figured out how to do conditional on operating system.
-"Put swap files in current directory, or in $TEMP if that doesn't exist.
-set directory=.,$TEMP
+if has("win32")
+  "By default, Vim would attempt to store swap files for new files in c:\Windows\System32, but UAC will not allow this on Windows 7. Instead, use the temp directory
+  set directory=.,$TEMP
+endif
 
 " PLUGINS AND EXTENSIONS
 " ======================
