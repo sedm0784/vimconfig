@@ -108,6 +108,11 @@ set formatoptions=tcroqnw
 "Put all backups in one place
 set backupdir=$HOME/.vim/backups
 
+if has("win32")
+  "By default, Vim would attempt to store swap files for new files in c:\Windows\System32, but UAC will not allow this on Windows 7. Instead, use the temp directory
+  set directory=.,$TEMP
+endif
+
 " PLUGINS AND EXTENSIONS
 " ======================
 "GetLatestScripts automatic installation
