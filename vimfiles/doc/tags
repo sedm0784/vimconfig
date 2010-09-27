@@ -62,6 +62,7 @@
 :Cligs	twitvim.txt	/*:Cligs*
 :DMSentTwitter	twitvim.txt	/*:DMSentTwitter*
 :DMTwitter	twitvim.txt	/*:DMTwitter*
+:FavTwitter	twitvim.txt	/*:FavTwitter*
 :FollowTwitter	twitvim.txt	/*:FollowTwitter*
 :ForwardTwitter	twitvim.txt	/*:ForwardTwitter*
 :FriendsTwitter	twitvim.txt	/*:FriendsTwitter*
@@ -233,12 +234,14 @@ TwitVim-C-i	twitvim.txt	/*TwitVim-C-i*
 TwitVim-C-o	twitvim.txt	/*TwitVim-C-o*
 TwitVim-C-t	twitvim.txt	/*TwitVim-C-t*
 TwitVim-Leader-@	twitvim.txt	/*TwitVim-Leader-@*
+TwitVim-Leader-C-f	twitvim.txt	/*TwitVim-Leader-C-f*
 TwitVim-Leader-C-r	twitvim.txt	/*TwitVim-Leader-C-r*
 TwitVim-Leader-Leader	twitvim.txt	/*TwitVim-Leader-Leader*
 TwitVim-Leader-S-r	twitvim.txt	/*TwitVim-Leader-S-r*
 TwitVim-Leader-X	twitvim.txt	/*TwitVim-Leader-X*
 TwitVim-Leader-d	twitvim.txt	/*TwitVim-Leader-d*
 TwitVim-Leader-e	twitvim.txt	/*TwitVim-Leader-e*
+TwitVim-Leader-f	twitvim.txt	/*TwitVim-Leader-f*
 TwitVim-Leader-g	twitvim.txt	/*TwitVim-Leader-g*
 TwitVim-Leader-p	twitvim.txt	/*TwitVim-Leader-p*
 TwitVim-Leader-r	twitvim.txt	/*TwitVim-Leader-r*
@@ -251,6 +254,7 @@ TwitVim-contents	twitvim.txt	/*TwitVim-contents*
 TwitVim-credits	twitvim.txt	/*TwitVim-credits*
 TwitVim-delete	twitvim.txt	/*TwitVim-delete*
 TwitVim-direct-message	twitvim.txt	/*TwitVim-direct-message*
+TwitVim-fave	twitvim.txt	/*TwitVim-fave*
 TwitVim-goto	twitvim.txt	/*TwitVim-goto*
 TwitVim-hide-header	twitvim.txt	/*TwitVim-hide-header*
 TwitVim-highlight	twitvim.txt	/*TwitVim-highlight*
@@ -281,6 +285,7 @@ TwitVim-ssl-tcl	twitvim.txt	/*TwitVim-ssl-tcl*
 TwitVim-switch	twitvim.txt	/*TwitVim-switch*
 TwitVim-timeline-commands	twitvim.txt	/*TwitVim-timeline-commands*
 TwitVim-tips	twitvim.txt	/*TwitVim-tips*
+TwitVim-unfave	twitvim.txt	/*TwitVim-unfave*
 TwitVim-update-commands	twitvim.txt	/*TwitVim-update-commands*
 TwitVim-utility	twitvim.txt	/*TwitVim-utility*
 Vimball-copyright	pi_vimball.txt	/*Vimball-copyright*
