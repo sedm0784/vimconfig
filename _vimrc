@@ -113,6 +113,18 @@ if has("win32")
   set directory=.,$TEMP
 endif
 
+if has("win32")
+else
+  if has("unix")
+    let s:uname = system("uname")
+    if s:uname == "Darwin\n"
+      "Use 256 colours on Mac
+      set t_Co=256
+      colorscheme zenburn
+    endif
+  endif
+endif
+
 " PLUGINS AND EXTENSIONS
 " ======================
 "GetLatestScripts automatic installation
