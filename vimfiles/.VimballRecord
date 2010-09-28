@@ -5,3 +5,4 @@ twitvim-0.4.7.vba: call delete('C:\Users\rcheng.HQ2010\vimfiles/plugin/twitvim.v
 twitvim-0.5.5.vba: call delete('C:\Users\rcheng.HQ2010\vimfiles/plugin/twitvim.vim')|call delete('C:\Users\rcheng.HQ2010\vimfiles/doc/twitvim.txt')
 zenburn.vba: call delete('C:\Users\rcheng.HQ2010\vimfiles/colors/zenburn.vim')
 twitvim-0.5.6.vba: call delete('C:\Users\rcheng.HQ2010\vimfiles/plugin/twitvim.vim')|call delete('C:\Users\rcheng.HQ2010\vimfiles/doc/twitvim.txt')
+conque_1.1.vba: call delete('c:\Users\rcheng.HQ2010\vimfiles/autoload/conque_term.vim')|call delete('c:\Users\rcheng.HQ2010\vimfiles/doc/conque_term.txt')|call delete('c:\Users\rcheng.HQ2010\vimfiles/plugin/conque_term.vim')|call delete('c:\Users\rcheng.HQ2010\vimfiles/syntax/conque_term.vim')
