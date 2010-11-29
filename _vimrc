@@ -125,6 +125,9 @@ else
   endif
 endif
 
+"Quick email reformat (Re-wRap)
+vmap <leader>rr :!par -q 72<CR>
+
 " PLUGINS AND EXTENSIONS
 " ======================
 " Use pathogen to easily modify the runtime path to include all " plugins under the ~/.vim/bundle directory
