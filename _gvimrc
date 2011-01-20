@@ -1,7 +1,15 @@
 if has("win32")
   set guioptions-=m "no menu bar
   set guioptions-=T "no tool bar
+else
+  if has("unix")
+    let s:uname = system("uname")
+    if s:uname == "Darwin\n"
+      set fuopt=maxvert,background:Normal
+    endif
+  endif
 endif
+
 
 "Anti-aliasing and font choice
 set anti
