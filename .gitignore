@@ -1,2 +1,5 @@
 # Ignore backups
 vimfiles/backups/*~
+
+# Ignore tags files
+tags
