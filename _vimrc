@@ -11,6 +11,12 @@ set sw=2
 set expandtab
 set smarttab
 
+" Generally, I want dumb indenting on. I only want smarter indenting if I'm
+" actually coding, which will be handled by plugins/filetype indenting
+set autoindent
+set nocindent
+set nosmartindent
+
 "setup display of tabs and trailing whitespace, but turn it off by default
 set nolist
 set listchars=tab:->,trail:~ 
