@@ -94,8 +94,9 @@ set wildmenu
 "First wildmenu invocation inserts longest substring, second inserts full
 set wildmode=longest:full,full
 
-"In insert mode, complete with a menu, inserting longest substring
-set completeopt=menu,longest
+"In insert mode, complete with a menu, inserting longest substring, and
+"with extra preview info
+set completeopt=menu,longest,preview
 
 "Turn off beeps
 set visualbell
