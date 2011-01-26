@@ -152,7 +152,7 @@ let g:GetLatestVimScripts_allowautoinstall=1
 let c_cpp_comments = 0
 
 "cppomnicomplete stuff
-set completeopt-=preview
+"set completeopt-=preview
 
 "minibufexpl.vim
 " Allow <Ctrl>+<Tab> and <Ctrl>+<Shift>+<Tab> to switch between buffers
