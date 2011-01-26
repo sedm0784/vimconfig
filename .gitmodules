@@ -1,3 +1,6 @@
 [submodule "vimfiles/bundle/NERDCommenter"]
 	path = vimfiles/bundle/NERDCommenter
 	url = http://github.com/scrooloose/nerdcommenter.git
+[submodule "vimfiles/bundle/SuperTab"]
+	path = vimfiles/bundle/SuperTab
+	url = http://github.com/ervandew/supertab.git
