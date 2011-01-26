@@ -183,6 +183,14 @@ augroup mkd
   autocmd BufRead *.mkd  set ai formatoptions=tcroqn2 comments=n:>
 augroup END
 
+"SuperTab
+"Default completion type
+let g:SuperTabDefaultCompletionType = "context"
+"Fallback completion type
+let g:SuperTabContextDefaultCompletionType = "<c-p>"
+"Use enhanced longest match so you can continue doing longest substring
+"after typing more letters
+let g:SuperTabLongestEnhanced = 1
 
 " NEURATRON SPECIFIC BUILD STUFF
 " ==============================
