@@ -110,7 +110,7 @@ set statusline=%f%m%r%h%w\ type:%Y,%{&ff}\ %{fugitive#statusline()}\ %=ascii=%b\
 set laststatus=2
 
 "format options
-set formatoptions=tcroqnw
+set formatoptions=tcrqnw
 
 "Put all backups in one place
 set backupdir=$HOME/.vim/backups
