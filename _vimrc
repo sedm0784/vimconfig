@@ -116,6 +116,10 @@ set formatoptions=tcrqnw
 set splitbelow
 set splitright
 
+"Visually indicate matching brackets as they are entered
+set showmatch
+set matchtime=5
+
 "Put all backups in one place
 set backupdir=$HOME/.vim/backups
 
