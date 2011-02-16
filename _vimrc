@@ -112,6 +112,10 @@ set laststatus=2
 "format options
 set formatoptions=tcrqnw
 
+"Put new splits below and to the right of current windows
+set splitbelow
+set splitright
+
 "Put all backups in one place
 set backupdir=$HOME/.vim/backups
 
