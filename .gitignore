@@ -3,3 +3,6 @@ vimfiles/backups/*~
 
 # Ignore tags files
 tags
+
+# Ignore Netrw history
+.netrwhist
