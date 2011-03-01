@@ -3,9 +3,6 @@
 "Don't be like vi!
 set nocompatible
 
-"Tabs should be converted to a group of 4 spaces.
-"This is the official Python convention
-"(http://www.python.org/dev/peps/pep-0008/)
 set ts=2
 set sw=2
 set expandtab
@@ -17,8 +14,8 @@ set autoindent
 set nocindent
 set nosmartindent
 
-"setup display of tabs and trailing whitespace, but turn it off by default
-set nolist
+"setup display of tabs and trailing whitespace
+set list
 set listchars=tab:->,trail:~ 
 
 "Keep this many lines above and below cursor
@@ -185,10 +182,20 @@ let twitvim_count = 50
 let twitvim_bitly_user = "sedm0784"
 let twitvim_bitly_key = "R_9dab47b2ba36972d08a4509ef2552156"
 
-" markdown format options
-augroup mkd
-  autocmd BufRead *.markdown  set ai formatoptions=tcroqn2 comments=n:>
-  autocmd BufRead *.mkd  set ai formatoptions=tcroqn2 comments=n:>
+" My filetype options
+augroup filetypeoptions
+  " Markdown options
+  autocmd FileType mkd setlocal ai formatoptions=tcroqn2 comments=n:>
+
+  " Python options
+  "Tabs should be converted to a group of 4 spaces.
+  "This is the official Python convention
+  "(http://www.python.org/dev/peps/pep-0008/)
+  autocmd FileType python setlocal ts=4 sw=4
+
+  " ConqueTerm Options
+  " Turn off listing of trailing spaces
+  autocmd FileType conque_term setlocal listchars=tab:->
 augroup END
 
 "SuperTab
