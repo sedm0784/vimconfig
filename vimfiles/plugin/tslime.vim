@@ -37,7 +37,7 @@ function! Tmux_Vars()
   let b:tmux_sessionname = input("session name: ", "", "custom,Tmux_Session_Names")
   let b:tmux_windowname = substitute(input("window name: ", "", "custom,Tmux_Window_Names"), ":.*$" , '', 'g')
 
-  if system("tmux list-panes -t " . b:tmux_sessionname . ":" . b:tmux_windowname . " | wc -l") > 1
+  if system("tmux list-panes -t " . b:tmux_sessionname . ":" . b:tmux_windowname . " | wc -l") != "1"
     let b:tmux_panenumber = input("pane number: ", "", "custom,Tmux_Pane_Numbers")
   end
 
