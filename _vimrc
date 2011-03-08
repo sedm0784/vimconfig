@@ -207,6 +207,9 @@ let g:SuperTabContextDefaultCompletionType = "<c-p>"
 "after typing more letters
 let g:SuperTabLongestEnhanced = 1
 
+"Gundo
+nnoremap <F5> :GundoToggle<CR>
+
 " NEURATRON SPECIFIC BUILD STUFF
 " ==============================
 
