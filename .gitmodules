@@ -4,3 +4,6 @@
 [submodule "vimfiles/bundle/SuperTab"]
 	path = vimfiles/bundle/SuperTab
 	url = http://github.com/ervandew/supertab.git
+[submodule "vimfiles/bundle/Gundo"]
+	path = vimfiles/bundle/Gundo
+	url = git://github.com/sjl/gundo.vim.git
