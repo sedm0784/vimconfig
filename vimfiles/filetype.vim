@@ -1,5 +1,5 @@
 " my filetype file
-if exists("did\_load\_filetypes")
+if exists("did_load_filetypes")
   finish
 endif
 
