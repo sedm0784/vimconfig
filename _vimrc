@@ -103,7 +103,7 @@ set spell
 set spelllang=en_gb
 
 "Posh statusline, always present
-set statusline=%f%m%r%h%w\ type:%Y,%{&ff}\ %{fugitive#statusline()}\ %=ascii=%b\ hex=%02.2B\ c%v/%{strlen(getline('.'))}\ l%l/%L\ %p%%
+set statusline=%f%m%r%h%w\ %Y,%{&ff}\ %{fugitive#statusline()}\ %=ascii=%b\ hex=%02.2B\ c%v/%{strlen(getline('.'))}\ l%l/%L\ %p%%
 set laststatus=2
 
 "format options
