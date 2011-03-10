@@ -191,7 +191,9 @@ augroup filetypeoptions
   "Tabs should be converted to a group of 4 spaces.
   "This is the official Python convention
   "(http://www.python.org/dev/peps/pep-0008/)
-  autocmd FileType python setlocal ts=4 sw=4
+  autocmd FileType python setlocal ts=4 sw=4 fo=cq
+
+  autocmd FileType cpp,c setlocal fo=cq
 
   " ConqueTerm Options
   " Turn off listing of trailing spaces
