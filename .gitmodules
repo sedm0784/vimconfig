@@ -7,3 +7,4 @@
 [submodule "vimfiles/bundle/Gundo"]
 	path = vimfiles/bundle/Gundo
 	url = git://github.com/sjl/gundo.vim.git
+	ignore = untracked
