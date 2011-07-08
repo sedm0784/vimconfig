@@ -140,14 +140,33 @@ endif
 "Quick email reformat (Re-wRap)
 vmap <leader>rr :!par -q 72<CR>
 
+" My filetype options
+augroup filetypeoptions
+  " Markdown options
+  autocmd FileType mkd setlocal ai formatoptions=tcroqn2 comments=n:>
+
+  " Python options
+  "Tabs should be converted to a group of 4 spaces.
+  "This is the official Python convention
+  "(http://www.python.org/dev/peps/pep-0008/)
+  autocmd FileType python setlocal ts=4 sw=4 fo=cq
+
+  autocmd FileType cpp,c setlocal fo=cq
+
+  " ConqueTerm Options
+  " Turn off listing of trailing spaces
+  autocmd FileType conque_term setlocal listchars=tab:->
+augroup END
+
 " PLUGINS AND EXTENSIONS
 " ======================
 
 " Use pathogen to easily modify the runtime path to include all " plugins under the ~/.vim/bundle directory
+filetype off
 call pathogen#runtime_append_all_bundles()
 call pathogen#helptags()
 
-" Required for NERD Commenter
+" Required for NERD Commenter and just general goodness
 filetype plugin indent on
 
 "GetLatestScripts automatic installation
@@ -181,24 +200,6 @@ let twitvim_browser_cmd = 'firefox.exe'
 let twitvim_count = 50
 let twitvim_bitly_user = "sedm0784"
 let twitvim_bitly_key = "R_9dab47b2ba36972d08a4509ef2552156"
-
-" My filetype options
-augroup filetypeoptions
-  " Markdown options
-  autocmd FileType mkd setlocal ai formatoptions=tcroqn2 comments=n:>
-
-  " Python options
-  "Tabs should be converted to a group of 4 spaces.
-  "This is the official Python convention
-  "(http://www.python.org/dev/peps/pep-0008/)
-  autocmd FileType python setlocal ts=4 sw=4 fo=cq
-
-  autocmd FileType cpp,c setlocal fo=cq
-
-  " ConqueTerm Options
-  " Turn off listing of trailing spaces
-  autocmd FileType conque_term setlocal listchars=tab:->
-augroup END
 
 "SuperTab
 "Default completion type
