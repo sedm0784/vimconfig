@@ -31,6 +31,9 @@ else
   endif
 endif
 
+"Reset my highlighting
+highlight EOLWS guibg=red
+
 "Another good colorscheme
 "colorscheme inkpot
 

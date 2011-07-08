@@ -16,7 +16,8 @@ set nosmartindent
 
 "setup display of tabs and trailing whitespace
 set list
-set listchars=tab:->,trail:~ 
+"set listchars=tab:->,trail:~ 
+set listchars=tab:->
 
 "Keep this many lines above and below cursor
 set scrolloff=3
@@ -142,6 +143,11 @@ vmap <leader>rr :!par -q 72<CR>
 
 "Source common spelling corrections
 source $HOME/.vim/iabbrev.vim
+
+" Highlight whitespace at the end of lines
+autocmd InsertEnter * syn clear EOLWS | syn match EOLWS excludenl /\s\+\%#\@!$/
+autocmd InsertLeave * syn clear EOLWS | syn match EOLWS excludenl /\s\+$/
+highlight EOLWS guibg=red
 
 " My filetype options
 augroup filetypeoptions
