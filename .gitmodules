@@ -15,3 +15,7 @@
 	path = vimfiles/bundle/TwitVim
 	url = git://github.com/vim-scripts/TwitVim.git
 	ignore = untracked
+[submodule "vimfiles/bundle/vim-surround"]
+	path = vimfiles/bundle/vim-surround
+	url = git://github.com/tpope/vim-surround.git
+	ignore = untracked
