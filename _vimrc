@@ -64,14 +64,14 @@ imap <left> <nop>
 imap <right> <nop>
 
 "switch word and bigword navigation
-noremap w W
-noremap W w
-noremap b B
-noremap B b
-noremap e E
-noremap E e
-noremap ge gE
-noremap gE ge
+"noremap w W
+"noremap W w
+"noremap b B
+"noremap B b
+"noremap e E
+"noremap E e
+"noremap ge gE
+"noremap gE ge
 
 "Searching
 "Incremental
