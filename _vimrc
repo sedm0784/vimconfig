@@ -200,9 +200,6 @@ let g:miniBufExplModSelTarget = 1
 "taglist stuff
 :map <leader>tlt :TlistToggle<CR>
 
-"Fuzzyfinder Textmate mode
-:map <leader>tm :FuzzyFinderTextMate<CR>
-
 "TwitVim
 let twitvim_enable_python = 1
 let twitvim_browser_cmd = 'firefox.exe'
