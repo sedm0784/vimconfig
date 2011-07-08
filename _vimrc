@@ -140,6 +140,9 @@ endif
 "Quick email reformat (Re-wRap)
 vmap <leader>rr :!par -q 72<CR>
 
+"Source common spelling corrections
+source $HOME/.vim/iabbrev.vim
+
 " My filetype options
 augroup filetypeoptions
   " Markdown options
