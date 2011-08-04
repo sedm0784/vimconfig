@@ -131,9 +131,11 @@ else
   if has("unix")
     let s:uname = system("uname")
     if s:uname == "Darwin\n"
-      "Use 256 colours on Mac
-      set t_Co=256
-      colorscheme zenburn
+      if has("gui_running") == 0
+        "Use 256 colours in Mac shell
+        set t_Co=256
+        colorscheme zenburn
+      endif
     endif
   endif
 endif
