@@ -22,3 +22,7 @@
 [submodule "vimfiles/bundle/minibufexpl"]
 	path = vimfiles/bundle/minibufexpl
 	url = git://github.com/fholgado/minibufexpl.vim.git
+[submodule "vimfiles/bundle/ctrlp"]
+	path = vimfiles/bundle/ctrlp
+	url = git://github.com/kien/ctrlp.vim.git
+	ignore = untracked
