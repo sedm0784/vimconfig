@@ -22,6 +22,9 @@ set listchars=tab:->
 "Keep this many lines above and below cursor
 set scrolloff=3
 
+"Display as much as possible of long lines
+set display+=lastline
+
 "RISC OS style F3 saving
 map #3 :browse w<CR>
 
