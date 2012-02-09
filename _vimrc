@@ -28,6 +28,9 @@ set display+=lastline
 "RISC OS style F3 saving
 map #3 :browse w<CR>
 
+"Searching for Tom's comments in liveblogs
+nnoremap #4 /\*\[.\{-}\]\*/s+2<CR>
+
 "Allow hidden buffers
 set hidden
 
