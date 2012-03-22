@@ -147,6 +147,7 @@ else
 endif
 
 "Quick email reformat (Re-wRap)
+nmap <leader>rr vip:!par -q 72<CR>
 vmap <leader>rr :!par -q 72<CR>
 
 "Source common spelling corrections
