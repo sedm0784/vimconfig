@@ -26,10 +26,10 @@ set scrolloff=3
 set display+=lastline
 
 "RISC OS style F3 saving
-map #3 :browse w<CR>
+nnoremap #3 :browse w<CR>
 
 "Searching for Tom's comments in liveblogs
-nnoremap #4 /\*\[.\{-}\]\*/s+2<CR>
+noremap #4 /\*\[.\{-}\]\*/s+2<CR>
 
 "Allow hidden buffers
 set hidden
@@ -70,6 +70,11 @@ imap <down> <nop>
 imap <left> <nop>
 imap <right> <nop>
 
+"The following worked quite well for instinctive movements, but was
+"counter-intuitive when I actually stopped to think about things. This turned
+"out to be surprisingly often. Better to retrain myself to use the standard
+"meanings.
+"
 "switch word and bigword navigation
 "noremap w W
 "noremap W w
@@ -86,7 +91,7 @@ set incsearch
 "Highlighted
 set hlsearch
 "With Esc mapped to turn off highlighting. Genius!
-:nnoremap <esc> :noh<return><esc>
+nnoremap <esc> :noh<return><esc>
 "(Thanks to http://www.viemu.com/blog/2009/06/16/a-vim-and-viemu-mapping-you-really-cant-miss-never-type-noh-again/)
 
 "Turn on syntax highlighting
@@ -147,8 +152,8 @@ else
 endif
 
 "Quick email reformat (Re-wRap)
-nmap <leader>rr vip:!par -q 72<CR>
-vmap <leader>rr :!par -q 72<CR>
+nnoremap <leader>rr vip:!par -q 72<CR>
+vnoremap <leader>rr :!par -q 72<CR>
 
 "Source common spelling corrections
 source $HOME/.vim/iabbrev.vim
@@ -221,7 +226,7 @@ let g:miniBufExplModSelTarget = 1
 "let g:miniBufExplForceSyntaxEnable = 1
 
 "taglist stuff
-:map <leader>tlt :TlistToggle<CR>
+nnoremap <leader>tlt :TlistToggle<CR>
 
 "TwitVim
 let twitvim_enable_python = 1
@@ -248,8 +253,8 @@ nnoremap <F5> :GundoToggle<CR>
 " Don't set directory. It seems to get set by something
 " else later on (visvim, perhaps?)
 ":cd D:\Neuratron\Neuratron\ PhotoScore_Unicode
-:set makeprg=buildAudioScoreDebug.bat
-:set errorformat=1>%f(%l):\ error\ C%n:\ %m
+set makeprg=buildAudioScoreDebug.bat
+set errorformat=1>%f(%l):\ error\ C%n:\ %m
 
 "End of Rich's Stuff
 
