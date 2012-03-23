@@ -247,6 +247,9 @@ let g:SuperTabLongestEnhanced = 1
 "Gundo
 nnoremap <F5> :GundoToggle<CR>
 
+"CtrlP
+let g:ctrlp_map = '<leader><leader>'
+
 " NEURATRON SPECIFIC BUILD STUFF
 " ==============================
 
