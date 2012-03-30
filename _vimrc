@@ -162,7 +162,7 @@ source $HOME/.vim/iabbrev.vim
 " from http://sartak.org/2011/03/end-of-line-whitespace-in-vim.html
 autocmd InsertEnter * syn clear EOLWS | syn match EOLWS excludenl /\s\+\%#\@!$/
 autocmd InsertLeave * syn clear EOLWS | syn match EOLWS excludenl /\s\+$/
-highlight EOLWS guibg=red
+highlight EOLWS guibg=red ctermbg=red
 
 " My filetype options
 augroup filetypeoptions
