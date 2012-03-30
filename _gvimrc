@@ -26,7 +26,7 @@ else
     if s:uname == "Darwin\n"
       "OS X font
       set gfn=Inconsolata:h18
-      " Use default MacVim colours
+      colorscheme solarized
     endif
   endif
 endif
