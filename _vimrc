@@ -28,9 +28,6 @@ set display+=lastline
 "RISC OS style F3 saving
 nnoremap #3 :browse w<CR>
 
-"Searching for Tom's comments in liveblogs
-noremap #4 /\*\[.\{-}\]\*/s+2<CR>
-
 "Allow hidden buffers
 set hidden
 
@@ -96,6 +93,31 @@ nnoremap <esc> :noh<return><esc>
 
 "Turn on syntax highlighting
 syntax on
+
+"Find *[Tom's comments]* for liveblogs
+nnoremap <leader>ftc /\*\[[^]*]\{-}\]\*/s+2<CR>
+nnoremap <leader>ftnc /\(^\[.\{-}\]\*\\|[^*]\[.\{-}\]\*\\|\*\[.\{-}\]$\\|\*\[.\{-}\][^*]\)<CR>
+
+"This is the regular expression used for finding broken comments:
+"\(^\[.\{-}\]\*\|[^*]\[.\{-}\]\*\|\*\[.\{-}\]$\|\*\[.\{-}\][^*]\)
+"
+"It's an alternation built from the following four smaller regexps:
+"
+"Comments missing start asterisks:
+"^\[.\{-}\]\*     - at start of line
+"[^*]\[.\{-}\]\*  - mid line
+"
+"Comments missing end asterisks:
+"\*\[.\{-}\]$     - at end of line
+"\*\[.\{-}\][^*]  - mid line
+
+"Highlight *[Tom's comments]* for liveblogs
+syntax match TomComment /\*\[[^]*]\{-}\]\*/
+"Highlight comments missing start or end asterisks
+syntax match TomBrokenComment /\(^\[.\{-}\]\*\|[^*]\[.\{-}\]\*\|\*\[.\{-}\]$\|\*\[.\{-}\][^*]\)/
+
+highlight TomComment guifg=#6c71c4 ctermfg=lightmagenta
+highlight TomBrokenComment guifg=#dc322f ctermfg=red
 
 "Turn on wildmenu for command completion
 set wildmenu
