@@ -180,6 +180,9 @@ vnoremap <leader>rr :!par -q 72<CR>
 "Source common spelling corrections
 source $HOME/.vim/iabbrev.vim
 
+"Mapping to source vimrc
+:nnoremap <leader>sv :source $MYVIMRC<cr>
+
 " Highlight whitespace at the end of lines
 " from http://sartak.org/2011/03/end-of-line-whitespace-in-vim.html
 autocmd InsertEnter * syn clear EOLWS | syn match EOLWS excludenl /\s\+\%#\@!$/
