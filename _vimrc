@@ -186,6 +186,11 @@ autocmd InsertEnter * syn clear EOLWS | syn match EOLWS excludenl /\s\+\%#\@!$/
 autocmd InsertLeave * syn clear EOLWS | syn match EOLWS excludenl /\s\+$/
 highlight EOLWS guibg=red ctermbg=red
 
+"Local stuff
+if filereadable($HOME."/.vim/local.vim")
+  source $HOME/.vim/local.vim
+endif
+
 " My filetype options
 augroup filetypeoptions
   " Markdown options

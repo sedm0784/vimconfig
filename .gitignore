@@ -6,3 +6,6 @@ tags
 
 # Ignore Netrw history
 .netrwhist
+
+# Ignore special file for computer-specific settings
+vimfiles/local.vim
