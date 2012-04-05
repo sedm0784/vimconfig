@@ -111,14 +111,6 @@ nnoremap <leader>ftnc /\(^\[.\{-}\]\*\\|[^*]\[.\{-}\]\*\\|\*\[.\{-}\]$\\|\*\[.\{
 "\*\[.\{-}\]$     - at end of line
 "\*\[.\{-}\][^*]  - mid line
 
-"Highlight *[Tom's comments]* for liveblogs
-syntax match TomComment /\*\[[^]*]\{-}\]\*/
-"Highlight comments missing start or end asterisks
-syntax match TomBrokenComment /\(^\[.\{-}\]\*\|[^*]\[.\{-}\]\*\|\*\[.\{-}\]$\|\*\[.\{-}\][^*]\)/
-
-highlight TomComment guifg=#6c71c4 ctermfg=lightmagenta
-highlight TomBrokenComment guifg=#dc322f ctermfg=red
-
 "Turn on wildmenu for command completion
 set wildmenu
 
