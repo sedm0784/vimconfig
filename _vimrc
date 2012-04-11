@@ -179,8 +179,11 @@ source $HOME/.vim/iabbrev.vim
 
 " Highlight whitespace at the end of lines
 " from http://sartak.org/2011/03/end-of-line-whitespace-in-vim.html
-autocmd InsertEnter * syn clear EOLWS | syn match EOLWS excludenl /\s\+\%#\@!$/
-autocmd InsertLeave * syn clear EOLWS | syn match EOLWS excludenl /\s\+$/
+augroup highlightwhitespace
+  autocmd!
+  autocmd InsertEnter * syn clear EOLWS | syn match EOLWS excludenl /\s\+\%#\@!$/
+  autocmd InsertLeave * syn clear EOLWS | syn match EOLWS excludenl /\s\+$/
+augroup END
 highlight EOLWS guibg=red ctermbg=red
 
 "Local stuff
@@ -190,6 +193,8 @@ endif
 
 " My filetype options
 augroup filetypeoptions
+  autocmd!
+
   " Markdown options
   autocmd FileType mkd setlocal ai formatoptions=tcroqn2 comments=n:>
 
