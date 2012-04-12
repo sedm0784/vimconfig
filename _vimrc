@@ -136,8 +136,8 @@ set statusline=%f%m%r%h%w                     " Relative filepath and status
 set statusline+=\ %Y,%{&ff}                   " Filetype and file format
 set statusline+=\ %{fugitive#statusline()}    " Git status
 set statusline+=\ %=                          " >> space <<
-set statusline+=ascii=%b                      " ASCII of char under cursor
-set statusline+=\ hex=%02.2B                  " Hex value of char under cursor
+set statusline+=dec=%b                        " value of byte(s) under cursor in decimal (e.g. for finding ASCII/Unicode)
+set statusline+=\ hex=%02.4B                  " Hex value of byte(s) under cursor
 set statusline+=\ c%v/%{strlen(getline('.'))} " Character position/line length
 set statusline+=\ l%l/%L                      " Line number/File length (in lines)
 set statusline+=\ %p%%                        " Position in file.
