@@ -185,6 +185,15 @@ source $HOME/.vim/iabbrev.vim
 
 "Mapping to source vimrc
 :nnoremap <leader>sv :source $MYVIMRC<cr>
+"Mapping to edit vim
+if has("unix")
+  let s:uname = system("uname")
+  if s:uname == "Darwin\n"
+    "Can't use this on Windows, because it overwrites softlink
+    "Instead it's defined in local.vim
+    :nnoremap <leader>ev :vsplit $MYVIMRC<cr>
+  endif
+endif
 
 " Highlight whitespace at the end of lines
 " from http://sartak.org/2011/03/end-of-line-whitespace-in-vim.html
