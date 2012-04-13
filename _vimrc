@@ -131,8 +131,26 @@ set spell
 set spelllang=en_gb
 
 "Posh statusline, always present
-"set statusline=%f%m%r%h%w\ %Y,%{&ff}\ %{fugitive#statusline()}\ %=ascii=%b\ hex=%02.2B\ c%v/%{strlen(getline('.'))}\ l%l/%L\ %p%%
-set statusline=%f%m%r%h%w                     " Relative filepath and status
+function! StatuslineModified()
+  if (&modified)
+    return '[+]'
+  else
+    return ''
+  endif
+endfunction
+function! StatuslineModifiable()
+  if (&modifiable)
+    return ''
+  else
+    return '[-]'
+  endif
+endfunction
+
+set statusline=%f%r%h%w%q                     " Relative filepath and statusjk
+set statusline+=%#Error#                      " Set highlight
+set statusline+=%{StatuslineModified()}       " Display if modified
+set statusline+=%*                            " Revert to usual coloring
+set statusline+=%{StatuslineModifiable()}     " Display if file *not* modifiable
 set statusline+=\ %Y,%{&ff}                   " Filetype and file format
 set statusline+=\ %{fugitive#statusline()}    " Git status
 set statusline+=\ %=                          " >> space <<
