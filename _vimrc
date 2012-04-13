@@ -225,6 +225,14 @@ set statusline+=\ l%l/%L                      " Line number/File length (in line
 set statusline+=\ %p%%                        " Position in file.
 
 " }}}
+" Abbreviations ----------------------------------------------------------- {{{
+
+iabbrev unsinged unsigned
+
+cabbrev Set set
+cabbrev Wq wq
+
+" }}}
 " Mappings ---------------------------------------------------------------- {{{
 
 " RISC OS style F3 saving {{{
@@ -412,9 +420,6 @@ let g:ctrlp_map = '<leader><leader>'
 
 " }}}
 " Source other files ------------------------------------------------------ {{{
-
-" Source common spelling corrections
-source $HOME/.vim/iabbrev.vim
 
 " Computer-specific stuff
 if filereadable($HOME."/.vim/local.vim")
