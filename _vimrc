@@ -379,6 +379,8 @@ let g:miniBufExplModSelTarget = 1
 " Let mbe attempt to force syntax coloring to workaround a vim bug
 " Commented out until c.vim syntax highlighting bugs are fixed
 " let g:miniBufExplForceSyntaxEnable = 1
+" MiniBufExplorer always on top
+let g:miniBufExplSplitBelow = 0
 
 " }}}
 " taglist {{{
