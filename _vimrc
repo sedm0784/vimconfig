@@ -130,21 +130,22 @@ syntax on
 " Liveblog highlighting {{{
 
 " Find *[Tom's comments]* for liveblogs
-nnoremap <leader>ftc /\*\[[^]*]\{-}\]\*/s+2<CR>
-nnoremap <leader>ftnc /\(^\[.\{-}\]\*\\|[^*]\[.\{-}\]\*\\|\*\[.\{-}\]$\\|\*\[.\{-}\][^*]\)<CR>
+" N.B. Had to escape the '|' chars so Vim doesn't think they are pipes
+nnoremap <leader>ftc /\v\*\[[^]*]{-}\]\*/s+2<CR>
+nnoremap <leader>ftnc /\v(^\[.{-}\]\*\|[^*]\[.{-}\]\*\|\*\[.{-}\]$\|\*\[.{-}\][^*])<CR>
 
 " This is the regular expression used for finding broken comments:
-" \(^\[.\{-}\]\*\|[^*]\[.\{-}\]\*\|\*\[.\{-}\]$\|\*\[.\{-}\][^*]\)
+" (^\[.{-}\]\*|[^*]\[.{-}\]\*|\*\[.{-}\]$|\*\[.{-}\][^*])
 "
 " It's an alternation built from the following four smaller regexps:
 "
 " Comments missing start asterisks:
-" ^\[.\{-}\]\*     - at start of line
-" [^*]\[.\{-}\]\*  - mid line
+" ^\[.{-}\]\*     - at start of line
+" [^*]\[.{-}\]\*  - mid line
 "
 " Comments missing end asterisks:
-" \*\[.\{-}\]$     - at end of line
-" \*\[.\{-}\][^*]  - mid line
+" \*\[.{-}\]$     - at end of line
+" \*\[.{-}\][^*]  - mid line
 
 " }}}
 " Display of whitespace {{{
@@ -158,8 +159,8 @@ set listchars=tab:->
 " from http://sartak.org/2011/03/end-of-line-whitespace-in-vim.html
 augroup highlightwhitespace
   autocmd!
-  autocmd InsertEnter * syn clear EOLWS | syn match EOLWS excludenl /\s\+\%#\@!$/
-  autocmd InsertLeave * syn clear EOLWS | syn match EOLWS excludenl /\s\+$/
+  autocmd InsertEnter * syn clear EOLWS | syn match EOLWS excludenl /\v\s+%#@!$/
+  autocmd InsertLeave * syn clear EOLWS | syn match EOLWS excludenl /\v\s+$/
 augroup END
 highlight EOLWS guibg=red ctermbg=red
 
