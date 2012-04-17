@@ -101,10 +101,6 @@ endif
 set incsearch
 " Highlighted
 set hlsearch
-" With Esc mapped to turn off highlighting. Genius!
-nnoremap <esc> :noh<return><esc>
-" (Thanks to
-" http://www.viemu.com/blog/2009/06/16/a-vim-and-viemu-mapping-you-really-cant-miss-never-type-noh-again/)
 
 " }}}
 " Completions {{{
@@ -236,6 +232,18 @@ cabbrev Wq wq
 " }}}
 " Mappings ---------------------------------------------------------------- {{{
 
+" Esc turns off highlighting {{{
+nnoremap <esc> :noh<return><esc>
+" (Thanks to
+" http://www.viemu.com/blog/2009/06/16/a-vim-and-viemu-mapping-you-really-cant-miss-never-type-noh-again/)
+
+" }}}
+" Always use very magic searches {{{
+
+nnoremap / /\v
+nnoremap ? ?\v
+
+" }}}
 " RISC OS style F3 saving {{{
 
 nnoremap #3 :browse w<CR>
