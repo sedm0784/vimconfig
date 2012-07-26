@@ -30,3 +30,6 @@
 	path = vimfiles/bundle/vim-colors-solarized
 	url = http://github.com/altercation/vim-colors-solarized.git
 	ignore = untracked
+[submodule "vimfiles/bundle/vim-orgmode"]
+	path = vimfiles/bundle/vim-orgmode
+	url = https://github.com/jceb/vim-orgmode.git
