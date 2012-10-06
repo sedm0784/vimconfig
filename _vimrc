@@ -5,6 +5,10 @@ set nocompatible
 
 " Basic options ----------------------------------------------------------- {{{
 
+" Leader {{{
+let mapleader = ","
+let maplocalleader = "\\"
+" }}}
 " Tabs {{{
 
 set ts=2
