@@ -5,7 +5,7 @@ else
   if has("unix")
     let s:uname = system("uname")
     if s:uname == "Darwin\n"
-      set fuopt=maxvert,background:Normal
+      set fuopt=maxvert,maxhorz,background:Normal
     endif
   endif
 endif
