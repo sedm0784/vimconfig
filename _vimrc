@@ -432,6 +432,12 @@ nnoremap <F5> :GundoToggle<CR>
 let g:ctrlp_map = '<leader><leader>'
 
 " }}}
+" Utl {{{
+
+let g:utl_cfg_hdl_mt_generic = "silent !open '%p'"
+let g:utl_cfg_hdl_scm_http_system = "silent !open '%u'"
+
+" }}}
 
 " }}}
 " Source other files ------------------------------------------------------ {{{
