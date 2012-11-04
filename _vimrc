@@ -333,6 +333,13 @@ augroup END
   autocmd FileType vim setlocal foldmethod=marker
 
   " }}}
+  " Objective C {{{
+
+  " Convert tabs to 4 spaces, which is how Xcode is setup by default
+  autocmd FileType objc setlocal ts=4 sw=4
+  autocmd FileType objcpp setlocal ts=4 sw=4
+
+  " }}}
 
 " }}}
 " Use iTerm2 bar cursors in insert mode in terminal Vim {{{
