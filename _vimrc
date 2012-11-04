@@ -437,6 +437,7 @@ nnoremap <F5> :GundoToggle<CR>
 " CtrlP {{{
 
 let g:ctrlp_map = '<leader><leader>'
+let g:ctrlp_cmd = 'CtrlPBuffer'
 
 " }}}
 " Utl {{{
