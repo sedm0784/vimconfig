@@ -232,6 +232,7 @@ iabbrev unsinged unsigned
 
 cabbrev Set set
 cabbrev Wq wq
+cabbrev W w
 
 " }}}
 " Mappings ---------------------------------------------------------------- {{{
