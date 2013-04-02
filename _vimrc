@@ -27,6 +27,9 @@ set nosmartindent
 
 " }}}
 
+" Unicode, yo
+set encoding=utf-8
+
 " Keep this many lines above and below cursor
 set scrolloff=3
 
@@ -148,12 +151,14 @@ nnoremap <leader>ftnc /\v(^\[.{-}\]\*\|[^*]\[.{-}\]\*\|\*\[.{-}\]$\|\*\[.{-}\][^
 " \*\[.{-}\][^*]  - mid line
 
 " }}}
-" Display of whitespace {{{
+" Display of whitespace, etc {{{
 
 " Setup display of tabs and trailing whitespace
 set list
 "set listchars=tab:->,trail:~ 
-set listchars=tab:->
+"set listchars=tab:->
+"set listchars=tab:▸\ ,eol:¬,extends:❯,precedes:❮
+set listchars=tab:▸\ ,eol:¬,extends:»,precedes:«
 
 " Highlight whitespace at the end of lines
 " from http://sartak.org/2011/03/end-of-line-whitespace-in-vim.html
