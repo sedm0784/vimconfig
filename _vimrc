@@ -30,6 +30,9 @@ set nosmartindent
 " Unicode, yo
 set encoding=utf-8
 
+" Try all file formats
+set fileformats=mac,dos,unix
+
 " Keep this many lines above and below cursor
 set scrolloff=3
 
