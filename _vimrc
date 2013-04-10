@@ -31,7 +31,11 @@ set nosmartindent
 set encoding=utf-8
 
 " Try all file formats
-set fileformats=mac,dos,unix
+if has("win32")
+set fileformats=dos,unix,mac
+else
+set fileformats=unix,dos,mac
+endif
 
 " Keep this many lines above and below cursor
 set scrolloff=3
