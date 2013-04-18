@@ -46,3 +46,7 @@
 [submodule "vimfiles/bundle/ag"]
 	path = vimfiles/bundle/ag
 	url = https://github.com/rking/ag.vim
+[submodule "vimfiles/bundle/YankRing"]
+	path = vimfiles/bundle/YankRing
+	url = https://github.com/vim-scripts/YankRing.vim.git
+	ignore = untracked
