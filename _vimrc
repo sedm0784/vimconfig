@@ -313,6 +313,14 @@ inoremap <up> <nop>
 inoremap <down> <nop>
 
 " }}}
+" Turning list on and off {{{
+nnoremap <leader>l1 :setlocal list<cr>
+nnoremap <leader>l0 :setlocal nolist<cr>
+" }}}
+" Turn expandtab on and off {{{
+nnoremap <leader>et1 :setlocal expandtab<cr>
+nnoremap <leader>et0 :setlocal noexpandtab<cr>
+" }}}
 
 " }}}
 " Filetype options -------------------------------------------------------- {{{
