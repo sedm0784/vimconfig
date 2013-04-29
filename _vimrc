@@ -430,9 +430,9 @@ let g:miniBufExplModSelTarget = 1
 let g:miniBufExplSplitBelow = 0
 
 " }}}
-" taglist {{{
+" tagbar {{{
 
-nnoremap <leader>tlt :TlistToggle<CR>
+nnoremap <leader>tbt :TagbarToggle<CR>
 
 " }}}
 " TwitVim {{{

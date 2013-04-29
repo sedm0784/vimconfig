@@ -50,3 +50,6 @@
 	path = vimfiles/bundle/YankRing
 	url = https://github.com/vim-scripts/YankRing.vim.git
 	ignore = untracked
+[submodule "vimfiles/bundle/tagbar"]
+	path = vimfiles/bundle/tagbar
+	url = git://github.com/majutsushi/tagbar
