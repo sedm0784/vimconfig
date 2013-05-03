@@ -300,6 +300,12 @@ noremap k gk
 noremap gk k
 
 " }}}
+" Quicker window nav {{{
+noremap <C-J> <C-W>j
+noremap <C-K> <C-W>k
+noremap <C-H> <C-W>h
+noremap <C-L> <C-W>l
+" }}}
 " Disable arrow keys {{{
 
 noremap <up> <nop>
