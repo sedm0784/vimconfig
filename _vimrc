@@ -140,6 +140,23 @@ set completeopt=menu,longest,preview
 " Turn on syntax highlighting
 syntax on
 
+" Colorscheme {{{
+
+if has("win32")
+else
+  if has("unix")
+    let s:uname = system("uname")
+    if s:uname == "Darwin\n"
+      if has("gui_running") == 0
+        " Use 256 colours in Mac shell
+        set t_Co=256
+        colorscheme zenburn
+      endif
+    endif
+  endif
+endif
+
+" }}}
 " Liveblog highlighting {{{
 
 " Find *[Tom's comments]* for liveblogs
@@ -180,22 +197,21 @@ augroup END
 highlight EOLWS guibg=red ctermbg=red
 
 " }}}
+" {{{ MBE color tweaks
 
-" Colorscheme {{{
-
-if has("win32")
-else
-  if has("unix")
-    let s:uname = system("uname")
-    if s:uname == "Darwin\n"
-      if has("gui_running") == 0
-        " Use 256 colours in Mac shell
-        set t_Co=256
-        colorscheme zenburn
-      endif
-    endif
-  endif
-endif
+" Defaults
+"hi link MBENormal                Comment
+"hi link MBEChanged               String
+"hi link MBEVisibleNormal         Special
+"hi link MBEVisibleActive         Boolean
+"hi link MBEVisibleChanged        Special
+"hi link MBEVisibleChangedActive  Error
+hi link MBENormal                Comment
+hi link MBEChanged               String
+hi link MBEVisibleNormal         Special
+hi link MBEVisibleActive         DiffAdd
+hi link MBEVisibleChanged        String
+hi link MBEVisibleChangedActive  Error
 
 " }}}
 
