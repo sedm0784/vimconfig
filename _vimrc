@@ -347,6 +347,9 @@ nnoremap <leader>l0 :setlocal nolist<cr>
 nnoremap <leader>e1 :setlocal expandtab<cr>
 nnoremap <leader>e0 :setlocal noexpandtab<cr>
 " }}}
+" Sane behaviour of Y (i.e. like C and D)
+nnoremap Y y$
+" }}}
 
 " }}}
 " Filetype options -------------------------------------------------------- {{{
