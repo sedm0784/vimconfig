@@ -347,6 +347,10 @@ nnoremap <leader>l0 :setlocal nolist<cr>
 nnoremap <leader>e1 :setlocal expandtab<cr>
 nnoremap <leader>e0 :setlocal noexpandtab<cr>
 " }}}
+" Don't search when using * and # {{{
+nnoremap * *<C-o>
+nnoremap # #<C-o>
+" }}}
 " Sane behaviour of Y (i.e. like C and D)
 nnoremap Y y$
 " }}}
