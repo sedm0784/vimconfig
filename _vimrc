@@ -351,7 +351,7 @@ nnoremap <leader>e0 :setlocal noexpandtab<cr>
 nnoremap * *<C-o>
 nnoremap # #<C-o>
 " }}}
-" Sane behaviour of Y (i.e. like C and D)
+" Sane behaviour of Y (i.e. like C and D) {{{
 nnoremap Y y$
 " }}}
 
