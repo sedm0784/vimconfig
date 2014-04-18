@@ -3,6 +3,10 @@
 " Don't be like vi!
 set nocompatible
 
+if has("unix")
+  set shell=/bin/sh
+endif
+
 " Basic options ----------------------------------------------------------- {{{
 
 " Leader {{{
@@ -242,7 +246,7 @@ endfunction
 
 " }}}
 
-set statusline=%f%r%h%w%q                     " Relative filepath and statusjk
+set statusline=%f%r%h%w%q                     " Relative filepath and status
 set statusline+=%#Error#                      " Set highlight
 set statusline+=%{StatuslineModified()}       " Display if modified
 set statusline+=%*                            " Revert to usual coloring
