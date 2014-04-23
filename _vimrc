@@ -386,7 +386,6 @@ augroup filetypeoptions
 
   " Turn off listing of trailing spaces
   autocmd FileType conque_term setlocal listchars=tab:->
-augroup END
 
   " }}}
   " Markdown {{{
@@ -419,6 +418,7 @@ augroup END
   autocmd FileType objcpp setlocal ts=4 sw=4
 
   " }}}
+augroup END
 
 " }}}
 " Use iTerm2 bar cursors in insert mode in terminal Vim {{{
