@@ -501,6 +501,12 @@ let g:miniBufExplModSelTarget = 1
 " MiniBufExplorer always on top
 let g:miniBufExplSplitBelow = 0
 
+" Keep minibuf explorer on top when moving windows
+nnoremap <c-w>H :TMiniBufExplorer<cr><c-w>H:TMiniBufExplorer<cr>
+nnoremap <c-w>J :TMiniBufExplorer<cr><c-w>J:TMiniBufExplorer<cr>
+nnoremap <c-w>K :TMiniBufExplorer<cr><c-w>K:TMiniBufExplorer<cr>
+nnoremap <c-w>L :TMiniBufExplorer<cr><c-w>L:TMiniBufExplorer<cr>
+
 " }}}
 " tagbar {{{
 
