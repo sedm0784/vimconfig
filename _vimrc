@@ -124,8 +124,8 @@ set incsearch
 set hlsearch
 
 " Damian Conway's Die Blinkënmatchen: highlight matches
-nnoremap <silent> n n:call HLNext(0.4)<cr>
-nnoremap <silent> N N:call HLNext(0.4)<cr>
+nnoremap <silent> n n:call HLNext(0.1)<cr>
+nnoremap <silent> N N:call HLNext(0.1)<cr>
 
 function! HLNext (blinktime)
   let [bufnum, lnum, col, off] = getpos('.')
