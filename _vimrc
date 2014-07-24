@@ -73,6 +73,9 @@ set linebreak
 " Automatically read changed files if they're unchanged in vim
 set autoread
 
+" Don't double space sentences when doing `J`, `gq`
+set nojoinspaces
+
 " The following worked quite well for instinctive movements, but was
 " counter-intuitive when I actually stopped to think about things. This turned
 " out to be surprisingly often. Better to retrain myself to use the standard
