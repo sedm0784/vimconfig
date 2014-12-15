@@ -394,6 +394,11 @@ if executable('ag')
   let g:ctrlp_use_caching = 0
 endif
 " }}}
+" Smart quotes {{{
+nnoremap <leader>sq1 :%s/\v '(.{-})'/ \&lsquo;\1\&rsquo;/gc<cr>
+nnoremap <leader>sq2 :%s/\v "(.{-})"/ \&ldquo;\1\&rdquo;/gc<cr>
+nnoremap <leader>sa :%s/'/\&rsquo;/gc<cr>
+" }}}
 
 " }}}
 " Filetype options -------------------------------------------------------- {{{
