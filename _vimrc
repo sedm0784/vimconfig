@@ -459,8 +459,8 @@ augroup filetypeoptions
   " Objective C {{{
 
   " Convert tabs to 4 spaces, which is how Xcode is setup by default
-  autocmd FileType objc setlocal ts=4 sw=4
-  autocmd FileType objcpp setlocal ts=4 sw=4
+  autocmd FileType objc setlocal ts=4 sw=4 expandtab
+  autocmd FileType objcpp setlocal ts=4 sw=4 expandtab
 
   " }}}
 augroup END
