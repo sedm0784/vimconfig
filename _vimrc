@@ -402,7 +402,22 @@ nnoremap <leader>sa :%s/'/\&rsquo;/gc<cr>
 " }}}
 
 " }}}
+" New Commands ------------------------------------------------------------ {{{
+" DiffSaved {{{
+function! s:DiffWithSaved()
+  let filetype=&ft
+  diffthis
+  vnew | r # | normal! 1Gdd
+  diffthis
+  exe "setlocal bt=nofile bh=wipe nobl noswf ro ft=" . filetype
+endfunction
+command! DiffSaved call s:DiffWithSaved()
+" }}}
+" }}}
 " Filetype options -------------------------------------------------------- {{{
+
+" FIXME: It would be better to use ~/.vim/after/ftplugin/<filetype>.vim files
+" for these settings. (So as not to have to use autocommands).
 
 augroup filetypeoptions
   autocmd!
