@@ -572,7 +572,15 @@ nnoremap <F5> :GundoToggle<CR>
 " CtrlP {{{
 
 let g:ctrlp_map = '<leader><leader>'
+" Start in buffer mode. Then press <c-f> for MRU, <c-b> for file search
 let g:ctrlp_cmd = 'CtrlPBuffer'
+" Search file names (not full paths) by default. Press <c-d> to toggle
+let g:ctrlp_by_filename = 1
+" Set working directory based on current file, pwd if an ancestor, nearest
+" ancestor with a .git file
+let g:ctrlp_working_path_mode = 'ra'
+" Update match window after typing stops for 250ms
+let g:ctrlp_lazy_update = 250
 
 " }}}
 " Utl {{{
