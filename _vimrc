@@ -9,6 +9,10 @@ endif
 
 " Basic options ----------------------------------------------------------- {{{
 
+" Unicode, yo
+set encoding=utf-8
+scriptencoding utf-8
+
 " Leader {{{
 let mapleader = ","
 let maplocalleader = "\\"
@@ -30,9 +34,6 @@ set nocindent
 set nosmartindent
 
 " }}}
-
-" Unicode, yo
-set encoding=utf-8
 
 " Try all file formats
 if has("win32")
