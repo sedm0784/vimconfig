@@ -53,3 +53,6 @@
 [submodule "vimfiles/bundle/vim-tmux-navigator"]
 	path = vimfiles/bundle/vim-tmux-navigator
 	url = https://github.com/christoomey/vim-tmux-navigator.git
+[submodule "vimfiles/bundle/vim-markdown-folding"]
+	path = vimfiles/bundle/vim-markdown-folding
+	url = https://github.com/nelstrom/vim-markdown-folding.git
