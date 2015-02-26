@@ -171,9 +171,12 @@ else
     let s:uname = system("uname")
     if s:uname == "Darwin\n"
       if has("gui_running") == 0
-        " Use 256 colours in Mac shell
-        set t_Co=256
-        colorscheme zenburn
+        "" Use 256 colours in Mac shell
+        "set t_Co=256
+        "colorscheme zenburn
+        set background=dark
+        let g:solarized_termcolors=16
+        colorscheme solarized
       endif
     endif
   endif
