@@ -7,6 +7,19 @@ if has("unix")
   set shell=/bin/sh
 endif
 
+" Pathogen {{{
+
+" Use pathogen to easily modify the runtime path to include all plugins under
+" the ~/.vim/bundle directory
+call pathogen#runtime_append_all_bundles()
+call pathogen#helptags()
+" Turn on syntax highlighting
+syntax on
+" Turn on filetype detection etc
+filetype plugin indent on
+
+" }}}
+
 " Basic options ----------------------------------------------------------- {{{
 
 " Unicode, yo
@@ -159,9 +172,6 @@ set completeopt=menu,longest,preview
 
 " }}}
 " Colours ----------------------------------------------------------------- {{{
-
-" Turn on syntax highlighting
-syntax on
 
 " Colorscheme {{{
 
@@ -491,19 +501,6 @@ endif
 " }}}
 " Plugins ----------------------------------------------------------------- {{{
 
-" Pathogen {{{
-
-" Use pathogen to easily modify the runtime path to include all plugins under
-" the ~/.vim/bundle directory
-filetype off
-call pathogen#runtime_append_all_bundles()
-call pathogen#helptags()
-
-" }}}
-
-" Required for NERD Commenter and just general goodness
-filetype plugin indent on
-
 " GetLatestScripts {{{
 
 " Automatic installation
@@ -602,4 +599,3 @@ if filereadable($HOME."/.vim/local.vim")
 endif
 
 " }}}
-
