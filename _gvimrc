@@ -25,7 +25,7 @@ else
     let s:uname = system("uname")
     if s:uname == "Darwin\n"
       "OS X font
-      set gfn=Inconsolata:h18
+      set gfn=Inconsolata:h15
       colorscheme solarized
     endif
   endif
