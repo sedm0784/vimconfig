@@ -34,7 +34,6 @@ let maplocalleader = "\\"
 
 set ts=2
 set sw=2
-set expandtab
 set smarttab
 
 " }}}
@@ -217,7 +216,6 @@ nnoremap <leader>ftnc /\v(^\[.{-}\]\*\|[^*]\[.{-}\]\*\|\*\[.{-}\]$\|\*\[.{-}\][^
 " Display of whitespace, etc {{{
 
 " Setup display of tabs and trailing whitespace
-set list
 "set listchars=tab:->,trail:~ 
 "set listchars=tab:->
 "set listchars=tab:▸\ ,eol:¬,extends:❯,precedes:❮
@@ -591,6 +589,9 @@ let g:utl_cfg_hdl_scm_http_system = "silent !open '%u'"
 " }}}
 
 " }}}
+
+let g:astronomer_super_secret_debug_option=1
+
 " Source other files ------------------------------------------------------ {{{
 
 " Computer-specific stuff
