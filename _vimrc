@@ -371,20 +371,16 @@ inoremap <down> <nop>
 " }}}
 " Setting toggles {{{
 " Turning spell checking on and off {{{
-nnoremap <leader>s1 :setlocal spell<cr>
-nnoremap <leader>s0 :setlocal nospell<cr>
+nnoremap <leader>s :setlocal spell!<cr>:set spell?<cr>
 " }}}
 " Turning list on and off {{{
-nnoremap <leader>l1 :setlocal list<cr>
-nnoremap <leader>l0 :setlocal nolist<cr>
+nnoremap <leader>l :setlocal list!<cr>:set list?<cr>
 " }}}
 " Turn expandtab on and off {{{
-nnoremap <leader>e1 :setlocal expandtab<cr>
-nnoremap <leader>e0 :setlocal noexpandtab<cr>
+nnoremap <leader>e :setlocal expandtab!<cr>:set expandtab?<cr>
 " }}}
 " Turning wrap on and off {{{
-nnoremap <leader>w1 :setlocal wrap<cr>
-nnoremap <leader>w0 :setlocal nowrap<cr>
+nnoremap <leader>w :setlocal nowrap!<cr>:set wrap?<cr>
 " }}}
 " }}}
 " Don't search when using * and # {{{
