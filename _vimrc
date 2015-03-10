@@ -329,7 +329,7 @@ vnoremap <leader>rr :!par -q 72<CR>
 " Easy vimrc Access {{{
 
 " Source vimrc
-:nnoremap <leader>sv :source $MYVIMRC<cr>
+:nnoremap <leader>vs :source $MYVIMRC<cr>
 
 " Edit vimrc
 if has("unix")
@@ -337,7 +337,7 @@ if has("unix")
   if s:uname == "Darwin\n"
     " Can't use this on Windows, because it overwrites softlink
     " Instead it's defined in local.vim
-    :nnoremap <leader>ev :vsplit $MYVIMRC<cr>
+    :nnoremap <leader>ve :vsplit $MYVIMRC<cr>
   endif
 endif
 
