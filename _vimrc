@@ -135,6 +135,9 @@ if has("win32")
   set directory=.,$TEMP
 endif
 
+" Show incomplete commands in last line of screen
+set showcmd
+
 " Searching {{{
 
 " Incremental
