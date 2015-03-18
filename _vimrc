@@ -186,7 +186,7 @@ else
         "" Use 256 colours in Mac shell
         "set t_Co=256
         "colorscheme zenburn
-        set background=dark
+        "set background=dark
         let g:solarized_termcolors=16
         colorscheme solarized
       endif
