@@ -32,9 +32,12 @@ let maplocalleader = "\\"
 " }}}
 " Tabs {{{
 
+set smarttab
+" Most of the time these will be set by Astronomer; these are just my
+" defaults (for e.g. new files).
 set tabstop=2
 set shiftwidth=2
-set smarttab
+set expandtab
 
 " }}}
 " Indenting {{{
