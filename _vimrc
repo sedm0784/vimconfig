@@ -302,6 +302,7 @@ cabbrev Set set
 cabbrev Wq wq
 cabbrev W w
 cabbrev Q q
+cabbrev Qall qall
 
 " }}}
 " Mappings ---------------------------------------------------------------- {{{
