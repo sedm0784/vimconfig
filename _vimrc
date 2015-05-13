@@ -311,9 +311,27 @@ cabbrev Qall qall
 " Mappings ---------------------------------------------------------------- {{{
 
 " Esc turns off highlighting {{{
-nnoremap <esc> :noh<return><esc>
-" (Thanks to
-" http://www.viemu.com/blog/2009/06/16/a-vim-and-viemu-mapping-you-really-cant-miss-never-type-noh-again/)
+if !exists('g:escape_mapped')
+  augroup escape_mapping
+    autocmd!
+    autocmd InsertEnter * call s:setupEscapeMap()
+  augroup END
+endif
+
+function! s:setupEscapeMap()
+  nnoremap <Esc> :noh<CR><Esc>
+  let g:escape_mapped = 1
+  autocmd! escape_mapping InsertEnter *
+  augroup! escape_mapping
+endfunction
+" Thanks to:
+"   http://www.viemu.com/blog/2009/06/16/a-vim-and-viemu-mapping-you-really-cant-miss-never-type-noh-again/
+" Need to be setup in an autocmd because it inteferes with startup terminal
+" escape codes:
+"   https://vi.stackexchange.com/questions/2614/why-does-this-esc-nmap-affect-startup
+"
+"
+"
 
 " }}}
 " Always use very magic searches {{{
