@@ -407,6 +407,21 @@ nnoremap <leader>e :setlocal expandtab!<cr>:set expandtab?<cr>
 " Turning wrap on and off {{{
 nnoremap <leader>w :setlocal nowrap!<cr>:set wrap?<cr>
 " }}}
+" Turn colour column on and off {{{
+function! ToggleColorColumn()
+  if ! &colorcolumn
+    if !exists("b:oldcolorcolumn")
+      let b:oldcolorcolumn = 81
+    endif
+    execute "setlocal colorcolumn=" . b:oldcolorcolumn
+  else
+    let b:oldcolorcolumn = &l:colorcolumn
+    setlocal colorcolumn=
+  endif
+endfunction
+
+nnoremap <silent> <leader>c :call ToggleColorColumn()<cr>
+" }}}
 " }}}
 " Don't search when using * and # {{{
 nnoremap * *<C-o>
