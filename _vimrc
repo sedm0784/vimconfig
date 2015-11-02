@@ -11,7 +11,12 @@ endif
 
 " Use pathogen to easily modify the runtime path to include all plugins under
 " the ~/.vim/bundle directory
-call pathogen#runtime_append_all_bundles()
+
+" If you need to disable some or all of the plugins loaded by pathogen, add 
+" them to the `g:pathogen_disabled` variable, like this:
+"let g:pathogen_disabled=['plugin-name', 'another-plugin-name']
+
+call pathogen#infect()
 call pathogen#helptags()
 " Turn on syntax highlighting
 syntax on
