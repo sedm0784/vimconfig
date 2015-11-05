@@ -90,6 +90,10 @@ set backspace=indent,eol,start
 
 " Only break at word boundaries 
 set linebreak
+" Indent all parts of wrapped lines equally
+if exists('+breakindent')
+  set breakindent
+endif
 
 " Automatically read changed files if they're unchanged in vim
 set autoread
