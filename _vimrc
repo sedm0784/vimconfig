@@ -17,7 +17,7 @@ endif
 " Use pathogen to easily modify the runtime path to include all plugins under
 " the ~/.vim/bundle directory
 
-" If you need to disable some or all of the plugins loaded by pathogen, add 
+" If you need to disable some or all of the plugins loaded by pathogen, add
 " them to the `g:pathogen_disabled` variable, like this:
 "let g:pathogen_disabled=['plugin-name', 'another-plugin-name']
 
@@ -93,7 +93,7 @@ set whichwrap=b,s,h,l,<,>
 " Backspace can backspace over anything
 set backspace=indent,eol,start
 
-" Only break at word boundaries 
+" Only break at word boundaries
 set linebreak
 " Indent all parts of wrapped lines equally
 if exists('+breakindent')
@@ -236,7 +236,7 @@ nnoremap <leader>ftnc /\v(^\[.{-}\]\*\|[^*]\[.{-}\]\*\|\*\[.{-}\]$\|\*\[.{-}\][^
 " Display of whitespace, etc {{{
 
 " Setup display of tabs and trailing whitespace
-"set listchars=tab:->,trail:~ 
+"set listchars=tab:->,trail:~
 "set listchars=tab:->
 "set listchars=tab:▸\ ,eol:¬,extends:❯,precedes:❮
 set listchars=tab:▸\ ,eol:¬,extends:»,precedes:«
