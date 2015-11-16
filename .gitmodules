@@ -62,3 +62,6 @@
 [submodule "vimfiles/bundle/vim-gitgutter"]
 	path = vimfiles/bundle/vim-gitgutter
 	url = https://github.com/airblade/vim-gitgutter.git
+[submodule "vimfiles/bundle/dispatch"]
+	path = vimfiles/bundle/dispatch
+	url = https://github.com/tpope/vim-dispatch.git
