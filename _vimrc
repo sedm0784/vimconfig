@@ -589,13 +589,13 @@ let g:miniBufExplModSelTarget = 1
 let g:miniBufExplSplitBelow = 0
 
 " Keep minibuf explorer on top when moving windows
-nnoremap <c-w>H :TMiniBufExplorer<cr><c-w>H:TMiniBufExplorer<cr>
-nnoremap <c-w>J :TMiniBufExplorer<cr><c-w>J:TMiniBufExplorer<cr>
-nnoremap <c-w>K :TMiniBufExplorer<cr><c-w>K:TMiniBufExplorer<cr>
-nnoremap <c-w>L :TMiniBufExplorer<cr><c-w>L:TMiniBufExplorer<cr>
+nnoremap <c-w>H :MBEToggle<cr><c-w>H:MBEToggle<cr>
+nnoremap <c-w>J :MBEToggle<cr><c-w>J:MBEToggle<cr>
+nnoremap <c-w>K :MBEToggle<cr><c-w>K:MBEToggle<cr>
+nnoremap <c-w>L :MBEToggle<cr><c-w>L:MBEToggle<cr>
 " Keep minibuf explorer displayed when removing all splits
 
-nnoremap <c-w>o <c-w>o:TMiniBufExplorer<cr>
+nnoremap <c-w>o <c-w>o:MBEToggle<cr>
 
 " }}}
 " tagbar {{{
