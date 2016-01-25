@@ -65,3 +65,6 @@
 [submodule "vimfiles/bundle/dispatch"]
 	path = vimfiles/bundle/dispatch
 	url = https://github.com/tpope/vim-dispatch.git
+[submodule "vimfiles/bundle/vimagit"]
+	path = vimfiles/bundle/vimagit
+	url = https://github.com/jreybert/vimagit
