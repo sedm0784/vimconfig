@@ -324,16 +324,15 @@ set statusline+=\ l%l/%L                      " Line number/File length (in line
 set statusline+=\ %p%%                        " Position in file.
 
 " }}}
-" Abbreviations and other typo corrections -------------------------------- {{{
+" Abbreviations/typo corrections -------------------------------- {{{
 
 iabbrev unsinged unsigned
 
 cabbrev Set set
 cabbrev Wq wq
 cabbrev W w
-
-command Q q
-command Qall qall
+cabbrev Q q
+cabbrev Qall qall
 
 " }}}
 " Mappings ---------------------------------------------------------------- {{{
