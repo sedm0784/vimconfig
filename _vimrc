@@ -294,8 +294,22 @@ function! StatuslineModifiable() " {{{
 endfunction
 
 " }}}
+" Function to return the file path *without* the filename
+" {{{
+function! FilePathNoName()
+  let l:path = expand("%:h")
+  if strlen(l:path) > 0
+    let l:path = l:path . "/"
+  endif
+  return l:path
+endfunction
+" }}}
 
-set statusline=%f%r%h%w%q                     " Relative filepath and status
+set statusline=%{FilePathNoName()}            " File path
+set statusline+=%#Question#                   " Set highlight
+set statusline+=%t                            " File name
+set statusline+=%*                            " Revert to usual coloring
+set statusline+=%r%h%w%q                      " File status
 set statusline+=%#Error#                      " Set highlight
 set statusline+=%{StatuslineModified()}       " Display if modified
 set statusline+=%*                            " Revert to usual coloring
