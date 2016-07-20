@@ -72,3 +72,6 @@
 	path = vimfiles/bundle/gutentags
 	url = https://github.com/ludovicchabant/vim-gutentags.git
 	ignore = untracked
+[submodule "vimfiles/bundle/jedi-vim.git"]
+	path = vimfiles/bundle/jedi-vim.git
+	url = https://github.com/davidhalter/jedi-vim.git
