@@ -460,8 +460,7 @@ nnoremap Y y$
 " The Silver Searcher {{{
 if executable('ag')
   " Use ag over grep
-  set grepprg=ag\ --nogroup\ --nocolor
-
+  let &grepprg = "ag --vimgrep --hidden"
   " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
   " FIXME: Doesn't respect .gitignore. Why?
   "let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
