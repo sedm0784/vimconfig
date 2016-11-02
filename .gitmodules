@@ -44,9 +44,6 @@
 	path = vimfiles/bundle/NrrwRgn
 	url = git://github.com/chrisbra/NrrwRgn.git
 	ignore = untracked
-[submodule "vimfiles/bundle/ag"]
-	path = vimfiles/bundle/ag
-	url = https://github.com/rking/ag.vim
 [submodule "vimfiles/bundle/tagbar"]
 	path = vimfiles/bundle/tagbar
 	url = git://github.com/majutsushi/tagbar
