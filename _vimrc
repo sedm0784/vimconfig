@@ -661,6 +661,13 @@ let g:utl_cfg_hdl_mt_generic = "silent !open '%p'"
 let g:utl_cfg_hdl_scm_http_system = "silent !open '%u'"
 
 " }}}
+" NERDCommenter {{{
+" Add comment markers at very start of line
+let NERDDefaultAlign = 'start'
+" Don't remove extra spaces when removing comments (because it clashes with
+" 'start' setting above
+let NERDRemoveExtraSpaces = 0
+" }}}
 
 " }}}
 
