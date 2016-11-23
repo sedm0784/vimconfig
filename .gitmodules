@@ -62,6 +62,7 @@
 [submodule "vimfiles/bundle/vimagit"]
 	path = vimfiles/bundle/vimagit
 	url = https://github.com/jreybert/vimagit
+	ignore = untracked
 [submodule "vimfiles/bundle/gutentags"]
 	path = vimfiles/bundle/gutentags
 	url = https://github.com/ludovicchabant/vim-gutentags.git
