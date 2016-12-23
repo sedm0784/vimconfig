@@ -3,7 +3,7 @@ setlocal formatoptions=tcrqwanj
 
 " Tweaked version of
 " http://www.mdlerch.com/emailing-mutt-and-vim-advanced-config.html
-function s:IsReply()
+function! s:IsReply()
     " FIXME: Instead of doing this, check for sig line first real content, or, 
     " possibly better, if content matches sig
 
@@ -15,7 +15,7 @@ function s:IsReply()
     endif
 endfunction
 
-function FormatReply()
+function! FormatReply()
     if (s:IsReply())
         " Format everything except the sig
         :silent 1,$-3!par w72q
