@@ -448,6 +448,10 @@ endfunction
 
 nnoremap <silent> <leader>c :call ToggleColorColumn()<cr>
 " }}}
+" Calculator {{{
+vnoremap <leader>cal y`>a = <c-r>=<c-r>0<cr><esc>
+nnoremap <leader>cal yiWEa = <c-r>=<c-r>0<cr><esc>
+" }}}
 " }}}
 " Don't search when using * and # {{{
 nnoremap * *<C-o>
