@@ -450,7 +450,10 @@ nnoremap <silent> <leader>c :call ToggleColorColumn()<cr>
 " }}}
 " Calculator {{{
 vnoremap <leader>cal y`>a = <c-r>=<c-r>0<cr><esc>
-nnoremap <leader>cal yiWEa = <c-r>=<c-r>0<cr><esc>
+"nnoremap <leader>cal yiWEa = <c-r>=<c-r>0<cr><esc>
+" FIXME: Doesn't work on first line of file.
+nnoremap <leader>cal v?\v($<bar>[^0-9.+-/*() ])?s+1<cr>y``a = <c-r>=<c-r>0<cr><esc>
+
 " }}}
 " }}}
 " Don't search when using * and # {{{
