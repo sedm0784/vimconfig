@@ -480,14 +480,6 @@ if executable('ag')
 
   " ag is fast enough that CtrlP doesn't need to cache
   "let g:ctrlp_use_caching = 0
-  let g:ctrlp_user_command = {
-    \ 'types': {
-      \ 1: ['.git', 'cd %s && git ls-files'],
-      \ 2: ['.hg', 'hg --cwd %s locate -I .'],
-      \ },
-    \ 'fallback': 'find %s -type f'
-    \ }
-
 endif
 " }}}
 " Smart quotes {{{
@@ -666,6 +658,8 @@ let g:ctrlp_by_filename = 1
 let g:ctrlp_working_path_mode = 'ra'
 " Update match window after typing stops for 250ms
 let g:ctrlp_lazy_update = 250
+
+let g:ctrlp_user_command = { 'types': { 1: ['.git', 'cd %s && git ls-files'], 2: ['.hg', 'hg --cwd %s locate -I .'], }, 'fallback': 'find %s -type f' }
 
 " }}}
 " Utl {{{
