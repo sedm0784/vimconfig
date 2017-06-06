@@ -265,6 +265,13 @@ hi link MBEVisibleChanged        String
 hi link MBEVisibleChangedActive  Error
 
 " }}}
+" {{{ Display cursorline in current window only
+augroup cursorline_toggle
+  autocmd!
+  autocmd WinLeave * setlocal nocursorline
+  autocmd WinEnter * setlocal cursorline
+augroup END
+" }}}
 
 " }}}
 " Status Line ------------------------------------------------------------- {{{
