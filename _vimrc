@@ -344,19 +344,28 @@ cabbrev Qall qall
 " Mappings ---------------------------------------------------------------- {{{
 
 " Esc turns off highlighting {{{
-if !exists('g:escape_mapped')
-  augroup escape_mapping
-    autocmd!
-    autocmd InsertEnter * call s:setupEscapeMap()
-  augroup END
-endif
+augroup escape_mapping
+  autocmd!
+  autocmd InsertEnter * call s:setupEscapeMap()
+augroup END
 
 function! s:setupEscapeMap()
   nnoremap <Esc> :noh<CR><Esc>
-  let g:escape_mapped = 1
-  autocmd! escape_mapping InsertEnter *
-  augroup! escape_mapping
 endfunction
+" Older, possibly over-engineered version
+"if !exists('g:escape_mapped')
+"  augroup escape_mapping
+"    autocmd!
+"    autocmd InsertEnter * call s:setupEscapeMap()
+"  augroup END
+"endif
+
+"function! s:setupEscapeMap()
+"  nnoremap <Esc> :noh<CR><Esc>
+"  let g:escape_mapped = 1
+"  autocmd! escape_mapping InsertEnter *
+"  augroup! escape_mapping
+"endfunction
 " Thanks to:
 "   http://www.viemu.com/blog/2009/06/16/a-vim-and-viemu-mapping-you-really-cant-miss-never-type-noh-again/
 " Need to be setup in an autocmd because it inteferes with startup terminal
