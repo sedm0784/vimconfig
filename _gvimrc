@@ -20,6 +20,8 @@ if has("win32")
   "Zenburn colors
   let g:zenburn_high_Contrast=1
   colorscheme zenburn
+  " Highlight tabs like EOLs (less obtrusive)
+  highlight! link SpecialKey NonText
 else
   if has("unix")
     let s:uname = system("uname")
