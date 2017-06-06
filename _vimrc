@@ -321,6 +321,7 @@ set statusline+=%*                            " Revert to usual coloring
 set statusline+=%{StatuslineModifiable()}     " Display if file *not* modifiable
 set statusline+=\ %Y,%{&ff},%{&fileencoding}  " Filetype and file format
 set statusline+=\ %{fugitive#statusline()}    " Git status
+set statusline+=\ %{gutentags#statusline()}   " Gutentags status
 set statusline+=\ %=                          " >> space <<
 set statusline+=dec=%b                        " Value of byte(s) under cursor in decimal (e.g. for finding ASCII/Unicode)
 set statusline+=\ hex=%02.4B                  " Hex value of byte(s) under cursor
