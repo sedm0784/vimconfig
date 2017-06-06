@@ -488,6 +488,10 @@ nnoremap <leader>sq2 :%s/\v "(.{-})"/ \&ldquo;\1\&rdquo;/gc<cr>
 nnoremap <leader>sa :%s/'/\&rsquo;/gc<cr>
 " }}}
 
+" Invoke Make {{{
+nnoremap <leader>mm :Make<cr>
+" }}}
+
 " }}}
 " New Commands ------------------------------------------------------------ {{{
 " DiffSaved {{{
