@@ -1,12 +1,10 @@
 " Rich's Vim Config
 
-" N.B. Vim defaults to `nocompatible` whenever a vimrc or gvimrc is found
-" during startup, so it's generally NOT necessary in a personal vimrc file,
-" despite so many vim beginner guides recommending it.
-"
-" However, Vim defaults to `compatible` when selecting a vimrc with the
-" command-line `-u` argument, so keeping this option just in case.
-set nocompatible
+if &compatible
+  " Vim defaults to `compatible` when selecting a vimrc with the command-line 
+  " `-u` argument. Override this.
+  set nocompatible
+endif
 
 if has("unix")
   set shell=/bin/sh
