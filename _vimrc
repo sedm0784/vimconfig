@@ -22,7 +22,9 @@ endif
 call pathogen#infect()
 call pathogen#helptags()
 " Turn on syntax highlighting
-syntax on
+if !exists("g:syntax_on")
+  syntax enable
+endif
 " Turn on filetype detection etc
 filetype plugin indent on
 
