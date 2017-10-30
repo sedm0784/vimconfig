@@ -558,16 +558,25 @@ nnoremap # #<C-o>
 " Sane behaviour of Y (i.e. like C and D) {{{
 nnoremap Y y$
 " }}}
-" The Silver Searcher {{{
-if executable('ag')
+" The Silver Searcher / ripgrep {{{
+if executable('rg')
+  " Use rg over grep
+  let &grepprg = "rg --vimgrep --hidden"
+
+  " Use rg in CtrlP for listing files. Lightning fast and respects .gitignore
+  let g:ctrlp_user_command = 'rg %s -l --nocolor -g ""'
+
+  " rg is fast enough that CtrlP doesn't need to cache
+  let g:ctrlp_use_caching = 0
+elseif executable('ag')
   " Use ag over grep
   let &grepprg = "ag --vimgrep --hidden"
+
   " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
-  " FIXME: Doesn't respect .gitignore. Why?
-  "let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
+  let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
 
   " ag is fast enough that CtrlP doesn't need to cache
-  "let g:ctrlp_use_caching = 0
+  let g:ctrlp_use_caching = 0
 endif
 " }}}
 " Smart quotes {{{
