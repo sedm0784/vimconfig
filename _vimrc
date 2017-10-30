@@ -512,6 +512,9 @@ inoremap <up> <nop>
 inoremap <down> <nop>
 
 " }}}
+" Disable Ex mode {{{
+nnoremap Q <nop>
+" }}}
 " Setting toggles {{{
 " Turning spell checking on and off {{{
 nnoremap <leader>s :setlocal spell!<cr>:set spell?<cr>
