@@ -563,20 +563,26 @@ if executable('rg')
   " Use rg over grep
   let &grepprg = "rg --vimgrep --hidden"
 
-  " Use rg in CtrlP for listing files. Lightning fast and respects .gitignore
-  let g:ctrlp_user_command = 'rg %s -l --nocolor -g ""'
+  if !has("win32")
+    " FIXME: This doesn't work on Windows. Don't know why.
+    " Use rg in CtrlP for listing files. Lightning fast and respects .gitignore
+    let g:ctrlp_user_command = 'rg -F --files %s'
 
-  " rg is fast enough that CtrlP doesn't need to cache
-  let g:ctrlp_use_caching = 0
+    " rg is fast enough that CtrlP doesn't need to cache
+    let g:ctrlp_use_caching = 0
+  endif
 elseif executable('ag')
   " Use ag over grep
   let &grepprg = "ag --vimgrep --hidden"
 
-  " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
-  let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
+  if !has("win32")
+    " FIXME: This is untested on Windows.
+    " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
+    let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
 
-  " ag is fast enough that CtrlP doesn't need to cache
-  let g:ctrlp_use_caching = 0
+    " ag is fast enough that CtrlP doesn't need to cache
+    let g:ctrlp_use_caching = 0
+  endif
 endif
 " }}}
 " Smart quotes {{{
@@ -760,7 +766,13 @@ let g:ctrlp_working_path_mode = 'ra'
 " Update match window after typing stops for 250ms
 let g:ctrlp_lazy_update = 250
 
-let g:ctrlp_user_command = { 'types': { 1: ['.git', 'cd %s && git ls-files'], 2: ['.hg', 'hg --cwd %s locate -I .'], }, 'fallback': 'find %s -type f' }
+if !exists("g:ctrlp_user_command")
+  " If the variable already exists, it's because we set it to use ripgrep or the
+  " Silver Searcher, above. `git ls-files` is actually slightly faster in my
+  " testing, but keep using the existing value because it will also find new
+  " files that haven't been added to the repository yet.
+  let g:ctrlp_user_command = { 'types': { 1: ['.git', 'cd %s && git ls-files'], 2: ['.hg', 'hg --cwd %s locate -I .'], }, 'fallback': 'find %s -type f' }
+endif
 
 " }}}
 " Utl {{{
