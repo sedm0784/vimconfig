@@ -333,23 +333,41 @@ highlight EOLWS guibg=red ctermbg=red
 "hi link MBEVisibleActiveNormal   Underlined
 "hi link MBEVisibleChanged        Special
 "hi link MBEVisibleActiveChanged  Error
-if g:colors_name ==? "zenburn"
-  hi link MBENormal                Comment
-  hi link MBEChanged               String
-  hi link MBEVisibleNormal         Special
-  hi link MBEVisibleActiveNormal   DiffAdd
-  hi link MBEVisibleChanged        String
-  hi link MBEVisibleActiveChanged  Error
+function! UpdateMiniBufExplorerColours()
+  if !exists("g:colors_name")
+    return
+  endif
+
+  if g:colors_name ==? "zenburn"
+    hi link MBENormal                Comment
+    hi link MBEChanged               String
+    hi link MBEVisibleNormal         Special
+    hi link MBEVisibleActiveNormal   DiffAdd
+    hi link MBEVisibleChanged        String
+    hi link MBEVisibleActiveChanged  Error
+
+  elseif g:colors_name ==? "solarized"
+    hi link MBENormal                Comment
+    hi link MBEChanged               Underlined
+    hi link MBEVisibleNormal         NONE
+    hi link MBEVisibleActiveNormal   Statement
+    hi link MBEVisibleChanged        Underlined
+    hi link MBEVisibleActiveChanged  Error
+
+  endif
+
+  " I don't think this is necessary, because we're being called from an
+  " autocommand. Doesn't do any harm, though.
   let g:did_minibufexplorer_syntax_inits = 1
-elseif g:colors_name ==? "solarized"
-  hi link MBENormal                Comment
-  hi link MBEChanged               Underlined
-  hi link MBEVisibleNormal         NONE
-  hi link MBEVisibleActiveNormal   Statement
-  hi link MBEVisibleChanged        Underlined
-  hi link MBEVisibleActiveChanged  Error
-  let g:did_minibufexplorer_syntax_inits = 1
-endif
+endfunction
+
+" Call it now, and also set up an autocommand to call it when we change the
+" colour scheme.
+call UpdateMiniBufExplorerColours()
+augroup minibufexplhighlights
+  autocmd!
+  autocmd Colorscheme * call UpdateMiniBufExplorerColours()
+augroup END
 
 " }}}
 " {{{ Display cursorline in current window only
