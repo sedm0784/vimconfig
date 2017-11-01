@@ -1,72 +1,72 @@
 [submodule "vimfiles/bundle/NERDCommenter"]
-	path = vimfiles/bundle/NERDCommenter
+	path = vimfiles/pack/bundle/start/NERDCommenter
 	url = http://github.com/scrooloose/nerdcommenter.git
 [submodule "vimfiles/bundle/SuperTab"]
-	path = vimfiles/bundle/SuperTab
+	path = vimfiles/pack/bundle/start/SuperTab
 	url = http://github.com/ervandew/supertab.git
 [submodule "vimfiles/bundle/Gundo"]
-	path = vimfiles/bundle/Gundo
+	path = vimfiles/pack/bundle/start/Gundo
 	url = git://github.com/sjl/gundo.vim.git
 	ignore = untracked
 [submodule "vimfiles/bundle/fugitive"]
-	path = vimfiles/bundle/fugitive
+	path = vimfiles/pack/bundle/start/fugitive
 	url = git://github.com/tpope/vim-fugitive.git
 [submodule "vimfiles/bundle/TwitVim"]
-	path = vimfiles/bundle/TwitVim
+	path = vimfiles/pack/bundle/start/TwitVim
 	url = git://github.com/vim-scripts/TwitVim.git
 	ignore = untracked
 [submodule "vimfiles/bundle/vim-surround"]
-	path = vimfiles/bundle/vim-surround
+	path = vimfiles/pack/bundle/start/vim-surround
 	url = git://github.com/tpope/vim-surround.git
 	ignore = untracked
 [submodule "vimfiles/bundle/minibufexpl"]
-	path = vimfiles/bundle/minibufexpl
+	path = vimfiles/pack/bundle/start/minibufexpl
 	url = git://github.com/fholgado/minibufexpl.vim.git
 	ignore = untracked
 [submodule "vimfiles/bundle/ctrlp"]
-	path = vimfiles/bundle/ctrlp
+	path = vimfiles/pack/bundle/start/ctrlp
 	url = git://github.com/kien/ctrlp.vim.git
 	ignore = untracked
 [submodule "vimfiles/bundle/vim-colors-solarized"]
-	path = vimfiles/bundle/vim-colors-solarized
+	path = vimfiles/pack/bundle/start/vim-colors-solarized
 	url = http://github.com/altercation/vim-colors-solarized.git
 	ignore = untracked
 [submodule "vimfiles/bundle/vim-orgmode"]
-	path = vimfiles/bundle/vim-orgmode
+	path = vimfiles/pack/bundle/start/vim-orgmode
 	url = https://github.com/jceb/vim-orgmode.git
 [submodule "vimfiles/bundle/clang_complete"]
-	path = vimfiles/bundle/clang_complete
+	path = vimfiles/pack/bundle/start/clang_complete
 	url = git://github.com/Rip-Rip/clang_complete.git
 [submodule "vimfiles/bundle/NrrwRgn"]
-	path = vimfiles/bundle/NrrwRgn
+	path = vimfiles/pack/bundle/start/NrrwRgn
 	url = git://github.com/chrisbra/NrrwRgn.git
 	ignore = untracked
 [submodule "vimfiles/bundle/tagbar"]
-	path = vimfiles/bundle/tagbar
+	path = vimfiles/pack/bundle/start/tagbar
 	url = git://github.com/majutsushi/tagbar
 [submodule "vimfiles/bundle/vim-tmux-navigator"]
-	path = vimfiles/bundle/vim-tmux-navigator
+	path = vimfiles/pack/bundle/start/vim-tmux-navigator
 	url = https://github.com/christoomey/vim-tmux-navigator.git
 [submodule "vimfiles/bundle/vim-markdown-folding"]
-	path = vimfiles/bundle/vim-markdown-folding
+	path = vimfiles/pack/bundle/start/vim-markdown-folding
 	url = https://github.com/nelstrom/vim-markdown-folding.git
 [submodule "vimfiles/bundle/vader"]
-	path = vimfiles/bundle/vader
+	path = vimfiles/pack/bundle/start/vader
 	url = https://github.com/junegunn/vader.vim.git
 [submodule "vimfiles/bundle/vim-gitgutter"]
-	path = vimfiles/bundle/vim-gitgutter
+	path = vimfiles/pack/bundle/start/vim-gitgutter
 	url = https://github.com/airblade/vim-gitgutter.git
 [submodule "vimfiles/bundle/dispatch"]
-	path = vimfiles/bundle/dispatch
+	path = vimfiles/pack/bundle/start/dispatch
 	url = https://github.com/tpope/vim-dispatch.git
 [submodule "vimfiles/bundle/vimagit"]
-	path = vimfiles/bundle/vimagit
+	path = vimfiles/pack/bundle/start/vimagit
 	url = https://github.com/jreybert/vimagit
 	ignore = untracked
 [submodule "vimfiles/bundle/gutentags"]
-	path = vimfiles/bundle/gutentags
+	path = vimfiles/pack/bundle/start/gutentags
 	url = https://github.com/ludovicchabant/vim-gutentags.git
 	ignore = untracked
 [submodule "vimfiles/bundle/jedi-vim.git"]
-	path = vimfiles/bundle/jedi-vim.git
+	path = vimfiles/pack/bundle/start/jedi-vim.git
 	url = https://github.com/davidhalter/jedi-vim.git

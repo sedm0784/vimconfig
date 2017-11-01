@@ -19,16 +19,17 @@ endif
 " them to the `g:pathogen_disabled` variable, like this:
 "let g:pathogen_disabled=['plugin-name', 'another-plugin-name']
 
-call pathogen#infect()
+call pathogen#infect('pack/bundle/start/{}', 'pack/bundle/opt/{}')
 call pathogen#helptags()
-" Turn on syntax highlighting
-syntax on
-" Turn on filetype detection etc
-filetype plugin indent on
 
 " }}}
-
 " Basic options ----------------------------------------------------------- {{{
+
+" Turn on syntax highlighting
+syntax on
+"
+" Turn on filetype detection etc
+filetype plugin indent on
 
 " Unicode, yo
 set encoding=utf-8
