@@ -175,13 +175,13 @@ if has("timers")
 
   " Toggle the blink highlight. This is called many times repeatedly in order
   " to create the blinking effect.
-  function! BlinkToggle(timer_id)
+  function! BlinkToggle(target_pat, timer_id)
     if s:blink_match_id > 0
       " Clear highlight
       call BlinkClear()
     else
       " Set highlight
-      let s:blink_match_id = matchadd('ErrorMsg', s:target_pat, 101)
+      let s:blink_match_id = matchadd('ErrorMsg', a:target_pat, 101)
       redraw
     endif
   endfunction
@@ -220,22 +220,22 @@ if has("timers")
 endif
 
 function! HLNext(blink_length, blink_freq)
-  let s:target_pat = '\c\%#'.@/
+  let target_pat = '\c\%#'.@/
   if has("timers")
     " Reset any existing blinks
     call BlinkStop(0)
     " Start blinking. It is necessary to call this now so that the match is
     " highlighted initially (in case of large values of a:blink_freq)
-    call BlinkToggle(0)
+    call BlinkToggle(target_pat, 0)
     " Set up blink timers.
-    let s:blink_timer_id = timer_start(a:blink_freq, 'BlinkToggle', {'repeat': -1})
+    let s:blink_timer_id = timer_start(a:blink_freq, function('BlinkToggle', [target_pat]), {'repeat': -1})
     let s:blink_stop_id = timer_start(a:blink_length, 'BlinkStop')
   else
     " Vim doesn't have the +timers feature. Just use Conway's original
     " code.
     "
     " Highlight the match
-    let ring = matchadd('ErrorMsg', s:target_pat, 101)
+    let ring = matchadd('ErrorMsg', target_pat, 101)
     redraw
     " Wait
     exec 'sleep ' . a:blink_length . 'm'
