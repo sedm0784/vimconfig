@@ -109,21 +109,6 @@ set autoread
 " Don't double space sentences when doing `J`, `gq`
 set nojoinspaces
 
-" The following worked quite well for instinctive movements, but was
-" counter-intuitive when I actually stopped to think about things. This turned
-" out to be surprisingly often. Better to retrain myself to use the standard
-" meanings.
-"
-" Switch word and bigword navigation
-"noremap w W
-"noremap W w
-"noremap b B
-"noremap B b
-"noremap e E
-"noremap E e
-"noremap ge gE
-"noremap gE ge
-
 " Turn off beeps
 set visualbell
 
