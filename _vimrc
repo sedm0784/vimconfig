@@ -680,24 +680,18 @@ augroup filetypeoptions
 augroup END
 
 " }}}
-" Use iTerm2 bar cursors in insert mode in terminal Vim {{{
+" Use bar cursors in insert mode in terminal Vim {{{
 
-" iTerm2 is OS X only
-if has("unix")
-  let s:uname = system("uname")
-  if s:uname == "Darwin\n"
-    " tmux will only forward escape sequences to the terminal if surrounded by a
-    " DCS sequence
-    " http://sourceforge.net/mailarchive/forum.php?thread_name=AANLkTinkbdoZ8eNR1X2UobLTeww1jFrvfJxTMfKSq-L%2B%40mail.gmail.com&forum_name=tmux-users
-    if exists('$TMUX')
-      let &t_SI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=1\x7\<Esc>\\"
-      let &t_EI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=0\x7\<Esc>\\"
-    else
-      let &t_SI = "\<Esc>]50;CursorShape=1\x7"
-      let &t_EI = "\<Esc>]50;CursorShape=0\x7"
-    endif
-  endif
+if exists('$TMUX')
+  " Surround escape sequences with a DCS sequence and replace <esc> with 
+  " <esc><esc> for tmux to pass it on to the terminal
+  let &t_SI = "\ePtmux;\e\e[5 q\e\\"
+  let &t_EI = "\ePtmux;\e\e[2 q\e\\"
+else
+  let &t_SI = "\e[5 q"
+  let &t_EI = "\e[2 q"
 endif
+
 
 " }}}
 " Plugins ----------------------------------------------------------------- {{{
