@@ -23,6 +23,25 @@ call pathogen#infect('pack/bundle/start/{}', 'pack/bundle/opt/{}')
 call pathogen#helptags()
 
 " }}}
+" Detect operating system ------------------------------------------------- {{{
+let s:operating_system = "unknown"
+if has("win32")
+  let s:operating_system = "windows"
+elseif has("ios")
+  let s:operating_system = "ios"
+elseif has("unix")
+  let s:uname = system("uname")
+  if s:uname == "Darwin\n"
+    let s:operating_system = "mac"
+  elseif s:uname == "Linux\n"
+    let s:operating_system = "linux"
+  endif
+endif
+function! OperatingSystem(os) abort
+  return a:os == s:operating_system
+endfunction
+"
+" }}}
 " Basic options ----------------------------------------------------------- {{{
 
 " Turn on syntax highlighting
@@ -259,19 +278,12 @@ set completeopt=menu,longest,preview
 " Colours ----------------------------------------------------------------- {{{
 
 " Colorscheme {{{
-
-if has("win32")
-else
-  if has("unix")
-    let s:uname = system("uname")
-    if s:uname == "Darwin\n"
-      if has("gui_running") == 0
-        "colorscheme zenburn
-        set background=dark
-        let g:solarized_termcolors=16
-        colorscheme solarized
-      endif
-    endif
+if OperatingSystem("mac")
+  if has("gui_running") == 0
+    "colorscheme zenburn
+    set background=dark
+    let g:solarized_termcolors=16
+    colorscheme solarized
   endif
 endif
 
@@ -495,13 +507,10 @@ vnoremap <leader>rr :!par -q 72<CR>
 :nnoremap <leader>vs :source $MYVIMRC<cr>
 
 " Edit vimrc
-if has("unix")
-  let s:uname = system("uname")
-  if s:uname == "Darwin\n"
-    " Can't use this on Windows, because it overwrites softlink
-    " Instead it's defined in local.vim
-    :nnoremap <leader>ve :vsplit $MYVIMRC<cr>
-  endif
+if !OperatingSystem("windows")
+  " Can't use this on Windows, because it overwrites softlink
+  " Instead it's defined in local.vim
+  :nnoremap <leader>ve :vsplit $MYVIMRC<cr>
 endif
 
 " }}}

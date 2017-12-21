@@ -1,20 +1,15 @@
-if has("win32")
+if OperatingSystem("windows")
   set guioptions-=m "no menu bar
   set guioptions-=T "no tool bar
-else
-  if has("unix")
-    let s:uname = system("uname")
-    if s:uname == "Darwin\n"
-      set fuopt=maxvert,maxhorz,background:Normal
-    endif
-  endif
+elseif OperatingSystem("mac")
+  set fuopt=maxvert,maxhorz,background:Normal
 endif
 
 
 "Anti-aliasing and font choice
 set anti
 set enc=utf-8
-if has("win32")
+if OperatingSystem("windows")
   "Windows font
   set gfn=Consolas:h10
   "Zenburn colors
@@ -22,15 +17,10 @@ if has("win32")
   colorscheme zenburn
   " Highlight tabs like EOLs (less obtrusive)
   highlight! link SpecialKey NonText
-else
-  if has("unix")
-    let s:uname = system("uname")
-    if s:uname == "Darwin\n"
-      "OS X font
-      set gfn=Inconsolata:h15
-      colorscheme solarized
-    endif
-  endif
+elseif OperatingSystem("mac")
+  "OS X font
+  set gfn=Inconsolata:h15
+  colorscheme solarized
 endif
 
 "Reset my highlighting
