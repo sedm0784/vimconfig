@@ -136,7 +136,7 @@ set spell
 set spelllang=en_gb
 
 " Format options
-set formatoptions=tcrqnw
+set formatoptions=tcrqnj
 
 " Put new splits below and to the right of current windows
 set splitbelow
@@ -658,7 +658,7 @@ augroup filetypeoptions
   " }}}
   " Markdown {{{
 
-  autocmd FileType mkd setlocal ai formatoptions=tcroqn2 comments=n:>
+  autocmd FileType mkd setlocal ai formatoptions=tcroqnj comments=n:>
 
   " }}}
   " AutoHotKey {{{
