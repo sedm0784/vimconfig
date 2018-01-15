@@ -497,8 +497,15 @@ nnoremap #3 :browse w<CR>
 " }}}
 " Quick email reformat (Re-wRap) {{{
 
-nnoremap <leader>rr vip:!par -q 72<CR>
-vnoremap <leader>rr :!par -q 72<CR>
+" No longer use par: it doesn't support format=flowed
+"nnoremap <leader>rr vip:!par -q 72<CR>
+"vnoremap <leader>rr :!par -q 72<CR>
+
+" A plain `gq` will not join short lines if 'formatoptions' contains `w`. We
+" must first join them.
+" N.B. Make sure 'formatoptions' contains `j` before using this mapping!
+nnoremap <leader>rr vipJgvgqo<Esc>
+vnoremap <leader>rr Jgvgq
 
 " }}}
 " Easy vimrc Access {{{
