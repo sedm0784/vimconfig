@@ -573,10 +573,10 @@ endfunction
 nnoremap <silent> <leader>c :call ToggleColorColumn()<cr>
 " }}}
 " Calculator {{{
-vnoremap <leader>cal y`>a = <c-r>=<c-r>0<cr><esc>
+vnoremap <leader>cal y`>a = <c-r>=<c-r>0<cr><esc>:nohls<cr>
 "nnoremap <leader>cal yiWEa = <c-r>=<c-r>0<cr><esc>
 "nnoremap <leader>cal v?[0-9. ()*/+-]*<cr>y``a = <c-r>=<c-r>0<cr><esc>
-nnoremap <leader>cal :silent! normal l<cr>:silent! normal l<cr>?\d[0-9. ()*/+-]*<cr>y/[0-9. ()*/+-]*\d/e<cr>`]a = <c-r>=<c-r>0<cr><esc>
+nnoremap <leader>cal :silent! normal l<cr>:silent! normal l<cr>?\d[0-9. ()*/+-]*<cr>y/[0-9. ()*/+-]*\d/e<cr>`]a = <c-r>=<c-r>0<cr><esc>:nohls<cr>
 
 " }}}
 " }}}
