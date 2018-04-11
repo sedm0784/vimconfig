@@ -16,6 +16,7 @@ function! s:IsReply()
 endfunction
 
 function! FormatReply()
+    " FIXME: This breaks various bits of formatting in some emails
     if (s:IsReply())
         " Format everything except the sig
         :silent 1,$-3!par w72q
