@@ -35,6 +35,8 @@ elseif has("unix")
     let s:operating_system = "mac"
   elseif s:uname == "Linux\n"
     let s:operating_system = "linux"
+  elseif s:uname =~ "MINGW64"
+    let s:operating_system = "windows"
   endif
 endif
 function! OperatingSystem(os) abort
@@ -287,8 +289,10 @@ if OperatingSystem("mac")
     let g:solarized_termcolors=16
     colorscheme solarized
   endif
+elseif OperatingSystem("windows")
+  let g:zenburn_high_Contrast=1
+  colorscheme zenburn
 endif
-
 " }}}
 " Liveblog highlighting {{{
 
