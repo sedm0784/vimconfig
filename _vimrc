@@ -628,6 +628,12 @@ nnoremap <leader>sq1 :%s/\v '(.{-})'/ \&lsquo;\1\&rsquo;/gc<cr>
 nnoremap <leader>sq2 :%s/\v "(.{-})"/ \&ldquo;\1\&rdquo;/gc<cr>
 nnoremap <leader>sa :%s/'/\&rsquo;/gc<cr>
 " }}}
+" Find in Files {{{
+nnoremap <leader>ff :grep <C-R><C-W><C-F>hviw<C-G>
+" This is literally the only thing I use select mode for, so I think this is
+" safe to map globally. If it becomes a problem, map in CmdwinEnter autocommand.
+snoremap <CR> <Esc><CR>
+" }}}
 
 " Invoke Make {{{
 nnoremap <leader>mm :Make<cr>
