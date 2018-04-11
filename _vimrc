@@ -87,7 +87,9 @@ endif
 " Do NOT "fix" last line by adding an <EOL> if one not present. If I want to
 " add the <EOL> I can do so by either setting 'endofline' or 'fixeol' before
 " saving.
-set nofixeol
+if exists('+nofixeol')
+  set nofixeol
+endif
 
 " Keep this many lines above and below cursor
 set scrolloff=3
