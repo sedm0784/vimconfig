@@ -646,7 +646,7 @@ endfunction
 command! DiffSaved call s:DiffWithSaved()
 " }}}
 " SyntaxQuery: Display the syntax stack at current cursor position {{{
-function s:syntax_query()
+function! s:syntax_query()
   for id in synstack(line("."), col("."))
     echo synIDattr(id, "name")
   endfor
