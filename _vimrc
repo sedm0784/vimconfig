@@ -849,6 +849,17 @@ let NERDDefaultAlign = 'start'
 " 'start' setting above
 let NERDRemoveExtraSpaces = 0
 " }}}
+" A.vim {{{
+let g:alternateExtensions_h = "c,cpp,cxx,cc,CC,m,mm"
+let g:alternateExtensions_H = "C,CPP,CXX,CC,M,MM"
+let g:alternateExtensions_cpp = "h,hpp"
+let g:alternateExtensions_CPP = "H,HPP"
+let g:alternateExtensions_c = "h"
+let g:alternateExtensions_C = "H"
+let g:alternateExtensions_cxx = "h"
+let g:alternateExtensions_m = "h"
+let g:alternateExtensions_mm = "h"
+" }}}
 
 " }}}
 
