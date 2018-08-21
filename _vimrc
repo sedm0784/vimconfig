@@ -824,6 +824,8 @@ let g:ctrlp_by_filename = 1
 let g:ctrlp_working_path_mode = 'ra'
 " Update match window after typing stops for 250ms
 let g:ctrlp_lazy_update = 250
+" Ignore Mac temp files
+let g:ctrlp_mruf_exclude = '\v(\/private)?\/var\/folders\/t\d\/.*'
 
 if !exists("g:ctrlp_user_command")
   " If the variable already exists, it's because we set it to use ripgrep or the
