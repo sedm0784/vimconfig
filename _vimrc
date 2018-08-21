@@ -550,12 +550,12 @@ noremap <C-K> <C-W>k
 noremap <C-H> <C-W>h
 noremap <C-L> <C-W>l
 " }}}
-" Disable arrow keys {{{
+" Use arrow keys for quickfix {{{
 
-noremap <up> <nop>
-noremap <down> <nop>
-noremap <left> <nop>
-noremap <right> <nop>
+nnoremap <up> :cwindow<CR>
+nnoremap <down> :cc<CR>
+nnoremap <left> :cp<CR>
+nnoremap <right> :cn<CR>
 noremap! <left> <nop>
 noremap! <right> <nop>
 " We want to be able to use up and down for accessing command/search history
