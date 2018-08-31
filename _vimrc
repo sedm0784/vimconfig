@@ -860,6 +860,9 @@ let g:alternateExtensions_cxx = "h"
 let g:alternateExtensions_m = "h"
 let g:alternateExtensions_mm = "h"
 " }}}
+" Vim-Slime {{{
+let g:slime_target = "tmux"
+" }}}
 
 " }}}
 
