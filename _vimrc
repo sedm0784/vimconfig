@@ -702,14 +702,6 @@ augroup filetypeoptions
   " Tabs should be converted to a group of 4 spaces.
   autocmd FileType autohotkey setlocal ts=4 sw=4 expandtab
   " }}}
-  " Python {{{
-
-  " Tabs should be converted to a group of 4 spaces.
-  " This is the official Python convention
-  " (http://www.python.org/dev/peps/pep-0008/)
-  autocmd FileType python setlocal ts=4 sw=4 fo=cq expandtab
-
-  " }}}
   " Vim {{{
 
   autocmd FileType vim setlocal foldmethod=marker
