@@ -73,3 +73,6 @@
 [submodule "vimfiles/pack/bundle/opt/vim-slime"]
 	path = vimfiles/pack/bundle/opt/vim-slime
 	url = https://github.com/jpalardy/vim-slime.git
+[submodule "vimfiles/pack/bundle/opt/vim-python-pep8-indent"]
+	path = vimfiles/pack/bundle/opt/vim-python-pep8-indent
+	url = https://github.com/Vimjas/vim-python-pep8-indent.git

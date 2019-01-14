@@ -30,3 +30,9 @@ setlocal colorcolumn=80
 
 " Set up 'makeprg' and 'errorformat'
 compiler flake8
+
+" Load the PEP 8 indenting script
+
+if has('packages')
+  packadd vim-python-pep8-indent
+endif
