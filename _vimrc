@@ -856,7 +856,11 @@ let g:alternateExtensions_m = "h"
 let g:alternateExtensions_mm = "h"
 " }}}
 " Vim-Slime {{{
-let g:slime_target = "tmux"
+if has('terminal')
+  let g:slime_target = "tmux"
+else
+  let g:slime_target = "vimterminal"
+endif
 " }}}
 
 " }}}
