@@ -292,6 +292,9 @@ if OperatingSystem("mac")
 elseif OperatingSystem("windows")
   let g:zenburn_high_Contrast=1
   colorscheme zenburn
+  " Override colours used in git diffs
+  highlight diffRemoved ctermfg=red
+  highlight diffAdded ctermfg=green
 endif
 " }}}
 " Liveblog highlighting {{{
