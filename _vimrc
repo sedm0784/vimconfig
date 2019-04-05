@@ -650,9 +650,19 @@ nnoremap <leader>ff :grep <C-R><C-W><C-F>hviw<C-G>
 " safe to map globally. If it becomes a problem, map in CmdwinEnter autocommand.
 snoremap <CR> <Esc><CR>
 " }}}
-
 " Invoke Make {{{
 nnoremap <leader>mm :Make<cr>
+" }}}
+" File Jumps. Ctrl-O/Ctrl-I skipping current file {{{
+" Skip entries in the jumplist that are in the same file
+function! s:jump_skipping_file(backwards) abort
+  let this_buffer = bufnr('%')
+    while this_buffer == bufnr('%')
+      execute "normal!" a:backwards ? "\<C-O>" : "1\<C-I>"
+    endwhile
+endfunction
+nnoremap <leader><C-O> :call <SID>jump_skipping_file(v:true)<CR>
+nnoremap <leader><C-I> :call <SID>jump_skipping_file(v:false)<CR>
 " }}}
 
 " }}}
