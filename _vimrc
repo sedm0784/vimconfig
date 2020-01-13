@@ -89,7 +89,7 @@ endif
 " Do NOT "fix" last line by adding an <EOL> if one not present. If I want to
 " add the <EOL> I can do so by either setting 'endofline' or 'fixeol' before
 " saving.
-if exists('+nofixeol')
+if exists('+fixeol')
   set nofixeol
 endif
 
