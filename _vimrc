@@ -95,6 +95,8 @@ endif
 
 " Keep this many lines above and below cursor
 set scrolloff=3
+" Ditto for horizontal scrolling
+set sidescrolloff=10
 
 " Display as much as possible of long lines
 set display+=lastline
