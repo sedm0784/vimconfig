@@ -466,6 +466,7 @@ command! -bang Cn cn<bang>
 " Could (should?) also do this one with cabbrev like W. Command seems
 " neater somehow.
 command! -complete=option -nargs=* Set set <args>
+command! -complete=option -nargs=* Setl setl <args>
 command! -bang Wqall wqall<bang>
 
 " }}}
