@@ -543,14 +543,10 @@ vnoremap <leader>rr Jgvgq
 " Easy vimrc Access {{{
 
 " Source vimrc
-:nnoremap <leader>vs :source $MYVIMRC<cr>
+nnoremap <leader>vs :source $MYVIMRC<cr>
 
 " Edit vimrc
-if !OperatingSystem("windows")
-  " Can't use this on Windows, because it overwrites softlink
-  " Instead it's defined in local.vim
-  :nnoremap <leader>ve :vsplit $MYVIMRC<cr>
-endif
+nnoremap <leader>ve :vsplit $MYVIMRC<cr>
 
 " }}}
 " Navigate wrapped lines visually by default {{{
