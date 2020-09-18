@@ -10,19 +10,6 @@ if has("unix")
   set shell=/bin/sh
 endif
 
-" Pathogen {{{
-
-" Use pathogen to easily modify the runtime path to include all plugins under
-" the ~/.vim/bundle directory
-
-" If you need to disable some or all of the plugins loaded by pathogen, add
-" them to the `g:pathogen_disabled` variable, like this:
-"let g:pathogen_disabled=['plugin-name', 'another-plugin-name']
-
-call pathogen#infect('pack/bundle/start/{}', 'pack/bundle/opt/{}')
-call pathogen#helptags()
-
-" }}}
 " Detect operating system ------------------------------------------------- {{{
 let s:operating_system = "unknown"
 if has("win32")

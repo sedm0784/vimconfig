@@ -6,5 +6,4 @@ ScriptID SourceID Filename
 642 8136 :AutoInstall: getscript.vim
 1502 11981 :AutoInstall: vimball.vim
 415 14111 Zenburn
-2332 12116 pathogen
 2136 8206 repeat
