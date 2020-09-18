@@ -31,6 +31,11 @@ setlocal colorcolumn=80
 " Set up 'makeprg' and 'errorformat'
 compiler flake8
 
+" Use my indent foldexpr
+let g:include_blanks_in_fold_above = 1
+set foldexpr=alternate_indent_foldexpr#foldlevel(v:lnum)
+set foldmethod=expr
+
 " Load the PEP 8 indenting script
 
 if has('packages')
