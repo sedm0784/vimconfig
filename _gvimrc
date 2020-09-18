@@ -15,19 +15,14 @@ if OperatingSystem("windows")
   "Zenburn colors
   let g:zenburn_high_Contrast=1
   colorscheme zenburn
-  " Highlight tabs like EOLs (less obtrusive)
-  highlight! link SpecialKey NonText
 elseif OperatingSystem("mac")
   "OS X font
   set gfn=Inconsolata:h15
-  colorscheme solarized
+  colorscheme inkpot
 endif
 
 "Reset my highlighting
 highlight EOLWS guibg=red
-
-"Another good colorscheme
-"colorscheme inkpot
 
 "Size
 set lines=50

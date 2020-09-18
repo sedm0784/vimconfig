@@ -294,9 +294,6 @@ if OperatingSystem("mac")
 elseif OperatingSystem("windows")
   let g:zenburn_high_Contrast=1
   colorscheme zenburn
-  " Override colours used in git diffs
-  highlight diffRemoved ctermfg=red
-  highlight diffAdded ctermfg=green
 endif
 " }}}
 " Liveblog highlighting {{{
@@ -375,15 +372,42 @@ function! UpdateMiniBufExplorerColours()
   let g:did_minibufexplorer_syntax_inits = 1
 endfunction
 
+" }}}
+" {{{ Other colour tweaks
+function! UpdateMiscellaneousColours() abort
+  if !exists("g:colors_name")
+    return
+  endif
+
+  if g:colors_name ==? "zenburn"
+    " Highlight tabs like EOLs (less obtrusive)
+    highlight! link SpecialKey NonText
+
+    " Override colours used in git diffs
+    highlight diffRemoved ctermfg=red
+    highlight diffAdded ctermfg=green
+
+  elseif g:colors_name ==? "solarized"
+    " De-emphasize closed folds
+    highlight Folded term=bold cterm=bold gui=bold guibg=NONE ctermbg=NONE
+  endif
+endfunction
+" }}}
+
+" Function to update colours that I don't like in color schemes
+function! TweakColorScheme() abort
+  call UpdateMiniBufExplorerColours()
+  call UpdateMiscellaneousColours()
+endfunction
+
 " Call it now, and also set up an autocommand to call it when we change the
 " colour scheme.
-call UpdateMiniBufExplorerColours()
-augroup minibufexplhighlights
+call TweakColorScheme()
+augroup colorschemetweaks
   autocmd!
-  autocmd Colorscheme * call UpdateMiniBufExplorerColours()
+  autocmd ColorScheme * call TweakColorScheme()
 augroup END
 
-" }}}
 " {{{ Display cursorline in current window only
 augroup cursorline_toggle
   autocmd!
