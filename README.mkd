@@ -13,8 +13,6 @@ Usage
     (or if you're me, git@github.com:sedm0784/vimconfig.git)
 
     ln -s path_to_repo/vimconfig/vimfiles ~/.vim
-    ln -s path_to_repo/vimconfig/_vimrc ~/.vimrc
-    ln -s path_to_repo/vimconfig/_gvimrc ~/.gvimrc
 
 ### Windows ###
 
@@ -29,23 +27,16 @@ Then, from a cmd shell:
     cd %HOMEDRIVE%\%HOMEPATH%
     mklink /D vimfiles path_to_repo\vimconfig\vimfiles
     mklink /D .vim path_to_repo\vimconfig\vimfiles
-    mklink _vimrc path_to_repo\vimconfig\_vimrc
-    mklink _gvimrc path_to_repo\vimconfig\_gvimrc
 
 N.B.
 
 1. I'm not 100% sure that it's correct from a Windows-perspective that I'm using %HOMEDRIVE%\%HOMEPATH% instead of %USERPROFILE%, but as far as I can tell, this is what Vim actually uses for setting $HOME.
 
-2. Don't edit the _vimrc file in your home directory (e.g. via ':e $MYVIMRC') from within Vim, as if you do, the symlink will be deleted and replaced with a copy of the file on save. This is supposed not to happen (see ':help backupcopy') but it doesn't seem to work for me right now, even with backupcopy set to 'yes'.
-
-   If you use the /H to create hard links for _vimrc then you can edit either file in Vim, as expected. However, if you do this, then a git pull will not update the _vimrc in your home dir, so the symlink is better.
-
 TODO
 ----
 
-1. This could be more elegant. No wrapper directory is actually required: instead the .vimrc and .gvimrc files could be stored inside the .vim directory, and the clone command could give the repo directory the correct name, e.g. 
+This could be more elegant. The vimfiles directory isn't required: its contents should instead be in the top level of the repo, and then the clone command could give the repo directory the correct name, e.g.
 
     git clone git://github.com/sedm0784/vimconfig.git ~/.vim
 
-2. Should've used Unix filepaths instead of Windows ones. Yuck.
-
+The directory exists because I didn't know when I first set this up that the (g)vimrc file(s) could be placed inside .vim/vimfiles. I haven't moved everything up a level because that would be a pain and also because changing paths in git makes searching history a bit harder.
