@@ -416,8 +416,8 @@ augroup END
 " Always display status line
 set laststatus=2
 
-" Function to return '[+]' if file is modified
-function! StatuslineModified() " {{{
+" Function to return '[+]' if file is modified {{{
+function! StatuslineModified()
   if (&modified)
     return '[+]'
   else
@@ -426,8 +426,8 @@ function! StatuslineModified() " {{{
 endfunction
 
 " }}}
-" Function to return '[-]' if file is NOT modifiable
-function! StatuslineModifiable() " {{{
+" Function to return '[-]' if file is NOT modifiable {{{
+function! StatuslineModifiable() "
   if (&modifiable)
     return ''
   else
@@ -436,8 +436,7 @@ function! StatuslineModifiable() " {{{
 endfunction
 
 " }}}
-" Function to return the file path *without* the filename
-" {{{
+" Function to return the file path *without* the filename {{{
 function! FilePathNoName()
   let l:path = expand("%:h")
   if strlen(l:path) > 0
@@ -447,6 +446,7 @@ function! FilePathNoName()
 endfunction
 " }}}
 " Function to return source control status ignoring errors {{{
+"
 " Calling exists() on an autoload function always appears to return false,
 " even if the function has already been called. Catch the errors instead.
 function! StatuslineSourceControl() abort
