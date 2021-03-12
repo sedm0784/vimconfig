@@ -439,6 +439,17 @@ function! FilePathNoName()
   return l:path
 endfunction
 " }}}
+" Function to return source control status ignoring errors {{{
+" Calling exists() on an autoload function always appears to return false,
+" even if the function has already been called. Catch the errors instead.
+function! StatuslineSourceControl() abort
+  try
+    return " " .. fugitive#statusline() .. " " .. gutentags#statusline()
+  catch /^Vim\%((\a\+)\)\=:E117:/ " catch error E117
+      " Ignore errors that occur if functions don't exist
+  endtry
+endfunction
+" }}}
 
 set statusline=%{FilePathNoName()}            " File path
 set statusline+=%#Question#                   " Set highlight
@@ -450,8 +461,7 @@ set statusline+=%{StatuslineModified()}       " Display if modified
 set statusline+=%*                            " Revert to usual coloring
 set statusline+=%{StatuslineModifiable()}     " Display if file *not* modifiable
 set statusline+=\ %Y,%{&ff},%{&fileencoding}  " Filetype and file format
-set statusline+=\ %{fugitive#statusline()}    " Git status
-set statusline+=\ %{gutentags#statusline()}   " Gutentags status
+set statusline+=%{StatuslineSourceControl()}  " Source control status
 set statusline+=\ %=                          " >> space <<
 set statusline+=dec=%b                        " Value of byte(s) under cursor in decimal (e.g. for finding ASCII/Unicode)
 set statusline+=\ hex=%02.4B                  " Hex value of byte(s) under cursor
