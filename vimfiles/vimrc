@@ -377,6 +377,13 @@ function! UpdateMiscellaneousColours() abort
   elseif g:colors_name ==? "solarized"
     " De-emphasize closed folds
     highlight Folded term=bold cterm=bold gui=bold guibg=NONE ctermbg=NONE
+
+  elseif g:colors_name ==? "inkpot"
+    " Highlight code in markdown
+    highlight link markdownCode PreProc
+    highlight link markdownCodeBlock PreProc
+    " De-emphasize closed folds
+    highlight clear Folded
   endif
 endfunction
 " }}}
