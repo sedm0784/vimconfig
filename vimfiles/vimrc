@@ -124,10 +124,6 @@ set nojoinspaces
 " Turn off beeps
 set visualbell
 
-" Turn on British spell checking
-set spell
-set spelllang=en_gb
-
 " Format options
 set formatoptions=tcrqnj
 
