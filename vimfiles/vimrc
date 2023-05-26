@@ -269,10 +269,7 @@ set completeopt=menu,longest,preview
 " Colorscheme {{{
 if OperatingSystem("mac")
   if has("gui_running") == 0
-    "colorscheme zenburn
-    set background=dark
-    let g:solarized_termcolors=16
-    colorscheme solarized
+    " FIXME: Settle on a colorscheme
   endif
 elseif OperatingSystem("windows")
   let g:zenburn_high_Contrast=1
