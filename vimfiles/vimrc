@@ -470,7 +470,7 @@ set statusline+=\ l%l/%L                      " Line number/File length (in line
 set statusline+=\ %p%%                        " Position in file.
 
 " }}}
-" Abbreviations/typo corrections -------------------------------- {{{
+" Abbreviations/typo corrections ------------------------------------------ {{{
 
 iabbrev unsinged unsigned
 
@@ -766,7 +766,7 @@ augroup filetypeoptions
 augroup END
 
 " }}}
-" Use bar cursors in insert mode in terminal Vim {{{
+" Use bar cursors in insert mode in terminal Vim -------------------------- {{{
 
 if exists('$TMUX')
   " Surround escape sequences with a DCS sequence and replace <esc> with 
