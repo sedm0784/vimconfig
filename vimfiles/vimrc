@@ -684,6 +684,22 @@ endfunction
 nnoremap <leader><C-O> :call <SID>jump_skipping_file(v:true)<CR>
 nnoremap <leader><C-I> :call <SID>jump_skipping_file(v:false)<CR>
 " }}}
+" Dictionary completion with 'nospell' {{{
+"
+" Dictionary completion of natural language words only works if either 'spell'
+" or 'dictionary' is set. If neither is set, set 'spell' temporarily to allow
+" completion.
+"
+inoremap <expr> <C-X><C-K> !empty(&dictionary) <bar><bar> &spell ? '<C-X><C-K>' : '<C-O>:call <SID>dictionary_complete_nospell()<CR><C-X><C-K>'
+
+function! s:dictionary_complete_nospell() abort
+  set spell
+  augroup dictionary_complete_nospell
+    autocmd!
+    autocmd TextChangedI <buffer> ++once set nospell
+  augroup END
+endfunction
+" }}}
 
 " }}}
 " New Commands ------------------------------------------------------------ {{{
