@@ -377,6 +377,7 @@ function! UpdateMiscellaneousColours() abort
     highlight link markdownCodeBlock PreProc
     " De-emphasize closed folds
     highlight clear Folded
+    highlight Folded guifg=#555555
   endif
 endfunction
 " }}}
