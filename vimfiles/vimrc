@@ -670,7 +670,7 @@ function! s:dictionary_complete_nospell() abort
   set spell
   augroup dictionary_complete_nospell
     autocmd!
-    autocmd TextChangedI <buffer> ++once set nospell
+    autocmd CompleteDone <buffer> ++once set nospell
   augroup END
 endfunction
 " }}}
