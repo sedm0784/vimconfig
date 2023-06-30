@@ -674,7 +674,9 @@ function! s:dictionary_complete_nospell() abort
   augroup END
 endfunction
 " }}}
-
+" Faster tselect {{{
+nnoremap <leader><C-]> :tselect <C-R><C-W><CR>
+" }}}
 " }}}
 " New Commands ------------------------------------------------------------ {{{
 " DiffSaved {{{
