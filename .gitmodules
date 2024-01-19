@@ -34,9 +34,6 @@
 [submodule "vimfiles/bundle/vim-orgmode"]
 	path = vimfiles/pack/bundle/start/vim-orgmode
 	url = https://github.com/jceb/vim-orgmode.git
-[submodule "vimfiles/bundle/clang_complete"]
-	path = vimfiles/pack/bundle/start/clang_complete
-	url = git://github.com/Rip-Rip/clang_complete.git
 [submodule "vimfiles/bundle/NrrwRgn"]
 	path = vimfiles/pack/bundle/start/NrrwRgn
 	url = git://github.com/chrisbra/NrrwRgn.git
