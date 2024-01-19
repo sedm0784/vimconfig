@@ -315,44 +315,6 @@ augroup END
 highlight EOLWS guibg=red ctermbg=red
 
 " }}}
-" {{{ MiniBufExplorer color tweaks
-
-" Defaults
-"hi link MBENormal                Comment
-"hi link MBEChanged               String
-"hi link MBEVisibleNormal         Special
-"hi link MBEVisibleActiveNormal   Underlined
-"hi link MBEVisibleChanged        Special
-"hi link MBEVisibleActiveChanged  Error
-function! UpdateMiniBufExplorerColours()
-  if !exists("g:colors_name")
-    return
-  endif
-
-  if g:colors_name ==? "zenburn"
-    hi link MBENormal                Comment
-    hi link MBEChanged               String
-    hi link MBEVisibleNormal         Special
-    hi link MBEVisibleActiveNormal   DiffAdd
-    hi link MBEVisibleChanged        String
-    hi link MBEVisibleActiveChanged  Error
-
-  elseif g:colors_name ==? "solarized"
-    hi link MBENormal                Comment
-    hi link MBEChanged               Underlined
-    hi link MBEVisibleNormal         NONE
-    hi link MBEVisibleActiveNormal   Statement
-    hi link MBEVisibleChanged        Underlined
-    hi link MBEVisibleActiveChanged  Error
-
-  endif
-
-  " I don't think this is necessary, because we're being called from an
-  " autocommand. Doesn't do any harm, though.
-  let g:did_minibufexplorer_syntax_inits = 1
-endfunction
-
-" }}}
 " {{{ Other colour tweaks
 function! UpdateMiscellaneousColours() abort
   if !exists("g:colors_name")
@@ -384,7 +346,6 @@ endfunction
 
 " Function to update colours that I don't like in color schemes
 function! TweakColorScheme() abort
-  call UpdateMiniBufExplorerColours()
   call UpdateMiscellaneousColours()
 endfunction
 
@@ -852,29 +813,6 @@ let c_cpp_comments = 0
 " cppomnicomplete {{{
 
 "set completeopt-=preview
-
-" }}}
-" minibufexpl.vim {{{
-
-" Allow <Ctrl>+<Tab> and <Ctrl>+<Shift>+<Tab> to switch between buffers
-let g:miniBufExplMapCTabSwitchBufs = 1
-" Try to place buffers into a windows which has a modifiable buffer (for
-" compatability with taglist and nerdtree etc
-let g:miniBufExplModSelTarget = 1
-" Let mbe attempt to force syntax coloring to workaround a vim bug
-" Commented out until c.vim syntax highlighting bugs are fixed
-" let g:miniBufExplForceSyntaxEnable = 1
-" MiniBufExplorer always on top
-let g:miniBufExplSplitBelow = 0
-
-" Keep minibuf explorer on top when moving windows
-nnoremap <c-w>H :MBEToggle<cr><c-w>H:MBEToggle<cr>
-nnoremap <c-w>J :MBEToggle<cr><c-w>J:MBEToggle<cr>
-nnoremap <c-w>K :MBEToggle<cr><c-w>K:MBEToggle<cr>
-nnoremap <c-w>L :MBEToggle<cr><c-w>L:MBEToggle<cr>
-" Keep minibuf explorer displayed when removing all splits
-
-nnoremap <c-w>o <c-w>o:MBEToggle<cr>
 
 " }}}
 " tagbar {{{

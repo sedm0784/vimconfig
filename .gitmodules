@@ -19,10 +19,6 @@
 	path = vimfiles/pack/bundle/start/vim-surround
 	url = git://github.com/tpope/vim-surround.git
 	ignore = untracked
-[submodule "vimfiles/bundle/minibufexpl"]
-	path = vimfiles/pack/bundle/start/minibufexpl
-	url = git://github.com/fholgado/minibufexpl.vim.git
-	ignore = untracked
 [submodule "vimfiles/bundle/ctrlp"]
 	path = vimfiles/pack/bundle/start/ctrlp
 	url = git://github.com/kien/ctrlp.vim.git
