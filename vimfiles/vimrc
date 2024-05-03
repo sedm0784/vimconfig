@@ -345,9 +345,10 @@ function! UpdateMiscellaneousColours() abort
     " Highlight code in markdown
     highlight link markdownCode PreProc
     highlight link markdownCodeBlock PreProc
-    " De-emphasize closed folds
-    highlight clear Folded
-    highlight Folded guifg=#555555
+    " De-emphasize closed folds and tabs
+    highlight Deemphasized guifg=#555555
+    highlight! link Folded Deemphasized
+    highlight! link SpecialKey Deemphasized
   endif
 endfunction
 " }}}
