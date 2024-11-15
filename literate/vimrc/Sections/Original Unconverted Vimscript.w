@@ -1,3 +1,9 @@
+Original Unconverted Vimscript.
+
+This section currently contains my entire original .vimrc file.
+
+@heading Original vimrc. Everything in the original vimrc is pasted below:
+=
 " Rich's Vim Config
 
 if &compatible
@@ -163,7 +169,7 @@ set incsearch
 " Highlighted
 set hlsearch
 
-" Modified version of Damian Conway's Die Blinkënmatchen: highlight matches
+" Modified version of Damian Conway's Die BlinkÃ«nmatchen: highlight matches
 "
 " This is how long you want the blinking to last in milliseconds. If you're
 " using an earlier Vim without the `+timers` feature, you need a much shorter
@@ -310,8 +316,8 @@ nnoremap <leader>ftnc /\v(^\[.{-}\]\*\|[^*]\[.{-}\]\*\|\*\[.{-}\]$\|\*\[.{-}\][^
 " Setup display of tabs and trailing whitespace
 "set listchars=tab:->,trail:~
 "set listchars=tab:->
-"set listchars=tab:?\ ,eol:¬,extends:?,precedes:?
-set listchars=tab:?\ ,eol:¬,extends:»,precedes:«
+"set listchars=tab:â–¸\ ,eol:Â¬,extends:â¯,precedes:â®
+set listchars=tab:â–¸\ ,eol:Â¬,extends:Â»,precedes:Â«
 
 " Highlight whitespace at the end of lines
 " from http://sartak.org/2011/03/end-of-line-whitespace-in-vim.html
@@ -448,7 +454,7 @@ iabbrev unsinged unsigned
 " Holding down the shift key too long when entering command-line mode:
 "
 cabbrev <expr> W (getcmdtype() == ':' && getcmdpos() == 2) ? 'w' : 'W'
-" :wq can take an ++opt and an argument (I never use this, but ¯\_(?)_/¯)
+" :wq can take an ++opt and an argument (I never use this, but Â¯\_(ãƒ„)_/Â¯)
 cabbrev <expr> Wq (getcmdtype() == ':' && getcmdpos() == 3) ? 'wq' : 'Wq'
 
 command! -bang Q q<bang>
@@ -765,7 +771,7 @@ endif
 " Use bar cursors in insert mode in terminal Vim -------------------------- {{{
 
 if exists('$TMUX')
-  " Surround escape sequences with a DCS sequence and replace <esc> with
+  " Surround escape sequences with a DCS sequence and replace <esc> with 
   " <esc><esc> for tmux to pass it on to the terminal
   let &t_SI = "\ePtmux;\e\e[5 q\e\\"
   let &t_EI = "\ePtmux;\e\e[2 q\e\\"
@@ -946,4 +952,3 @@ if filereadable($HOME."/.vim/local.vim")
 endif
 
 " }}}
-

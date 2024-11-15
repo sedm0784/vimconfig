@@ -7,5 +7,8 @@ tags
 # Ignore Netrw history
 .netrwhist
 
+# Ignore inweb's woven output
+literate/html
+
 # Ignore special file for computer-specific settings
 vimfiles/local.vim
