@@ -647,6 +647,29 @@ endfunction
 " Faster tselect {{{
 nnoremap <leader><C-]> :tselect <C-R><C-W><CR>
 " }}}
+" Visual mode zz {{{
+" FIXME: I wrote this for someone asking on Mastodon, but leaving it here for
+"        now so I remember to polish it, and maybe even start using it!
+function! s:visual_zz() abort
+  let ends = [line('v'), line('.')]
+  let top = min(ends)
+  let bottom = max(ends)
+  let middle = line('w0') + winheight(0) / 2.0 - 0.5
+
+  let delta_top = middle - top
+  let delta_bottom = bottom - middle
+  if delta_top == delta_bottom
+    return ''
+  elseif delta_top < delta_bottom
+    let command = "\<C-E>"
+  else
+    let command = "\<C-Y>"
+  endif
+  let l:count = float2nr(abs(delta_top - delta_bottom)) / 2
+  return l:count .. command
+endfunction
+xnoremap <expr> zz <SID>visual_zz()
+" }}}
 " }}}
 " New Commands ------------------------------------------------------------ {{{
 " DiffSaved {{{
