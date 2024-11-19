@@ -1,53 +1,10 @@
 Original Unconverted Vimscript.
 
-This section currently contains my entire original .vimrc file.
+This section contains everything left over from my original .vimrc file that hasn't been imported into new sections.
 
-@heading Original vimrc. Everything in the original vimrc is pasted below:
+@heading Original vimrc. All the unimported Vimscript is pasted below:
 =
-" Rich's Vim Config
-
-if &compatible
-  " Vim defaults to `compatible` when selecting a vimrc with the command-line
-  " `-u` argument. Override this.
-  set nocompatible
-endif
-
-if has("unix")
-  set shell=/bin/sh
-endif
-
-" Detect operating system ------------------------------------------------- {{{
-let s:operating_system = "unknown"
-if has("win32")
-  let s:operating_system = "windows"
-elseif has("ios")
-  let s:operating_system = "ios"
-elseif has("unix")
-  let s:uname = system("uname")
-  if s:uname == "Darwin\n"
-    let s:operating_system = "mac"
-  elseif s:uname == "Linux\n"
-    let s:operating_system = "linux"
-  elseif s:uname =~ "MINGW64"
-    let s:operating_system = "windows"
-  endif
-endif
-function! OperatingSystem(os) abort
-  return a:os == s:operating_system
-endfunction
-"
-" }}}
 " Basic options ----------------------------------------------------------- {{{
-
-" Turn on syntax highlighting. Ken Thompson doesn't like it, but I do.
-syntax on
-"
-" Turn on filetype detection etc
-filetype plugin indent on
-
-" Unicode, yo
-set encoding=utf-8
-scriptencoding utf-8
 
 " Leader {{{
 " I use leader a lot, so make it easier to type than the default backslash.
