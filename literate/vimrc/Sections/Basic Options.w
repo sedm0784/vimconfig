@@ -3,10 +3,10 @@ Basic options.
 Set various options.
 
 @heading Basic options. The simplest way you can configure Vim is by setting
-some of its various global options. These are mostly pretty straightforward so
-I won't go into too much detail about all of them. As always in Vim,
-everything is well documented, so if any of the below is unclear, |:help
-'option-name'| is your friend.
+some of its various global options. These are mostly pretty straightforward and
+mostly aren't much FUN so I won't go into too much detail about all of them. As
+always in Vim, everything is well documented, so if any of the below is
+unclear, |:help 'option-name'| is your friend.
 
 @heading Vi-compatibility. One of the things I've always liked about Vim is
 the almost LIMITLESS dedication Bram had to backwards compatibility[1]. And
@@ -57,11 +57,12 @@ endif
 set encoding=utf-8
 scriptencoding utf-8
 
-@heading Manually specify a shell. I'm reasonably partial to the |fish| shell.
-But allowing Vim to use this for `:!` commands caused me problems.[1] Setting
-|'shell'| tells Vim to use the specified shell in place of the user shell.
+@heading Manually specify a shell. I'm quite partial to the |fish| shell. But
+when this is set as my user shell, Vim will attempt to use it for for |:!|
+commands which caused me problems.[1] Setting |'shell'| tells Vim to use the
+specified shell instead.
 
-[1] I can't remember what, exactly.
+[1] I'm afraid I can't remember what, exactly.
 =
 if has("unix")
   set shell=/bin/sh
@@ -77,6 +78,39 @@ file contents.
 =
 filetype plugin indent on
 
-@heading Enable syntax highlighting. Ken Thompson doesn't like it, but I do.
+@heading Enable syntax highlighting. Ken Thompson doesn't like it, but I do.[1]
+
+[1] I actually can't remember which unix luminary it is that I'm referring to
+here. I just remember they said that the way most people use syntax
+highlighting is STUPID and DUMB and that they had some other bright idea for a
+form of highlighting that MIGHT be useful when programming. Annoyingly, I can't
+remember what that was, and have never been able to find the interview again to
+check.
 =
 syntax on
+
+@ Yes, both |filetype| and |syntax| are technically commands[1]. But they FEEL
+like options, so I'm including them in this section. I'm a loose cannon!
+
+[1] See also |colorscheme|.
+
+@heading Leader. I use some of my |<leader>| mappings very frequently, so I
+want something easier to type than the default backslash.
+
+Someone (I think Romain Lafourcade?) has a fairly persuasive argument that the
+leader feature is pointless, and that there's no benefit to it over just
+prefixing your mappings with the actual character. I think they're probably
+right, but nonetheless: I am not changing my config.
+=
+let mapleader = ","
+
+@ For a long time, I had LocalLeader set to backslash and did an
+opposite-direction |f| repeat by pressing comma and waiting for |'timeout'|.
+This is, let's say, SUBOPTIMAL, so now I'm mapping backslash to comma and using
+the value suggested by |:help maplocalleader| for my LocalLeader viz.
+underscore. Now that I can reverse |f| repeat efficiently the rest is all kind
+of academic: I don't think I've EVER used an underscore motion OR a LocalLeader
+mapping.
+=
+nnoremap \ ,
+let maplocalleader = "_"

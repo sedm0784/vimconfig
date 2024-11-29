@@ -6,18 +6,6 @@ This section contains everything left over from my original .vimrc file that has
 =
 " Basic options ----------------------------------------------------------- {{{
 
-" Leader {{{
-" I use leader a lot, so make it easier to type than the default backslash.
-let mapleader = ","
-" For a long time, I had LocalLeader set to backslash and did an
-" opposite-direction   f   repeat by pressing comma and waiting for 'timeout'.
-" This is, let's say, *suboptimal*, so now I'm using the value suggested by
-" :help maplocalleader: underscore. Now that I can reverse   f   efficiently
-" it's all kind of academic: I don't think I've *ever* used an underscore
-" motion *or* a LocalLeader mapping.
-let maplocalleader = "_"
-nnoremap \ ,
-" }}}
 " Tabs {{{
 
 " Most of the time these will be set by Astronomer; these are just my
