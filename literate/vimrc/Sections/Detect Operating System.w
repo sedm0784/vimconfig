@@ -2,12 +2,13 @@ Detect Operating System.
 
 Figure out what computer we're running on.
 
-@heading Detect operating system. In various places in my config I need things
+@heading Detect operating system.
+In various places in my config I need things
 to be configured slightly differently depending what operating system Vim is
 running in.
 
 I use this little |OperatingSystem()| function to check for specific OSes:
-=
+= (early code)
 function! OperatingSystem(os) abort
   if !exists('s:operating_system')
     @<Detect the operating system@>
@@ -41,4 +42,4 @@ both |has('mac')| and |has('macunix')| return false.
 
 @ I never actually access the |s:operating_system| variable
 directly--Vimscript doesn't include a |switch| statement, so calling
-|OperatingSystem()| repeatedly in an |if-else| chain suffices.
+//OperatingSystem// repeatedly in an |if-else| chain suffices.

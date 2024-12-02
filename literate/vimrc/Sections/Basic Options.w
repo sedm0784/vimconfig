@@ -2,19 +2,21 @@ Basic options.
 
 Set various options.
 
-@heading Basic options. The simplest way you can configure Vim is by setting
-some of its various global options. These are mostly pretty straightforward and
-mostly aren't much FUN so I won't go into too much detail about all of them. As
-always in Vim, everything is well documented, so if any of the below is
-unclear, |:help 'option-name'| is your friend.
+@heading Basic options.
+The simplest way you can configure Vim is by setting some of its various global
+options. These are mostly pretty straightforward and mostly aren't much FUN so
+I won't go into too much detail about all of them. As always in Vim, everything
+is well documented, so if any of the below is unclear, |:help 'option-name'| is
+your friend.
 
-@heading Vi-compatibility. One of the things I've always liked about Vim is
-the almost LIMITLESS dedication Bram had to backwards compatibility[1]. And
-one of the ways this dedication displayed itself was in Vim's Vi-compatibilty
-mode. Even though Bram named his program Vi improved, he still realised that
-some of his users may want Vim to work more like Vim, and allowed for this
-with the |'compatible'| option. When this is on, Vim works more like Vi,
-instead of in "a more useful way."
+@heading Vi-compatibility.
+One of the things I've always liked about Vim is the almost LIMITLESS
+dedication Bram had to backwards compatibility[1]. And one of the ways this
+dedication displayed itself was in Vim's Vi-compatibilty mode. Even though Bram
+named his program Vi improved, he still realised that some of his users may
+want Vim to work more like Vim, and allowed for this with the |'compatible'|
+option. When this is on, Vim works more like Vi, instead of in "a more useful
+way."
 
 As such, lots of introductory Vim configuration tutorials will tell you that
 the first thing you should add to your vimrc is |set nocompatible|. This
@@ -51,34 +53,36 @@ if &compatible
   set nocompatible
 endif
 
-@heading Unicode, yo. FIXME
+@heading Unicode, yo.
+FIXME
 
 = (early code)
 set encoding=utf-8
 scriptencoding utf-8
 
-@heading Manually specify a shell. I'm quite partial to the |fish| shell. But
-when this is set as my user shell, Vim will attempt to use it for for |:!|
-commands which caused me problems.[1] Setting |'shell'| tells Vim to use the
-specified shell instead.
+@heading Manually specify a shell.
+I'm quite partial to the |fish| shell. But when this is set as my user shell,
+Vim will attempt to use it for for |:!| commands which caused me problems.[1]
+Setting |'shell'| tells Vim to use the specified shell instead.
 
 [1] I'm afraid I can't remember what, exactly.
 =
-if has("unix")
+if has('unix')
   set shell=/bin/sh
 endif
 
-@heading Enable filetypes fully. The Vim runtime includes a BUNCH of helpful
-handlers for different file types. I want all of this good stuff. In the
-|filetype| command, |plugin| refers to filetype plugins (including useful file
-type dependent behaviours), |indent| refers to indent files (autoindenting
-file types appropriately), and |on| enables both, also switching on automatic
-filetype detection (generally based on file names, but also occasionally on
-file contents.
+@heading Enable filetypes fully.
+The Vim runtime includes a BUNCH of helpful handlers for different file types.
+I want all of this good stuff. In the |filetype| command, |plugin| refers to
+filetype plugins (including useful file type dependent behaviours), |indent|
+refers to indent files (autoindenting file types appropriately), and |on|
+enables both, also switching on automatic filetype detection (generally based
+on file names, but also occasionally on file contents.
 =
 filetype plugin indent on
 
-@heading Enable syntax highlighting. Ken Thompson doesn't like it, but I do.[1]
+@heading Enable syntax highlighting.
+Ken Thompson doesn't like it, but I do.[1]
 
 [1] I actually can't remember which unix luminary it is that I'm referring to
 here. I just remember they said that the way most people use syntax
@@ -94,8 +98,9 @@ like options, so I'm including them in this section. I'm a loose cannon!
 
 [1] See also |colorscheme|.
 
-@heading Leader. I use some of my |<leader>| mappings very frequently, so I
-want something easier to type than the default backslash.
+@heading Leader.
+I use some of my |<leader>| mappings very frequently, so I want something
+easier to type than the default backslash.
 
 Someone (I think Romain Lafourcade?) has a fairly persuasive argument that the
 leader feature is pointless, and that there's no benefit to it over just
@@ -106,11 +111,53 @@ let mapleader = ","
 
 @ For a long time, I had LocalLeader set to backslash and did an
 opposite-direction |f| repeat by pressing comma and waiting for |'timeout'|.
-This is, let's say, SUBOPTIMAL, so now I'm mapping backslash to comma and using
-the value suggested by |:help maplocalleader| for my LocalLeader viz.
-underscore. Now that I can reverse |f| repeat efficiently the rest is all kind
-of academic: I don't think I've EVER used an underscore motion OR a LocalLeader
-mapping.
+This is, let's say, SUBOPTIMAL, so now I'm mapping backslash to comma.
+
+This means I need a new value for my LocalLeader, so I'm using the value
+suggested by |:help maplocalleader| viz. underscore. But it's kind of academic:
+I don't think I've EVER used an underscore motion OR a LocalLeader mapping.
 =
 nnoremap \ ,
 let maplocalleader = "_"
+
+@heading Tabs.
+Most of the time these will be set by Astronomer; these are just my defaults
+(for e.g. new files).
+=
+set tabstop=2
+set shiftwidth=2
+set expandtab
+
+@ FIXME Insert rant about the online discourse about tabs vs. spaces here.
+
+@heading Indenting.
+Generally, I want dumb indenting on. I only want smarter indenting if I'm
+actually coding, which will be handled by plugins/filetype indenting.
+=
+set autoindent
+set nocindent
+set nosmartindent
+
+@heading Line endings.
+Try all file formats. I've only encounted a mac-formatted file once in my
+entire life, but also I don't think there's any harm in trying the |mac|
+fileformat if it's not either of the other ones.
+=
+if OperatingSystem('windows')
+  set fileformats=dos,unix,mac
+else
+  set fileformats=unix,dos,mac
+endif
+
+@ N.B. |has('win32')| would work just as well here, but I use my custom
+//OperatingSystem// function for consistency.[1]
+
+[1] And, because, you know, I spent all that time writing it...
+
+@ Do NOT "fix" last line by adding an <EOL> if one not present. If I want to
+add the <EOL> I can do so by either setting |'endofline'| or |'fixeol'| before
+writing.
+=
+if exists('+fixeol')
+  set nofixeol
+endif

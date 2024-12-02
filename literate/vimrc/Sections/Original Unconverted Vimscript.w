@@ -6,39 +6,6 @@ This section contains everything left over from my original .vimrc file that has
 =
 " Basic options ----------------------------------------------------------- {{{
 
-" Tabs {{{
-
-" Most of the time these will be set by Astronomer; these are just my
-" defaults (for e.g. new files).
-"set tabstop=2
-"set shiftwidth=2
-"set expandtab
-
-" }}}
-" Indenting {{{
-
-" Generally, I want dumb indenting on. I only want smarter indenting if I'm
-" actually coding, which will be handled by plugins/filetype indenting
-set autoindent
-set nocindent
-set nosmartindent
-
-" }}}
-
-" Try all file formats
-if has("win32")
-set fileformats=dos,unix,mac
-else
-set fileformats=unix,dos,mac
-endif
-
-" Do NOT "fix" last line by adding an <EOL> if one not present. If I want to
-" add the <EOL> I can do so by either setting 'endofline' or 'fixeol' before
-" saving.
-if exists('+fixeol')
-  set nofixeol
-endif
-
 " Keep this many lines above and below cursor
 set scrolloff=3
 " Ditto for horizontal scrolling
