@@ -1,3 +1,42 @@
 Name: "Vimscript"
 Details: "The Vim scripting language"
 Extension: ".vim"
+Line Comment: "\""
+Whole Line Comment: "\""
+
+String Literal: "\""
+String Literal Escape: "\\"
+Character Literal: "'"
+
+Hexadecimal Literal Prefix: "0x"
+Octal Literal Prefix: "0o"
+Binary Literal Prefix: "0b"
+Negative Literal Prefix: "-"
+
+
+Function Declaration Notation: /function!? (([A-Za-z0-9#_]*))\(.*)/
+
+# Define Ex commands are !reserved keywords
+keyword "else"
+keyword "endif"
+keyword "filetype"
+keyword "if"
+keyword "let"
+keyword "nnoremap"
+keyword "set"
+keyword "syntax"
+
+# Define option names as !constant keywords
+# FIXME: Not sure yet if I can use colouring rules to include the "no" versions
+#        of these.
+keyword "compatible" of !constant
+keyword "encoding" of !constant
+keyword "fixeol" of !constant
+
+colouring {
+    runs of !identifier {
+        prefix "!" => !element on both
+        keyword of !element => !element
+        keyword of !reserved => !reserved
+    }
+}
