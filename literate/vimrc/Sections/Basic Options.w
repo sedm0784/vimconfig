@@ -84,12 +84,15 @@ filetype plugin indent on
 @heading Enable syntax highlighting.
 Ken Thompson doesn't like it, but I do.[1]
 
-[1] I actually can't remember which unix luminary it is that I'm referring to
+[1] I actually can't remember which Unix luminary it is that I'm referring to
 here. I just remember they said that the way most people use syntax
-highlighting is STUPID and DUMB and that they had some other bright idea for a
-form of highlighting that MIGHT be useful when programming. Annoyingly, I can't
-remember what that was, and have never been able to find the interview again to
-check.
+highlighting is STUPID and DUMB and that they had an idea for
+some different form of highlighting that MIGHT be useful when programming but
+that they couldn't be bothered to implement it and that this idea did indeed
+sound pretty intriguing.
+
+Annoyingly, I can't remember what the idea WAS, and have never been able to
+find the interview since.
 =
 syntax on
 
@@ -161,3 +164,142 @@ writing.
 if exists('+fixeol')
   set nofixeol
 endif
+
+@heading Wrapping, autoformatting.
+...and other options relating to the handling of lines.
+
+@ When soft-wrapping, only split the line at word boundaries.
+=
+set linebreak
+
+@ Indent all parts of wrapped lines equally. Not sure if I actually like this.
+It LOOKS neater, but sometimes I find it hard to detect the wrapped lines when
+I need to. Unlike many of the options in my vimrc, this is one I find myself
+fiddling with on a case-by-case basis (but not so frequently that I've set up a
+toggle for it).
+=
+if exists('+breakindent')
+  set breakindent
+endif
+
+@ Configure Vim's auto-formatting. See
+|:help fo-table|[1] for a description of the flags. The default value is |tcq|
+so I'm adding |r| and |j|, to improve how Vim handles comments, and |n|, to
+allow the recognition of numbered lists.
+
+[1] https://vimhelp.org/change.txt.html#fo-table
+=
+set formatoptions=tcqrjn
+
+@ Don't double space sentences when doing |J|, |gq|.
+=
+set nojoinspaces
+
+@ Configure which sideways motions can move the cursor to the next line.
+Backspace |b| and space |s| are included by default. I add the normal mode left
+|h| and right |l| motions too.
+=
+set whichwrap=b,s,h,l
+
+@ Backspace can backspace over anything. This is another one I think I might
+revisit someday.
+=
+set backspace=indent,eol,start
+
+@heading Automatic backups.
+When Vim writes a file it makes a backup of the original and (by default)
+deletes this again when the write is completed. Store these backups in one
+place.[1]
+
+[1] I'm not sure if this is really necessary, given that the files are so
+ephemeral. My reasons for adding this are lost in the *mists of time*.
+=
+set backupdir=$HOME/.vim/backups
+
+@ While a file is open, Vim keeps a duplicate of it called a "swap file", which
+can be used to recover the unsaved contents of the file in case of e.g. a power
+cut. These are stored alongside the original file, but when the buffer has
+never been written, no original exists. By default, Vim would attempt to store
+swap files for new files in |c:\Windows\System32|, but UAC will not allow this
+on Windows 7. Instead, use the temp directory for these.
+=
+if OperatingSystem('windows')
+  set directory=.,$TEMP
+endif
+
+@heading Searching.
+Use incremental searching, and highlight search matches.
+=
+set incsearch
+set hlsearch
+
+@ I have two further things elsewhere in my config to improve search
+functionality. //Die Blinkenmatchen//, and FIXME //A mapping to clear search
+highlights//.
+
+@heading No brainer quality-of-life options.
+I can't imagine anyone not wanting these options.
+
+@ Display as much as possible of long lines at the bottom of the window.
+Without this, Vim replaces their content with |@| characters.[1]
+
+[1] By default. The character is configurable with the 'fillchars' option.
+=
+set display+=lastline
+
+@ Automatically read changed files if they're unchanged in vim.
+=
+set autoread
+
+@heading Miscellanous.
+All the options I'm not sure how to categorise. Many of these just make Vim
+behave more "normally", but don't quite make it into the "no brainer" category
+above.
+
+@ Keep this many lines above and below cursor at the edges of the window.
+=
+set scrolloff=3
+
+@ Ditto for horizontal scrolling.
+=
+set sidescrolloff=10
+
+@ Allow hidden buffers. Without this, unsaved buffers must always[1] remain
+onscreen, which I found very restrictive when I started using Vim and didn't
+know about the exceptions. (I have this vague idea I might revisit this
+option one day.)
+
+[1] //Almost -> http://vimhelp.org/options.txt.html#%27hidden%27// always.
+=
+set hidden
+
+@ Turn on line numbers. Lots of Vim users like the |'relativenumber'| option. I
+hate it!
+=
+set number
+
+@ Ignore case, if lowercase. |'smartcase'| is a WONDERFUL feature, and I miss it
+every time I use another editor.
+=
+set ignorecase
+set smartcase
+
+@ Turn off noisybeeps.
+=
+set visualbell
+
+@ Put new splits below and to the right of current windows.
+=
+set splitbelow
+set splitright
+
+@ Visually indicate matching brackets as they are entered.
+=
+set showmatch
+set matchtime=5
+
+@ Show incomplete commands in last line of screen. e.g. if you're halfway
+through typing the command to delete five words, this might display |d5|.
+
+=
+set showcmd

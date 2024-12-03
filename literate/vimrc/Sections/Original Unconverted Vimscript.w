@@ -6,73 +6,8 @@ This section contains everything left over from my original .vimrc file that has
 =
 " Basic options ----------------------------------------------------------- {{{
 
-" Keep this many lines above and below cursor
-set scrolloff=3
-" Ditto for horizontal scrolling
-set sidescrolloff=10
-
-" Display as much as possible of long lines
-set display+=lastline
-
-" Allow hidden buffers
-set hidden
-
 " Fold on 3{s and manually
 set foldmethod=marker
-
-" Turn on line numbers and ruler
-set number
-set ruler
-
-" Ignore case, if lowercase
-set ignorecase
-set smartcase
-
-" Directions can wrap too!
-set whichwrap=b,s,h,l,<,>
-
-" Backspace can backspace over anything
-set backspace=indent,eol,start
-
-" Only break at word boundaries
-set linebreak
-" Indent all parts of wrapped lines equally
-if exists('+breakindent')
-  set breakindent
-endif
-
-" Automatically read changed files if they're unchanged in vim
-set autoread
-
-" Don't double space sentences when doing `J`, `gq`
-set nojoinspaces
-
-" Turn off beeps
-set visualbell
-
-" Format options
-set formatoptions=tcrqnj
-
-" Put new splits below and to the right of current windows
-set splitbelow
-set splitright
-
-" Visually indicate matching brackets as they are entered
-set showmatch
-set matchtime=5
-
-" Put all backups in one place
-set backupdir=$HOME/.vim/backups
-
-if has("win32")
-  " By default, Vim would attempt to store swap files for new files in
-  " c:\Windows\System32, but UAC will not allow this on Windows 7. Instead,
-  " use the temp directory
-  set directory=.,$TEMP
-endif
-
-" Show incomplete commands in last line of screen
-set showcmd
 
 " Searching {{{
 
