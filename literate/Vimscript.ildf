@@ -1,22 +1,61 @@
 Name: "Vimscript"
 Details: "The Vim scripting language"
 Extension: ".vim"
-Line Comment: "\""
+# FIXME: Can't allow comments to start partway through lines as then inweb
+#        misidentifies strings as comments
+#Line Comment: "\""
 Whole Line Comment: "\""
 
-String Literal: "\""
-String Literal Escape: "\\"
-Character Literal: "'"
+String Literal: "'"
+# The example ildf file at
+# https://ganelson.github.io/inweb/inweb/M-spl.html#SP27 uses "Character Literals"
+# for regular expressions. I don't think we can define both single and double
+# quoted strings as String Literals, so I was going to use Character Literal
+# for the double quoted version. (It does actually make sense to distinguish
+# them as there are differences in Vimscript.) However...
+#
+# FIXME: Can't allow double-quoted strings as then inweb misidentities comments
+#        as strings (despite what documentation says about it deciding which
+#        parts are commentary first).
+#Character Literal: "\""
+#Character Literal Escape: "\\"
 
 Hexadecimal Literal Prefix: "0x"
 Octal Literal Prefix: "0o"
 Binary Literal Prefix: "0b"
 Negative Literal Prefix: "-"
 
+# Vim function names can contain colons (if they are script-local). We can't
+# include this in the regular expression though, because inweb gets confused
+# about the colon and thinks it's trying to declare a property it doesn't know
+# about. Hacked around it by just allowing two *any character*s at the start of
+# the function name. So long as I never attempt to create a one-character long
+# function name this should be fine, although technically it's overly
+# permissive.
+Function Declaration Notation: /\s*function!?\s+(..[A-Za-z0-9#_]*))\(.*)/
 
-Function Declaration Notation: /function!? (([A-Za-z0-9#_]*))\(.*)/
+# !character  - character literal
+# !comment    - comment
+# !constant   - number literal
+# !identifier - identifier
+# !string     - string literal
+# !definition -
+# !element    -
+# !extract    -
+# !function   - user function names
+# !reserved   - ex commands
+# !plain      -
 
-# Define Ex commands are !reserved keywords
+# Things we'd like to highlight:
+#
+# <blah>
+# Ex commands
+# runtime functions
+# option names
+# user functions
+
+# Define Ex commands as !reserved keywords
+keyword "call"
 keyword "else"
 keyword "endif"
 keyword "filetype"
