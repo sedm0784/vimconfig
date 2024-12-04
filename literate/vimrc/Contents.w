@@ -6,6 +6,7 @@ Language: Vimscript
 Sections
   Basic Options
   Detect Operating System
+  Colours and Highlighting
   Die Blinkenmatchen
   Original Unconverted Vimscript
 
