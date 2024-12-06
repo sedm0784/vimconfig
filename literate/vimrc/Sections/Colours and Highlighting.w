@@ -37,7 +37,6 @@ augroup colorschemetweaks
 augroup END
 
 @heading The tweaks.
-And here are the changes:
 
 @<Tweaks for zenburn@> =
   if g:colors_name ==? 'zenburn'
@@ -74,7 +73,7 @@ augroup highlightwhitespace
 augroup END
 highlight EOLWS guibg=red ctermbg=red
 
-@ Display cursorline in current window only
+@heading Display cursorline in current window only.
 =
 augroup cursorline_toggle
   autocmd!

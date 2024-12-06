@@ -53,12 +53,18 @@ Function Declaration Notation: /\s*function!?\s+(..[A-Za-z0-9#_]*))\(.*)/
 # runtime functions
 # option names
 # user functions
+# highlight groups
+# autocommand groups
 
 # Define Ex commands as !reserved keywords
+keyword "augroup"
+keyword "autocommand"
 keyword "call"
 keyword "else"
+keyword "elseif"
 keyword "endif"
 keyword "filetype"
+keyword "highlight"
 keyword "if"
 keyword "let"
 keyword "nnoremap"

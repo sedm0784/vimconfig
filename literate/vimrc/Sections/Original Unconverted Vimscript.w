@@ -4,36 +4,9 @@ This section contains everything left over from my original .vimrc file that has
 
 @heading Original vimrc. All the unimported Vimscript is pasted below:
 =
-" Basic options ----------------------------------------------------------- {{{
-
 " Fold on 3{s and manually
 set foldmethod=marker
 
-" Searching {{{
-
-" Incremental
-set incsearch
-" Highlighted
-set hlsearch
-
-
-" }}}
-" Completions {{{
-
-" Turn on wildmenu for command completion
-set wildmenu
-
-" First wildmenu invocation inserts longest substring, second inserts full
-set wildmode=longest:full,full
-
-" In insert mode, complete with a menu, inserting longest substring, and
-" with extra preview info
-set completeopt=menu,longest,preview
-
-" }}}
-
-" }}}
-" }}}
 " Liveblog highlighting {{{
 
 " Find *[Tom's comments]* for liveblogs
@@ -55,13 +28,6 @@ nnoremap <leader>ftnc /\v(^\[.{-}\]\*\|[^*]\[.{-}\]\*\|\*\[.{-}\]$\|\*\[.{-}\][^
 " \*\[.{-}\][^*]  - mid line
 
 " }}}
-" Display of whitespace, etc {{{
-
-" Setup display of tabs and trailing whitespace
-"set listchars=tab:->,trail:~
-"set listchars=tab:->
-"set listchars=tab:▸\ ,eol:¬,extends:❯,precedes:❮
-set listchars=tab:▸\ ,eol:¬,extends:»,precedes:«
 
 " Status Line ------------------------------------------------------------- {{{
 

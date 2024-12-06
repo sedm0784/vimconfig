@@ -227,15 +227,37 @@ if OperatingSystem('windows')
   set directory=.,$TEMP
 endif
 
-@heading Searching.
+@heading Search.
 Use incremental searching, and highlight search matches.
 =
 set incsearch
 set hlsearch
 
+@ Ignore case, if lowercase. |'smartcase'| is a WONDERFUL feature, and I miss it
+every time I use another editor.
+=
+set ignorecase
+set smartcase
+
 @ I have two further things elsewhere in my config to improve search
 functionality. //Die Blinkenmatchen//, and FIXME //A mapping to clear search
 highlights//.
+
+@heading Completion. Vim has a remarkably flexible and peculiar set of
+completion features.
+
+@ Turn on wildmenu for command-line mode completion
+=
+set wildmenu
+
+@ First wildmenu invocation inserts longest substring, second inserts full
+=
+set wildmode=longest:full,full
+
+@ In insert mode, complete with a menu, inserting longest substring, and with
+extra preview info
+=
+set completeopt=menu,longest,preview
 
 @heading No brainer quality-of-life options.
 I can't imagine anyone not wanting these options.
@@ -251,7 +273,7 @@ set display+=lastline
 =
 set autoread
 
-@heading Miscellanous.
+@heading Miscellaneous.
 All the options I'm not sure how to categorise. Many of these just make Vim
 behave more "normally", but don't quite make it into the "no brainer" category
 above.
@@ -278,12 +300,6 @@ hate it!
 =
 set number
 
-@ Ignore case, if lowercase. |'smartcase'| is a WONDERFUL feature, and I miss it
-every time I use another editor.
-=
-set ignorecase
-set smartcase
-
 @ Turn off noisybeeps.
 =
 set visualbell
@@ -303,3 +319,16 @@ through typing the command to delete five words, this might display |d5|.
 
 =
 set showcmd
+
+@ Display tabs etc.
+=
+let &listchars = "tab:\u25b8 ,eol:\uac,extends:\ubb,precedes:\uab"
+
+@ N.B.
+(1) Instead of |trail| I have a highlight group set up in
+//Colours and Highlighting//
+(2) I'm using |let| instead of |set| in the above only as a workaround for a
+unicode issue with inweb. In your vimrc, including the unicode characters
+directly is fine, so long as your |'encoding'| is set to "utf-8":
+= (text as code)
+set listchars=tab:▸\ ,eol:¬,extends:»,precedes:«

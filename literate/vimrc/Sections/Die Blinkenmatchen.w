@@ -21,7 +21,7 @@ on for and how fast we want it to be.
 feature, you need a much shorter blink time because Vim blocks while it
 waits for the blink to complete.
 =
-let s:blink_length = has("timers") ? 500 : 100
+let s:blink_length = has('timers') ? 500 : 100
 
 @ The length of each blink in milliseconds.
 =
@@ -35,15 +35,15 @@ let s:blink_freq = s:blink_length
 @heading Mappings.
 Next, we map |n| and |N| to call a new script-local //s:highlight_next// function.
 =
-execute printf("nnoremap <silent> n n:call s:highlight_next(%d, %d)<cr>", s:blink_length, s:blink_freq)
-execute printf("nnoremap <silent> N N:call s:highlight_next(%d, %d)<cr>", s:blink_length, s:blink_freq)
+execute printf('nnoremap <silent> n n:call s:highlight_next(%d, %d)<cr>', s:blink_length, s:blink_freq)
+execute printf('nnoremap <silent> N N:call s:highlight_next(%d, %d)<cr>', s:blink_length, s:blink_freq)
 
 @heading s:highlight_next().
 I suppose we better implement the |s:highlight_next| function too!
 =
 function! s:highlight_next(blink_length, blink_freq) abort
   @<Create regular expression to match search matches@>
-  if has("timers")
+  if has('timers')
     @<Blink using timers@>
   else
     @<Blink without timers@>
@@ -77,7 +77,7 @@ blinking.
   let s:blink_stop_id = timer_start(a:blink_length, 'BlinkStop')
 
 @ =
-if has("timers")
+if has('timers')
   @<Define BlinkToggle@>
   @<Define BlinkStop@>
   @<Define BlinkClear@>
