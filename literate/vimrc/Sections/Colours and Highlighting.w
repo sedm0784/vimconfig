@@ -64,7 +64,9 @@ augroup END
   endif
 
 @heading Highlight whitespace at the end of lines.
-I got this from http://sartak.org/2011/03/end-of-line-whitespace-in-vim.html but that page is gone now.
+But only when not in insert mode. I got this from
+http://sartak.org/2011/03/end-of-line-whitespace-in-vim.html but that page is
+gone now.
 =
 augroup highlightwhitespace
   autocmd!

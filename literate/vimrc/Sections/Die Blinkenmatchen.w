@@ -17,7 +17,7 @@ blinking is in progress.
 @ First, we set some constants to indicate how long we want the blinking to go
 on for and how fast we want it to be.
 
-@ How long to blink, in milliseconds. If you're using an earlier Vim without the `+timers`
+@ How long to blink, in milliseconds. If you're using an earlier Vim without the |+timers|
 feature, you need a much shorter blink time because Vim blocks while it
 waits for the blink to complete.
 =

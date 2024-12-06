@@ -259,8 +259,11 @@ extra preview info
 =
 set completeopt=menu,longest,preview
 
-@heading No brainer quality-of-life options.
-I can't imagine anyone not wanting these options.
+@heading Miscellaneous.
+All the options I'm not sure how to categorise. Many of these just make Vim
+behave more "normally"; they're the sort of thing you might find in
+//defaults.vim -> https://vimhelp.org/starting.txt.html#defaults.vim// or Tim
+Pope's //sensible.vim -> https://github.com/tpope/vim-sensible//.
 
 @ Display as much as possible of long lines at the bottom of the window.
 Without this, Vim replaces their content with |@| characters.[1]
@@ -272,11 +275,6 @@ set display+=lastline
 @ Automatically read changed files if they're unchanged in vim.
 =
 set autoread
-
-@heading Miscellaneous.
-All the options I'm not sure how to categorise. Many of these just make Vim
-behave more "normally", but don't quite make it into the "no brainer" category
-above.
 
 @ Keep this many lines above and below cursor at the edges of the window.
 =
@@ -295,7 +293,7 @@ option one day.)
 =
 set hidden
 
-@ Turn on line numbers. Lots of Vim users like the |'relativenumber'| option. I
+@ Turn on line numbers. Lots of Vimmers like the |'relativenumber'| option. I
 hate it!
 =
 set number
@@ -316,7 +314,6 @@ set matchtime=5
 
 @ Show incomplete commands in last line of screen. e.g. if you're halfway
 through typing the command to delete five words, this might display |d5|.
-
 =
 set showcmd
 
@@ -325,7 +322,7 @@ set showcmd
 let &listchars = "tab:\u25b8 ,eol:\uac,extends:\ubb,precedes:\uab"
 
 @ N.B.
-(1) Instead of |trail| I have a highlight group set up in
+(1) Instead of |trail| I have a dynamic highlight group set up in
 //Colours and Highlighting//
 (2) I'm using |let| instead of |set| in the above only as a workaround for a
 unicode issue with inweb. In your vimrc, including the unicode characters
