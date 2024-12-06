@@ -3,10 +3,11 @@ Die Blinkenmatchen.
 Find your cursor.
 
 @ This is a fairly heavily modified version of Damian Conway's Die
-Blinkënmatchen--code that causes the matched text to blink when jumping between
-search results with the |n| and |N| motions, making it easier to see which
-result you've just jumped to. Conway discusses his solution in his excellent
-and inspiring More Instantly Better Vim talk (starting at the 4m59s mark):
+Blinkënmatchen -- code that causes the matched text to blink when jumping
+between search results with the |n| and |N| motions, making it easier to see
+which result you've just jumped to. Conway discusses his solution in his
+excellent and inspiring More Instantly Better Vim talk (starting at the 4m59s
+mark):
 
 = (embedded YouTube video aHm36-na4-4)
 

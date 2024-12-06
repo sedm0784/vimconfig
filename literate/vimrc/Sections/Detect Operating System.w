@@ -41,5 +41,5 @@ both |has('mac')| and |has('macunix')| return false.
   endif
 
 @ I never actually access the |s:operating_system| variable
-directly--Vimscript doesn't include a |switch| statement, so calling
+directly -- Vimscript doesn't include a |switch| statement, so calling
 //OperatingSystem// repeatedly in an |if-else| chain suffices.
