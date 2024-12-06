@@ -293,23 +293,22 @@ function! StatuslinePluginItems() abort
   return source_status
 endfunction
 
-set statusline=%{FilePathNoName()}            " File path
-set statusline+=%#Question#                   " Set highlight
-set statusline+=%t                            " File name
-set statusline+=%*                            " Revert to usual coloring
-set statusline+=%r%h%w%q                      " File status
-set statusline+=%#Error#                      " Set highlight
-set statusline+=%{StatuslineModified()}       " Display if modified
-set statusline+=%*                            " Revert to usual coloring
-set statusline+=%{StatuslineModifiable()}     " Display if file *not* modifiable
-set statusline+=\ %Y,%{&ff},%{&fileencoding}  " Filetype and file format
-set statusline+=%(\ %{StatuslinePluginItems()}%)  " Source control status
-set statusline+=%=                          " >> space <<
-set statusline+=\ dec=%b                        " Value of byte(s) under cursor in decimal (e.g. for finding ASCII/Unicode)
-set statusline+=\ hex=%02.4B                  " Hex value of byte(s) under cursor
-set statusline+=\ c%v/%{strlen(getline('.'))} " Character position/line length
-set statusline+=\ l%l/%L                      " Line number/File length (in lines)
-set statusline+=\ %p%%                        " Position in file.
+set statusline=%{FilePathNoName()}
+set statusline+=%#Question#
+set statusline+=%t
+set statusline+=%*
+set statusline+=%r%h%w%q
+set statusline+=%#Error#
+set statusline+=%{StatuslineModified()}
+set statusline+=%*
+set statusline+=%{StatuslineModifiable()}
+set statusline+=\ %Y,%{&fileformat},%{&fileencoding}
+set statusline+=%(\ %{StatuslinePluginItems()}%)
+set statusline+=%=
+set statusline+=\ hex=%02.4B
+set statusline+=\ c%v/%{strlen(getline('.'))}
+set statusline+=\ l%l/%L
+set statusline+=\ %p%%
 
 " Fold on 3{s and manually
 set foldmethod=marker
