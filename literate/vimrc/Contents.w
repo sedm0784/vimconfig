@@ -8,5 +8,6 @@ Sections
   Detect Operating System
   Colours and Highlighting
   Die Blinkenmatchen
+  Status Line
   Original Unconverted Vimscript
 
