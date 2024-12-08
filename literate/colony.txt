@@ -1,1 +1,13 @@
+home: literate/html
+assets: literate/html/assets
+
+navigation: literate/nav.html
+pattern: GitHubPages
+
+breadcrumbs: none
+web: "overview" at "literate/index.inweb" in "literate/html"
+
+breadcrumbs: "Home: //overview//"
 web: "vimrc" at "literate/vimrc" in "literate/html/vimrc/"
+web: "gvimrc" at "literate/gvimrc.inweb" in "literate/html/gvimrc/"
+

@@ -1,0 +1,8 @@
+Title: My Vim Configuration
+Author: Rich Cheng
+
+@ This is my annotated Vim configuration. And when I say it is my config, I
+mean it IS my config.
+
+@ It's written in the Literate Programming system
+//Inweb -> https://ganelson.github.io/inweb///.
