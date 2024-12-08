@@ -124,7 +124,7 @@ set statusline+=\ %p%%
 
 @heading Flags.
 (*) |%r%h%w%q| -- Standard flags:
-(-*) |%r| -- Displays |[RO]| if the file is |readonly|.
+(-*) |%r| -- Displays |[RO]| if the file is read-only.
 (-*) |%h| -- Displays |[help]| if the window is displaying a help buffer.
 (-*) |%w| -- Displays |[Preview]| if the window is the preview window. (See
 |:help preview-window|.)
