@@ -11,6 +11,8 @@ if OperatingSystem('mac')
 elseif OperatingSystem('windows')
   let g:zenburn_high_Contrast=1
   colorscheme zenburn
+elseif OperatingSystem('linux')
+  colorscheme zenburn
 endif
 
 @heading Apply tweaks.
