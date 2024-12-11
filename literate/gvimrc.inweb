@@ -48,6 +48,9 @@ endif
 @heading Colour schemes.
 There's no particular reason I use different colours on Mac vs Windows. I just
 do.
+
+N.B. I set my terminal Vim colorscheme in
+//my vimrc -> vimrc: Colours and Highlighting//.
 =
 if OperatingSystem("windows")
   let g:zenburn_high_Contrast=1

@@ -116,15 +116,15 @@ set showcmd
 
 let &listchars = "tab:\u25b8 ,eol:\uac,extends:\ubb,precedes:\uab"
 
-if OperatingSystem('mac')
-  if has('gui_running') == 0
+if has('gui_running') == 0
+  if OperatingSystem('mac')
     " FIXME: Settle on a colorscheme
+  elseif OperatingSystem('windows')
+    let g:zenburn_high_Contrast=1
+    colorscheme zenburn
+  elseif OperatingSystem('linux')
+    colorscheme zenburn
   endif
-elseif OperatingSystem('windows')
-  let g:zenburn_high_Contrast=1
-  colorscheme zenburn
-elseif OperatingSystem('linux')
-  colorscheme zenburn
 endif
 
 function! TweakColorScheme() abort

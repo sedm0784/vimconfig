@@ -3,16 +3,18 @@ Colours and Highlighting.
 Making it pretty.
 
 @heading Setting the colour scheme.
+
+N.B. I my GUI Vim colorscheme in //my gvimrc -> gvimrc//.
 =
-if OperatingSystem('mac')
-  if has('gui_running') == 0
+if has('gui_running') == 0
+  if OperatingSystem('mac')
     " FIXME: Settle on a colorscheme
+  elseif OperatingSystem('windows')
+    let g:zenburn_high_Contrast=1
+    colorscheme zenburn
+  elseif OperatingSystem('linux')
+    colorscheme zenburn
   endif
-elseif OperatingSystem('windows')
-  let g:zenburn_high_Contrast=1
-  colorscheme zenburn
-elseif OperatingSystem('linux')
-  colorscheme zenburn
 endif
 
 @heading Apply tweaks.
