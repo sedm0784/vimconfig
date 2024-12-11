@@ -7,7 +7,15 @@ Sections
   Basic Options
   Detect Operating System
   Colours and Highlighting
-  Die Blinkenmatchen
   Status Line
+  File Search
+  Snippets and Typos
+  Mappings
+  User-Defined Commands
+  Die Blinkenmatchen
+  Disable Click-Through
+  Terminal Vim Cursor Shape
+  iVim Configuration
+  Plugin Configuration
+  Ignore This Section
   Original Unconverted Vimscript
-

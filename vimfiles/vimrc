@@ -177,85 +177,6 @@ augroup cursorline_toggle
   autocmd WinEnter * setlocal cursorline
 augroup END
 
-let s:blink_length = has('timers') ? 500 : 100
-
-let s:blink_freq = 50
-
-execute printf('nnoremap <silent> n n:call s:highlight_next(%d, %d)<cr>', s:blink_length, s:blink_freq)
-execute printf('nnoremap <silent> N N:call s:highlight_next(%d, %d)<cr>', s:blink_length, s:blink_freq)
-
-function! s:highlight_next(blink_length, blink_freq) abort
-    let target_pat = '\c\%#'.@/
-
-
-  if has('timers')
-      call BlinkStop(0)
-  call BlinkToggle(target_pat, 0)
-  let s:blink_timer_id = timer_start(a:blink_freq, function('BlinkToggle', [target_pat]), {'repeat': -1})
-  let s:blink_stop_id = timer_start(a:blink_length, 'BlinkStop')
-
-
-  else
-      " Highlight the match
-  let ring = matchadd('ErrorMsg', target_pat, 101)
-  redraw
-  " Wait
-  exec 'sleep ' . a:blink_length . 'm'
-  " Remove the highlight
-  call matchdelete(ring)
-  redraw
-
-
-  endif
-endfunction
-
-if has('timers')
-    function! BlinkToggle(target_pat, timer_id)
-    if exists('s:blink_match_id')
-      " Clear highlight
-      call BlinkClear()
-    else
-      " Set highlight
-      let s:blink_match_id = matchadd('ErrorMsg', a:target_pat, 101)
-      redraw
-    endif
-  endfunction
-
-
-    function! BlinkStop(timer_id)
-    " Cancel timers
-    if exists('s:blink_timer_id')
-      call timer_stop(s:blink_timer_id)
-      unlet s:blink_timer_id
-    endif
-    if exists('s:blink_stop_id')
-      call timer_stop(s:blink_stop_id)
-      unlet s:blink_stop_id
-    endif
-    " And clear blink highlight
-    if exists('s:blink_match_id')
-      call BlinkClear()
-    endif
-  endfunction
-
-
-    " Remove the blink highlight
-  function! BlinkClear()
-    call matchdelete(s:blink_match_id)
-    unlet s:blink_match_id
-    redraw
-  endfunction
-
-
-    augroup die_blinkmatchen
-    autocmd!
-    autocmd CursorMoved * call BlinkStop(0)
-    autocmd InsertEnter * call BlinkStop(0)
-  augroup END
-
-
-endif
-
 set laststatus=2
 
 function! FilePathNoName() abort
@@ -310,29 +231,32 @@ set statusline+=\ c%v/%{strlen(getline('.'))}
 set statusline+=\ l%l/%L
 set statusline+=\ %p%%
 
-" Fold on 3{s and manually
-set foldmethod=marker
+" The Silver Searcher / ripgrep ------------------------------------------- {{{
+if executable('rg')
+  " Use rg over grep
+  let &grepprg = "rg --vimgrep --hidden"
 
-" Liveblog highlighting {{{
+  if !has("win32")
+    " FIXME: This doesn't work on Windows. Don't know why.
+    " Use rg in CtrlP for listing files. Lightning fast and respects .gitignore
+    let g:ctrlp_user_command = 'rg -F --files %s'
 
-" Find *[Tom's comments]* for liveblogs
-" N.B. Had to escape the '|' chars so Vim doesn't think they are pipes
-nnoremap <leader>ftc /\v\*\[[^]*]{-}\]\*/s+2<CR>
-nnoremap <leader>ftnc /\v(^\[.{-}\]\*\|[^*]\[.{-}\]\*\|\*\[.{-}\]$\|\*\[.{-}\][^*])<CR>
+    " rg is fast enough that CtrlP doesn't need to cache
+    let g:ctrlp_use_caching = 0
+  endif
+elseif executable('ag')
+  " Use ag over grep
+  let &grepprg = "ag --vimgrep --hidden"
 
-" This is the regular expression used for finding broken comments:
-" (^\[.{-}\]\*|[^*]\[.{-}\]\*|\*\[.{-}\]$|\*\[.{-}\][^*])
-"
-" It's an alternation built from the following four smaller regexps:
-"
-" Comments missing start asterisks:
-" ^\[.{-}\]\*     - at start of line
-" [^*]\[.{-}\]\*  - mid line
-"
-" Comments missing end asterisks:
-" \*\[.{-}\]$     - at end of line
-" \*\[.{-}\][^*]  - mid line
+  if !has("win32")
+    " FIXME: This is untested on Windows.
+    " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
+    let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
 
+    " ag is fast enough that CtrlP doesn't need to cache
+    let g:ctrlp_use_caching = 0
+  endif
+endif
 " }}}
 
 " Abbreviations/typo corrections ------------------------------------------ {{{
@@ -356,6 +280,7 @@ command! -complete=option -nargs=* Setl setl <args>
 command! -bang Wqall wqall<bang>
 
 " }}}
+
 " Mappings ---------------------------------------------------------------- {{{
 
 " Esc turns off highlighting {{{
@@ -565,6 +490,7 @@ endfunction
 xnoremap <expr> zz <SID>visual_zz()
 " }}}
 " }}}
+
 " New Commands ------------------------------------------------------------ {{{
 " DiffSaved {{{
 function! s:DiffWithSaved()
@@ -585,77 +511,98 @@ endfunction
 command! SyntaxQuery call s:syntax_query()
 " }}}
 " }}}
-" Filetype options -------------------------------------------------------- {{{
 
-" FIXME: It would be better to use ~/.vim/after/ftplugin/<filetype>.vim files
-" for these settings. (So as not to have to use autocommands).
+let s:blink_length = has('timers') ? 500 : 100
 
-augroup filetypeoptions
+let s:blink_freq = 50
+
+execute printf('nnoremap <silent> n n:call s:highlight_next(%d, %d)<cr>', s:blink_length, s:blink_freq)
+execute printf('nnoremap <silent> N N:call s:highlight_next(%d, %d)<cr>', s:blink_length, s:blink_freq)
+
+function! s:highlight_next(blink_length, blink_freq) abort
+    let target_pat = '\c\%#'.@/
+
+
+  if has('timers')
+      call BlinkStop(0)
+  call BlinkToggle(target_pat, 0)
+  let s:blink_timer_id = timer_start(a:blink_freq, function('BlinkToggle', [target_pat]), {'repeat': -1})
+  let s:blink_stop_id = timer_start(a:blink_length, 'BlinkStop')
+
+
+  else
+      " Highlight the match
+  let ring = matchadd('ErrorMsg', target_pat, 101)
+  redraw
+  " Wait
+  exec 'sleep ' . a:blink_length . 'm'
+  " Remove the highlight
+  call matchdelete(ring)
+  redraw
+
+
+  endif
+endfunction
+
+if has('timers')
+    function! BlinkToggle(target_pat, timer_id)
+    if exists('s:blink_match_id')
+      " Clear highlight
+      call BlinkClear()
+    else
+      " Set highlight
+      let s:blink_match_id = matchadd('ErrorMsg', a:target_pat, 101)
+      redraw
+    endif
+  endfunction
+
+
+    function! BlinkStop(timer_id)
+    " Cancel timers
+    if exists('s:blink_timer_id')
+      call timer_stop(s:blink_timer_id)
+      unlet s:blink_timer_id
+    endif
+    if exists('s:blink_stop_id')
+      call timer_stop(s:blink_stop_id)
+      unlet s:blink_stop_id
+    endif
+    " And clear blink highlight
+    if exists('s:blink_match_id')
+      call BlinkClear()
+    endif
+  endfunction
+
+
+    " Remove the blink highlight
+  function! BlinkClear()
+    call matchdelete(s:blink_match_id)
+    unlet s:blink_match_id
+    redraw
+  endfunction
+
+
+    augroup die_blinkmatchen
+    autocmd!
+    autocmd CursorMoved * call BlinkStop(0)
+    autocmd InsertEnter * call BlinkStop(0)
+  augroup END
+
+
+endif
+
+" Disable click-through cursor positioning when Vim not foreground app ---- {{{
+augroup MouseHack
   autocmd!
-
-  " C/CPP {{{
-
-  autocmd FileType cpp,c setlocal fo=cq
-
-  " }}}
-  " ConqueTerm {{{
-
-  " Turn off listing of trailing spaces
-  autocmd FileType conque_term setlocal listchars=tab:->
-
-  " }}}
-  " Markdown {{{
-
-  autocmd FileType mkd setlocal ai formatoptions=tcroqnj comments=n:>
-
-  " }}}
-  " AutoHotKey {{{
-
-  " Tabs should be converted to a group of 4 spaces.
-  autocmd FileType autohotkey setlocal ts=4 sw=4 expandtab
-  " }}}
-  " Vim {{{
-
-  autocmd FileType vim setlocal foldmethod=marker
-
-  " }}}
-  " Objective C {{{
-
-  " Convert tabs to 4 spaces, which is how Xcode is setup by default
-  autocmd FileType objc setlocal ts=4 sw=4 expandtab
-  autocmd FileType objcpp setlocal ts=4 sw=4 expandtab
-
-  " }}}
+  autocmd FocusLost * set mouse=
+  autocmd FocusGained * call timer_start(200, 'ReenableMouse')
 augroup END
 
+function! ReenableMouse(timer_id)
+  set mouse=a
+endfunction
 " }}}
-" The Silver Searcher / ripgrep ------------------------------------------- {{{
-if executable('rg')
-  " Use rg over grep
-  let &grepprg = "rg --vimgrep --hidden"
 
-  if !has("win32")
-    " FIXME: This doesn't work on Windows. Don't know why.
-    " Use rg in CtrlP for listing files. Lightning fast and respects .gitignore
-    let g:ctrlp_user_command = 'rg -F --files %s'
-
-    " rg is fast enough that CtrlP doesn't need to cache
-    let g:ctrlp_use_caching = 0
-  endif
-elseif executable('ag')
-  " Use ag over grep
-  let &grepprg = "ag --vimgrep --hidden"
-
-  if !has("win32")
-    " FIXME: This is untested on Windows.
-    " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
-    let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
-
-    " ag is fast enough that CtrlP doesn't need to cache
-    let g:ctrlp_use_caching = 0
-  endif
-endif
-" }}}
 " Use bar cursors in insert mode in terminal Vim -------------------------- {{{
 
 if exists('$TMUX')
@@ -670,17 +617,7 @@ endif
 
 
 " }}}
-" Disable click-through cursor positioning when Vim not foreground app ---- {{{
-augroup MouseHack
-  autocmd!
-  autocmd FocusLost * set mouse=
-  autocmd FocusGained * call timer_start(200, 'ReenableMouse')
-augroup END
 
-function! ReenableMouse(timer_id)
-  set mouse=a
-endfunction
-" }}}
 " iVim specific config ---------------------------------------------------- {{{
 if OperatingSystem("ios")
 
@@ -722,6 +659,7 @@ if OperatingSystem("ios")
   let g:gitgutter_enabled = 0
 endif
 " }}}
+
 " Plugins ----------------------------------------------------------------- {{{
 
 " GetLatestScripts {{{
@@ -831,6 +769,77 @@ endif
 " }}}
 
 let g:astronomer_super_secret_debug_option=1
+
+
+" Fold on 3{s and manually
+set foldmethod=marker
+
+" Liveblog highlighting {{{
+
+" Find *[Tom's comments]* for liveblogs
+" N.B. Had to escape the '|' chars so Vim doesn't think they are pipes
+nnoremap <leader>ftc /\v\*\[[^]*]{-}\]\*/s+2<CR>
+nnoremap <leader>ftnc /\v(^\[.{-}\]\*\|[^*]\[.{-}\]\*\|\*\[.{-}\]$\|\*\[.{-}\][^*])<CR>
+
+" This is the regular expression used for finding broken comments:
+" (^\[.{-}\]\*|[^*]\[.{-}\]\*|\*\[.{-}\]$|\*\[.{-}\][^*])
+"
+" It's an alternation built from the following four smaller regexps:
+"
+" Comments missing start asterisks:
+" ^\[.{-}\]\*     - at start of line
+" [^*]\[.{-}\]\*  - mid line
+"
+" Comments missing end asterisks:
+" \*\[.{-}\]$     - at end of line
+" \*\[.{-}\][^*]  - mid line
+
+" }}}
+
+" Filetype options -------------------------------------------------------- {{{
+
+" FIXME: It would be better to use ~/.vim/after/ftplugin/<filetype>.vim files
+" for these settings. (So as not to have to use autocommands).
+
+augroup filetypeoptions
+  autocmd!
+
+  " C/CPP {{{
+
+  autocmd FileType cpp,c setlocal fo=cq
+
+  " }}}
+  " ConqueTerm {{{
+
+  " Turn off listing of trailing spaces
+  autocmd FileType conque_term setlocal listchars=tab:->
+
+  " }}}
+  " Markdown {{{
+
+  autocmd FileType mkd setlocal ai formatoptions=tcroqnj comments=n:>
+
+  " }}}
+  " AutoHotKey {{{
+
+  " Tabs should be converted to a group of 4 spaces.
+  autocmd FileType autohotkey setlocal ts=4 sw=4 expandtab
+  " }}}
+  " Vim {{{
+
+  autocmd FileType vim setlocal foldmethod=marker
+
+  " }}}
+  " Objective C {{{
+
+  " Convert tabs to 4 spaces, which is how Xcode is setup by default
+  autocmd FileType objc setlocal ts=4 sw=4 expandtab
+  autocmd FileType objcpp setlocal ts=4 sw=4 expandtab
+
+  " }}}
+augroup END
+
+" }}}
 
 " Source other files ------------------------------------------------------ {{{
 

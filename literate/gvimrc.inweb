@@ -3,7 +3,7 @@ Author: Rich Cheng
 Purpose: GUI-Specific Configuration
 Language: Vimscript
 
-@heading Original Unconverted Vimscript.
+@heading FIXME Original Unconverted Vimscript.
 This section contains everything left over from my original gvimrc file that
 hasn't been imported into new sections.
 =
