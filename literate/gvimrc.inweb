@@ -3,35 +3,61 @@ Author: Rich Cheng
 Purpose: GUI-Specific Configuration
 Language: Vimscript
 
-@heading FIXME Original Unconverted Vimscript.
-This section contains everything left over from my original gvimrc file that
-hasn't been imported into new sections.
+@ gvimrc allows you to set up configuration options that only apply in GUI
+Vim without having to POLLUTE your vimrc with |:set| commands that are
+meaningless in the terminal and UGLY |has('gui_running')| checks.
+
+@heading GUI options.
+On Windows, I turn off the menu bar and tool bar. The whole point of Vim is
+not to have to use the mouse![1]
+
+On Mac, I set the default fullscreen options to allow the editing area to fill
+the entire screen and use the |Normal| highlight group for the surrounding
+area if I change this later (which I occasionally do if I want to edit prose
+in a narrower textarea).
+
+Note that |fuoptions| are only used when the MacVim preferences are set NOT to
+use macOS's native fullscreen feature.
+
+I also turn on antialiased text in MacVim. The fonts I use look pretty gross
+without it, at least on a non-retina display.
+
+[1] It's a factor, at least.
 =
 if OperatingSystem("windows")
   set guioptions-=m "no menu bar
   set guioptions-=T "no tool bar
 elseif OperatingSystem("mac")
-  set fuopt=maxvert,maxhorz,background:Normal
+  set fuoptions=maxvert,maxhorz,background:Normal
+  set antialias
 endif
 
-
-" Anti-aliasing and font choice
-set anti
-set enc=utf-8
+@heading Fonts.
+TOP TIP for those new to GUI Vim: if you're not sure what font to use, or how
+to compose your choice into the CONVOLUTED format Vim requires for the
+  |guifont| option, you can execute |:set gfn=*|, select something using the
+GUI dialog, and then run |:set gfn?| to find out what you should include in
+your gvimrc.
+=
 if OperatingSystem("windows")
-  " Windows font
-  set gfn=Consolas:h10
-  " Zenburn colors
+  set guifont=Consolas:h10
+elseif OperatingSystem("mac")
+  set guifont=Inconsolata:h15
+endif
+
+@heading Colour schemes.
+There's no particular reason I use different colours on Mac vs Windows. I just
+do.
+=
+if OperatingSystem("windows")
   let g:zenburn_high_Contrast=1
   colorscheme zenburn
 elseif OperatingSystem("mac")
-  " OS X font
-  set gfn=Inconsolata:h15
   colorscheme inkpot
 endif
 
-" Reset my highlighting
-highlight EOLWS guibg=red
-
-" Size
+@heading Set a reasonable default window height.
+After using two lines for the status line and command-line, this leaves 48 for
+editable content, at least until I start SPLITTING all over the place.
+=
 set lines=50

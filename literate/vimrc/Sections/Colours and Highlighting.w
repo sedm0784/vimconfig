@@ -74,6 +74,7 @@ augroup highlightwhitespace
   autocmd!
   autocmd InsertEnter * syn clear EOLWS | syn match EOLWS excludenl /\v\s+%#@!$/
   autocmd InsertLeave * syn clear EOLWS | syn match EOLWS excludenl /\v\s+$/
+  autocmd ColorScheme * highlight EOLWS guibg=red ctermbg=red
 augroup END
 highlight EOLWS guibg=red ctermbg=red
 

@@ -3,28 +3,22 @@ if OperatingSystem("windows")
   set guioptions-=m "no menu bar
   set guioptions-=T "no tool bar
 elseif OperatingSystem("mac")
-  set fuopt=maxvert,maxhorz,background:Normal
+  set fuoptions=maxvert,maxhorz,background:Normal
+  set antialias
 endif
 
-
-" Anti-aliasing and font choice
-set anti
-set enc=utf-8
 if OperatingSystem("windows")
-  " Windows font
-  set gfn=Consolas:h10
-  " Zenburn colors
+  set guifont=Consolas:h10
+elseif OperatingSystem("mac")
+  set guifont=Inconsolata:h15
+endif
+
+if OperatingSystem("windows")
   let g:zenburn_high_Contrast=1
   colorscheme zenburn
 elseif OperatingSystem("mac")
-  " OS X font
-  set gfn=Inconsolata:h15
   colorscheme inkpot
 endif
 
-" Reset my highlighting
-highlight EOLWS guibg=red
-
-" Size
 set lines=50
 
