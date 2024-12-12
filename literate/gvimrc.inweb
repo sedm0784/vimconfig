@@ -25,8 +25,7 @@ without it, at least on a non-retina display.
 [1] It's a factor, at least.
 =
 if OperatingSystem("windows")
-  set guioptions-=m "no menu bar
-  set guioptions-=T "no tool bar
+  set guioptions-=mT
 elseif OperatingSystem("mac")
   set fuoptions=maxvert,maxhorz,background:Normal
   set antialias
