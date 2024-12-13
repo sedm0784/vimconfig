@@ -512,8 +512,8 @@ let s:blink_length = has('timers') ? 500 : 100
 
 let s:blink_freq = 50
 
-execute printf('nnoremap <silent> n n:call s:highlight_next(%d, %d)<cr>', s:blink_length, s:blink_freq)
-execute printf('nnoremap <silent> N N:call s:highlight_next(%d, %d)<cr>', s:blink_length, s:blink_freq)
+execute printf('nnoremap <silent> n n:call <SID>highlight_next(%d, %d)<cr>', s:blink_length, s:blink_freq)
+execute printf('nnoremap <silent> N N:call <SID>highlight_next(%d, %d)<cr>', s:blink_length, s:blink_freq)
 
 function! s:highlight_next(blink_length, blink_freq) abort
     let target_pat = '\c\%#'.@/

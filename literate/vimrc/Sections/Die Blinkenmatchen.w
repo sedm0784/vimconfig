@@ -34,10 +34,15 @@ let s:blink_freq = 50
 let s:blink_freq = s:blink_length
 
 @heading Mappings.
-Next, we map |n| and |N| to call a new script-local //s:highlight_next// function.
+Next, we map |n| and |N| to call a new script-local //s:highlight_next//
+function.
+
+Note the use of |<SID>| that is required to access the script-local function
+from the context of a mapping. (Because when you execute the mapping, you're
+not in the script, so you can't use the |s:| prefix.)
 =
-execute printf('nnoremap <silent> n n:call s:highlight_next(%d, %d)<cr>', s:blink_length, s:blink_freq)
-execute printf('nnoremap <silent> N N:call s:highlight_next(%d, %d)<cr>', s:blink_length, s:blink_freq)
+execute printf('nnoremap <silent> n n:call <SID>highlight_next(%d, %d)<cr>', s:blink_length, s:blink_freq)
+execute printf('nnoremap <silent> N N:call <SID>highlight_next(%d, %d)<cr>', s:blink_length, s:blink_freq)
 
 @heading s:highlight_next().
 I suppose we better implement the |s:highlight_next| function too!
