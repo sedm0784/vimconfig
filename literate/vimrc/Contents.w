@@ -9,7 +9,7 @@ Sections
   Colours and Highlighting
   Status Line
   File Search
-  Snippets and Typos
+  Snippets and Typo Correction
   Mappings
   User-Defined Commands
   Die Blinkenmatchen

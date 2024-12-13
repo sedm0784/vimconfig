@@ -1,6 +1,6 @@
-Snippets and Typos.
+Snippets and Typo Correction.
 
-Actually, just typos.
+Actually, just typo correction.
 
 @ This file contains various abbreviations and user-defined commands that I
 use to automatically correct typos as I type.
@@ -52,4 +52,4 @@ iabbrev Pythong Python
 @heading Snippets.
 At some point in the near future, I'm going to add some (very basic) snippet
 expansions here. I should probably have left out this paragraph, but I've
-already named this section "Snippets and Typos". FACEPALM
+already named this section "Snippets and Typo Correction". FACEPALM
