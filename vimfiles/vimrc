@@ -466,26 +466,23 @@ xnoremap <expr> zz <SID>visual_zz()
 " }}}
 " }}}
 
-" New Commands ------------------------------------------------------------ {{{
-" DiffSaved {{{
 function! s:DiffWithSaved()
-  let filetype=&ft
+  let filetype=&filetype
   diffthis
   vnew | r # | normal! 1Gdd
   diffthis
   exe "setlocal bt=nofile bh=wipe nobl noswf ro ft=" . filetype
 endfunction
+
 command! DiffSaved call s:DiffWithSaved()
-" }}}
-" SyntaxQuery: Display the syntax stack at current cursor position {{{
+
 function! s:syntax_query() abort
   for id in synstack(line("."), col("."))
-    execute 'hi' synIDattr(id, "name")
+    execute 'highlight' synIDattr(id, "name")
   endfor
 endfunction
+
 command! SyntaxQuery call s:syntax_query()
-" }}}
-" }}}
 
 let s:blink_length = has('timers') ? 500 : 100
 
