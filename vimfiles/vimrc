@@ -86,6 +86,13 @@ set hlsearch
 set ignorecase
 set smartcase
 
+if executable('rg')
+  let &grepprg = "rg --vimgrep --hidden"
+elseif executable('ag')
+  let &grepprg = "ag --vimgrep --hidden"
+endif
+set grepformat^=%f:%l:%c:%m
+
 set wildmenu
 
 set wildmode=longest:full,full
@@ -233,34 +240,6 @@ set statusline+=\ hex=%02.4B
 set statusline+=\ c%v/%{strlen(getline('.'))}
 set statusline+=\ l%l/%L
 set statusline+=\ %p%%
-
-" The Silver Searcher / ripgrep ------------------------------------------- {{{
-if executable('rg')
-  " Use rg over grep
-  let &grepprg = "rg --vimgrep --hidden"
-
-  if !has("win32")
-    " FIXME: This doesn't work on Windows. Don't know why.
-    " Use rg in CtrlP for listing files. Lightning fast and respects .gitignore
-    let g:ctrlp_user_command = 'rg -F --files %s'
-
-    " rg is fast enough that CtrlP doesn't need to cache
-    let g:ctrlp_use_caching = 0
-  endif
-elseif executable('ag')
-  " Use ag over grep
-  let &grepprg = "ag --vimgrep --hidden"
-
-  if !has("win32")
-    " FIXME: This is untested on Windows.
-    " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
-    let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
-
-    " ag is fast enough that CtrlP doesn't need to cache
-    let g:ctrlp_use_caching = 0
-  endif
-endif
-" }}}
 
 command! -bang Cn cn<bang>
 command! -bang Q q<bang>
@@ -612,10 +591,8 @@ endif
 
 " }}}
 
-" iVim specific config ---------------------------------------------------- {{{
 if OperatingSystem("ios")
-
-" kbd {{{
+  
 " Replace colon with backtick
   isetekbd replace {'buttons':[{'keys':[{'title':'`',
                                        \'type':'insert',
@@ -634,8 +611,8 @@ if OperatingSystem("ios")
                              \'locations':[1]}
                              \],
                   \'locations':[10,10]}
-" }}}
-" iVimClippy {{{
+
+  " iVimClippy {{{
   function! s:vimclippy() abort
     edit vimclippy
     silent put! +
@@ -650,61 +627,21 @@ if OperatingSystem("ios")
   command! VimClippy call s:vimclippy()
 " }}}
 
+
   let g:gitgutter_enabled = 0
+
+
 endif
-" }}}
 
-" Plugins ----------------------------------------------------------------- {{{
-
-" GetLatestScripts {{{
-
-" Automatic installation
-let g:GetLatestVimScripts_allowautoinstall=1
-
-" }}}
-" std_c c.vim {{{
-
-" Use CPP comments in syntax highlighting
-let c_cpp_comments = 0
-
-" }}}
-" cppomnicomplete {{{
-
-"set completeopt-=preview
-
-" }}}
-" tagbar {{{
-
-nnoremap <leader>tbt :TagbarToggle<CR>
-
-" }}}
-" TwitVim {{{
-
-let twitvim_enable_python = 1
-let twitvim_browser_cmd = 'firefox.exe'
-let twitvim_count = 50
-let twitvim_bitly_user = "sedm0784"
-let twitvim_bitly_key = "R_9dab47b2ba36972d08a4509ef2552156"
-
-" }}}
-" SuperTab {{{
-
-" Default completion type
-let g:SuperTabDefaultCompletionType = "context"
-
-" Fallback completion type
-let g:SuperTabContextDefaultCompletionType = "<c-p>"
-" Use enhanced longest match so you can continue doing longest substring
-" after typing more letters
-let g:SuperTabLongestEnhanced = 1
-
-" }}}
-" Gundo {{{
-
-nnoremap <F5> :GundoToggle<CR>
-
-" }}}
-" CtrlP {{{
+let g:alternateExtensions_h = "c,cpp,cxx,cc,CC,m,mm"
+let g:alternateExtensions_H = "C,CPP,CXX,CC,M,MM"
+let g:alternateExtensions_cpp = "h,hpp"
+let g:alternateExtensions_CPP = "H,HPP"
+let g:alternateExtensions_c = "h"
+let g:alternateExtensions_C = "H"
+let g:alternateExtensions_cxx = "h"
+let g:alternateExtensions_m = "h"
+let g:alternateExtensions_mm = "h"
 
 let g:ctrlp_map = '<leader><leader>'
 " Start in buffer mode. Then press <c-f> for MRU, <c-b> for file search
@@ -719,6 +656,27 @@ let g:ctrlp_lazy_update = 250
 " Ignore Mac temp files
 let g:ctrlp_mruf_exclude = '\v(\/private)?\/var\/folders\/t\d\/.*'
 
+if executable('rg')
+  if !has("win32")
+    " FIXME: This doesn't work on Windows. I don't know why!
+    " Use rg in CtrlP for listing files.
+    let g:ctrlp_user_command = 'rg -F --files %s'
+
++  55     " FIXME: This is untested on Windows.
+    " rg is fast enough that CtrlP doesn't need to cache
+    let g:ctrlp_use_caching = 0
+  endif
+elseif executable('ag')
+  if !has("win32")
+    " FIXME: This is untested on Windows.
+    " Use ag in CtrlP for listing files.
+    let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
+
+    " ag is fast enough that CtrlP doesn't need to cache
+    let g:ctrlp_use_caching = 0
+  endif
+endif
+
 if !exists("g:ctrlp_user_command")
   " If the variable already exists, it's because we set it to use ripgrep or the
   " Silver Searcher, above. `git ls-files` is actually slightly faster in my
@@ -727,40 +685,34 @@ if !exists("g:ctrlp_user_command")
   let g:ctrlp_user_command = { 'types': { 1: ['.git', 'cd %s && git ls-files'], 2: ['.hg', 'hg --cwd %s locate -I .'], }, 'fallback': 'find %s -type f' }
 endif
 
-" }}}
-" Utl {{{
+" Automatic installation
+let g:GetLatestVimScripts_allowautoinstall=1
+
+nnoremap <F5> :GundoToggle<CR>
+
+" Default completion type
+let g:SuperTabDefaultCompletionType = "context"
+
+" Fallback completion type
+let g:SuperTabContextDefaultCompletionType = "<c-p>"
+" Use enhanced longest match so you can continue doing longest substring
+" after typing more letters
+let g:SuperTabLongestEnhanced = 1
+
+nnoremap <leader>tbt :TagbarToggle<CR>
+
+let twitvim_enable_python = 1
+let twitvim_browser_cmd = 'firefox.exe'
+let twitvim_count = 50
 
 let g:utl_cfg_hdl_mt_generic = "silent !open '%p'"
 let g:utl_cfg_hdl_scm_http_system = "silent !open '%u'"
 
-" }}}
-" NERDCommenter {{{
-" Add comment markers at very start of line
-let NERDDefaultAlign = 'start'
-" Don't remove extra spaces when removing comments (because it clashes with
-" 'start' setting above
-let NERDRemoveExtraSpaces = 0
-" }}}
-" A.vim {{{
-let g:alternateExtensions_h = "c,cpp,cxx,cc,CC,m,mm"
-let g:alternateExtensions_H = "C,CPP,CXX,CC,M,MM"
-let g:alternateExtensions_cpp = "h,hpp"
-let g:alternateExtensions_CPP = "H,HPP"
-let g:alternateExtensions_c = "h"
-let g:alternateExtensions_C = "H"
-let g:alternateExtensions_cxx = "h"
-let g:alternateExtensions_m = "h"
-let g:alternateExtensions_mm = "h"
-" }}}
-" Vim-Slime {{{
 if has('terminal')
   let g:slime_target = "vimterminal"
 else
   let g:slime_target = "tmux"
 endif
-" }}}
-
-" }}}
 
 let g:astronomer_super_secret_debug_option=1
 

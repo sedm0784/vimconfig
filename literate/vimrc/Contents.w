@@ -8,7 +8,6 @@ Sections
   Detect Operating System
   Colours and Highlighting
   Status Line
-  File Search
   Snippets and Typo Correction
   Mappings
   User-Defined Commands

@@ -239,6 +239,21 @@ every time I use another editor.
 set ignorecase
 set smartcase
 
+@ There are many plugins available to use external search tools, but I find
+Vim's built-in |:vimgrep| and |:grep| commands work well enough for me. But if
+ripgrep or the Silver Searcher are installed, then I use them instead of
+|grep| when invoking |:grep|.
+=
+if executable('rg')
+  let &grepprg = "rg --vimgrep --hidden"
+elseif executable('ag')
+  let &grepprg = "ag --vimgrep --hidden"
+endif
+@ Also update |grepformat| so quickfix entries created by |rg| or |ag| jump to
+the column of the match as well as the line.
+=
+set grepformat^=%f:%l:%c:%m
+
 @ I have two further things elsewhere in my config to improve search
 functionality. //Die Blinkenmatchen//, and FIXME //A mapping to clear search
 highlights//.
