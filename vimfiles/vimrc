@@ -592,40 +592,40 @@ endif
 " }}}
 
 if OperatingSystem("ios")
-  
-" Replace colon with backtick
-  isetekbd replace {'buttons':[{'keys':[{'title':'`',
-                                       \'type':'insert',
-                                       \'contents':'`'}],
-                              \'locations':[0]
-                              \}],
-                  \'locations':[9]}
-" And add new button with colon/tilde
   isetekbd insert {'buttons':[
-                             \{'keys':[{'title':':',
-                                       \'type':'insert',
-                                       \'contents':':'}]},
-                             \{'keys':[{'title':'~',
-                                      \ 'type':'insert',
-                                      \ 'contents':'~'}],
-                             \'locations':[1]}
-                             \],
-                  \'locations':[10,10]}
+                           \{'keys':[{'title':':',
+                                     \'type':'insert',
+                                     \'contents':':'}]},
+                           \{'keys':[{'title':'~',
+                                    \ 'type':'insert',
+                                    \ 'contents':'~'}],
+                           \'locations':[1]}
+                           \],
+                \'locations':[10,10]}
 
-  " iVimClippy {{{
+
+isetekbd replace {'buttons':[{'keys':[{'title':'`',
+                                     \'type':'insert',
+                                     \'contents':'`'}],
+                            \'locations':[0]
+                            \}],
+                \'locations':[9]}
+
+
+
+
   function! s:vimclippy() abort
-    edit vimclippy
-    silent put! +
-    $delete
-    1
-    augroup vimclippy
-      autocmd!
-      autocmd BufWriteCmd vimclippy %yank + | set nomodified
-    augroup END
-  endfunction
+  edit vimclippy
+  silent put! +
+  $delete
+  1
+  augroup vimclippy
+    autocmd!
+    autocmd BufWriteCmd vimclippy %yank + | set nomodified
+  augroup END
+endfunction
 
-  command! VimClippy call s:vimclippy()
-" }}}
+command! VimClippy call s:vimclippy()
 
 
   let g:gitgutter_enabled = 0
