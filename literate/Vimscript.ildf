@@ -48,7 +48,8 @@ Function Declaration Notation: /\s*function!?\s+(..[A-Za-z0-9#_]*))\(.*)/
 
 # Things we'd like to highlight:
 #
-# <blah>
+# <special keys, etc.>
+# END
 # Ex commands
 # runtime functions
 # option names
@@ -58,18 +59,31 @@ Function Declaration Notation: /\s*function!?\s+(..[A-Za-z0-9#_]*))\(.*)/
 
 # Define Ex commands as !reserved keywords
 keyword "augroup"
-keyword "autocommand"
+keyword "autocmd"
 keyword "call"
+keyword "command"
 keyword "else"
 keyword "elseif"
+keyword "endfunction"
 keyword "endif"
+keyword "endwhile"
+keyword "execute"
 keyword "filetype"
+keyword "function"
 keyword "highlight"
 keyword "if"
+keyword "inoremap"
 keyword "let"
 keyword "nnoremap"
+keyword "noremap"
+keyword "return"
 keyword "set"
+keyword "setlocal"
+keyword "snoremap"
 keyword "syntax"
+keyword "vnoremap"
+keyword "while"
+keyword "xnoremap"
 
 # Define option names as !constant keywords
 # FIXME: Not sure yet if I can use colouring rules to include the "no" versions
