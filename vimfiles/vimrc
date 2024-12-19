@@ -261,38 +261,29 @@ augroup escape_mapping
   autocmd InsertEnter * nnoremap <Esc> :nohlsearch<CR><Esc>
 augroup END
 
-
 nnoremap / /\v
 nnoremap ? ?\v
 
-
 nnoremap #3 :browse w<CR>
 
-" No longer use par: it doesn't support format=flowed
-"nnoremap <leader>rr vip:!par -q 72<CR>
-"vnoremap <leader>rr :!par -q 72<CR>
-
-" A plain `gq` will not join short lines if 'formatoptions' contains `w`. We
-" must first join them.
-" N.B. Make sure 'formatoptions' contains `j` before using this mapping!
 nnoremap <leader>rr vipJgvgqo<Esc>
 vnoremap <leader>rr Jgvgq
 
-" Source vimrc
-nnoremap <leader>vs :source $MYVIMRC<cr>
-
 " Edit vimrc
-nnoremap <leader>ve :vsplit $MYVIMRC<cr>
+nnoremap <leader>ve :vsplit $MYVIMRC<CR>
+
+" Source vimrc
+nnoremap <leader>vs :source $MYVIMRC<CR>
 
 noremap j gj
 noremap gj j
 noremap k gk
 noremap gk k
 
-noremap <C-J> <C-W>j
-noremap <C-K> <C-W>k
-noremap <C-H> <C-W>h
-noremap <C-L> <C-W>l
+nnoremap <C-J> <C-W>j
+nnoremap <C-K> <C-W>k
+nnoremap <C-H> <C-W>h
+nnoremap <C-L> <C-W>l
 
 nnoremap <up> :cwindow<CR>
 nnoremap <down> :cc<CR>

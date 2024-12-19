@@ -72,37 +72,138 @@ function! s:setupEscapeMap()
 endfunction
 
 @heading Always use very magic searches.
-=
+By default, Vim's regular expressions are configured in a way intended to make
+the average search within source code as easy and quick to type as possible.
+So some characters, such as |.| or |*| have a special meaning[1], and need to be
+escaped with a preceding backslash to match their literal values. But others
+work in exactly the opposite way: they need to be escaped in order to access
+their special meaning. so e.g. |?| will match a question mark: you need to use
+|\?| in order to specify that the previous atom is optional. Vim confidently
+labels this behaviour "magic".
 
+While I understand the reasoning behind it, in practice I usually find the
+inconsistency confusing. On top of this, I seem to need the special meanings
+quite frequently in my searches, and it's a pain to be constantly typing that
+backslash. Backslash backslash backslash!
+
+Vim provides a BUNCH of mechanisms for altering this behaviour: here I set up
+a mapping that makes all my searches "very magic" by prepopulating the search
+command-line with the |\v| atom. This means almost all non alphanumeric
+characters use their special meanings unless you escape them.
+
+If I ever want to quickly use a regular magic[2] search I just hit the
+backspace a couple of times after entering the |/| search to delete the |\v|.
+
+[1] "Any character", and "any number of the previous atom, including zero",
+respectively.
+
+[2] Or a nomagic, or a VERY nomagic
+=
 nnoremap / /\v
 nnoremap ? ?\v
 
 @heading RISC OS style F3 saving.
-=
+I've been using Vim for a long time. Back at the beginning of that long time,
+I still used RISC OS, and still had muscle memory for its excellent and unique
+drag and drop save mechanism.
 
+I set this mapping up as its closest approximation. If someone had put a gun
+to my head five minutes ago and asked me if the save dialog it opened was
+prepopulated with the current file name then I'd wouldn't be typing this now
+because I'd have said "yes" and then got shot in the head.
+
+I don't actually use this. Did I mention NOSTALGIA?
+
+I'm leaving it here just for YOUR benefit, dear reader. Did you know you could
+map the function keys using either |<F3>| or |#3|. Did you know GUI Vim
+offered access to GUI save/open dialogs via the |:browse| command?
+
+Well now you do!
+=
 nnoremap #3 :browse w<CR>
 
 @heading Quick email reformat (Re-wRap).
-=
-" No longer use par: it doesn't support format=flowed
-"nnoremap <leader>rr vip:!par -q 72<CR>
-"vnoremap <leader>rr :!par -q 72<CR>
+Oh hey here's another mapping I don't actually use any more. To this day I
+still do the majority of my email handling in the terminal app mutt, using Vim
+for writing the email bodies.
 
-" A plain `gq` will not join short lines if 'formatoptions' contains `w`. We
-" must first join them.
-" N.B. Make sure 'formatoptions' contains `j` before using this mapping!
+After reading some article about its superior wrapping algorithms I set up
+these mappings to reformat my hard-wrapped paragraphs using the external tool
+|par|.
+= (text as code)
+nnoremap <leader>rr vip:!par -q 72<CR>
+vnoremap <leader>rr :!par -q 72<CR>
+
+@ As the world moved on, this stopped working so well. Hard-wrapping can be
+inflexible when emails are viewed on the WILDLY different screen sizes and
+resolutions found today, so I started formatting my emails with
+//format=flowed -> https://joeclark.org/ffaq.html//.
+
+This was a clever idea some NERDS came up with where you could write emails
+with hard-wrapped lines, but leaving whitespace at the end of a line would
+cause mail clients to DISPLAY them with the lines joined together but also
+soft-wrapped. Ingenious!
+
+|par| didn't support |format=flowed|, but Vim does via the |w| entry in
+|'formatoptions'|! So I updated my mappings to workaround a minor issue in
+|gq|: it won't re-join short lines when |formatoptions| contains |w|. The
+mappings therefore join the lines first with |J| before invoking |gq|. It
+feels like there must be a reason why the normal-mode mapping also adds an
+extra blank line below the re-formatted paragraph, but I have absolutely no
+idea what that reason might be.
+=
 nnoremap <leader>rr vipJgvgqo<Esc>
 vnoremap <leader>rr Jgvgq
 
-@heading Easy vimrc Access.
-=
-" Source vimrc
-nnoremap <leader>vs :source $MYVIMRC<cr>
+@ It doesn't matter though, because unfortunately, it turns out there are
+INSUFFICIENT NERDS writing emails. Some prolific email client or other[1]
+couldn't be bothered to implement |format=flowed|, and because of this I
+eventually stopped using it and now just write my emails with soft-wrapping
+and am sad forever that the |>| quoted text markers are only visible on the
+first line of the paragraph.
 
+So the only reason I still have these lines in my vimrc is so I could give you
+this little history lesson. I'm a born pedagogue!
+
+[1] Outlook? Gmail?
+
+@heading Easy vimrc Access.
+I stole these off someone but I can't remember who.
+
+It is convenient to be able to quickly open your vimrc and apply any changes
+you've made in it.
+=
 " Edit vimrc
-nnoremap <leader>ve :vsplit $MYVIMRC<cr>
+nnoremap <leader>ve :vsplit $MYVIMRC<CR>
+
+" Source vimrc
+nnoremap <leader>vs :source $MYVIMRC<CR>
+
+@ If I were starting using Vim today, WITH all my knowledge intact, but
+WITHOUT my muscle memory or existing vimrc file[1] I might be tempted to leave
+these lines out of my vimrc entirely.
+
+Sourcing any file is easy if you're already in it -- |:so %| isn't so hard to
+jype -- and Vim provides a NIFTY mechanism for jumping to a preset location,
+viz. uppercase marks.
+
+I didn't see the point of these for YEARS until I found out that one great use
+for them is as permanent bookmarks.
+
+I have my |'T| mark set to a location in a |todo.txt| file, so |'T| will
+quickly jump there whatever I'm doing at the time. Similarly, setting my |V|
+mark to the top of my vimrc would faciliate FAST vimrc access without any
+mappings.
+
+[1] I don't know. Some kind of weirdly specific memory-and-hard-drive wipe
+effect caused by ALIENS?
 
 @heading Navigate wrapped lines visually by default.
+This is the part of my configuration that I miss the most when editing
+in an unconfigured copy of Vim. It is SO DISORIENTATING when pressing |j|
+moves your cursor down more than one line.
+
+The fix is to swap |j| and |k| with their "display lines" counterparts.
 =
 noremap j gj
 noremap gj j
@@ -111,10 +212,10 @@ noremap gk k
 
 @heading Quicker window nav.
 =
-noremap <C-J> <C-W>j
-noremap <C-K> <C-W>k
-noremap <C-H> <C-W>h
-noremap <C-L> <C-W>l
+nnoremap <C-J> <C-W>j
+nnoremap <C-K> <C-W>k
+nnoremap <C-H> <C-W>h
+nnoremap <C-L> <C-W>l
 
 @heading Use arrow keys for quickfix.
 =
