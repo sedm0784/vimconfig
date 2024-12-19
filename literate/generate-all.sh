@@ -13,6 +13,9 @@ fi
 "$inweb" -read-language literate/Vimscript.ildf literate/gvimrc.inweb -tangle-to vimfiles/gvimrc
 
 # Weave
+# FIXME: These paths are currently specified in the colony file
+mkdir -p literate/html/vimrc
+mkdir -p literate/html/gvimrc
 "$inweb" -read-language literate/Vimscript.ildf -colony literate/colony.txt -member overview -weave
 "$inweb" -read-language literate/Vimscript.ildf -colony literate/colony.txt -member vimrc -weave
 "$inweb" -read-language literate/Vimscript.ildf -colony literate/colony.txt -member gvimrc -weave
