@@ -211,6 +211,10 @@ noremap k gk
 noremap gk k
 
 @heading Quicker window nav.
+I use split windows CONSTANTLY: it's a feature I genuinely struggle to deal
+with not having when I use other, INFERIOR text editing environments. This set
+of mappings allow me to LEAP gazelle-like between windows without having to
+FUMBLE with CLUMSY Ctrl-W prefixes.
 =
 nnoremap <C-J> <C-W>j
 nnoremap <C-K> <C-W>k
