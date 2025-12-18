@@ -1,8 +1,9 @@
 home: literate/html
 assets: literate/html/assets
+patterns: literate/Patterns
 
 navigation: literate/nav.html
-pattern: GitHubPages
+pattern: VimrcHTML
 
 breadcrumbs: none
 web: "overview" at "literate/index.inweb" in "literate/html"

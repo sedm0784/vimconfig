@@ -1,0 +1,21 @@
+@media (max-width: 600px) {
+  html body nav[role="progress"] ul li {
+    float: left;
+  }
+  html body nav[role="navigation"] {
+    position: static;
+  }
+  main p.commentary {
+    width: 100%;
+  }
+  html body main {
+    margin: 0;
+    min-width: auto;
+  }
+  main div.breadcrumbs {
+    position: static;
+  }
+  body nav[role="progress"] {
+    position: static;
+  }
+}
