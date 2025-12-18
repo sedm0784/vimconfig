@@ -289,9 +289,10 @@ nnoremap <up> :cwindow<CR>
 nnoremap <down> :cc<CR>
 nnoremap <left> :cp<CR>
 nnoremap <right> :cn<CR>
+
 noremap! <left> <nop>
 noremap! <right> <nop>
-" We want to be able to use up and down for accessing command/search history
+
 inoremap <up> <nop>
 inoremap <down> <nop>
 

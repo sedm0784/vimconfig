@@ -24,7 +24,7 @@ let g:alternateExtensions_m = "h"
 let g:alternateExtensions_mm = "h"
 
 @heading CtrlP.
-CtrlP is a terrific buffer/file opening plugin, but these days I only really
+CtrlP is an excellent buffer/file opening plugin, but these days I only really
 use it for its Most Recently Used list. These are the options I used back
 before I became an odious vanilla-Vim hipster when I used it for everything.
 =
@@ -71,10 +71,14 @@ if !exists("g:ctrlp_user_command")
 endif
 
 @heading GetLatestScripts.
-GetLatestScripts is a slightly odd plugin for obtaining and installing plugins
+GetLatestScripts is a slightly[1] odd plugin for obtaining and installing plugins
 that predates the packaging plugin you're probably using by many years. I
-thought it was kind of cool though, and installed a handful of plugins with it
+thought it was kind of cool though[2], and installed a handful of plugins with it
 before Tim Pope wrote pathogen.
+
+[1] Okay, very odd.
+
+[2] Honestly, I still do.
 =
 " Automatic installation
 let g:GetLatestVimScripts_allowautoinstall=1
@@ -123,7 +127,7 @@ let g:SuperTabLongestEnhanced = 1
 @heading Tagbar.
 Tagbar is a plugin that opens a separate window containing the tags in the
 current file to allow you to get an overview of its structure. I use it
-infrequently, but like to be able to open it quickly when I do.
+exceedinlgy infrequently, but like to be able to open it quickly when I do.
 =
 nnoremap <leader>tbt :TagbarToggle<CR>
 

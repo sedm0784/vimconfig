@@ -184,7 +184,7 @@ WITHOUT my muscle memory or existing vimrc file[1] I might be tempted to leave
 these lines out of my vimrc entirely.
 
 Sourcing any file is easy if you're already in it -- |:so %| isn't so hard to
-jype -- and Vim provides a NIFTY mechanism for jumping to a preset location,
+type -- and Vim provides a NIFTY mechanism for jumping to a preset location,
 viz. uppercase marks.
 
 I didn't see the point of these for YEARS until I found out that one great use
@@ -200,10 +200,12 @@ effect caused by ALIENS?
 
 @heading Navigate wrapped lines visually by default.
 This is the part of my configuration that I miss the most when editing
-in an unconfigured copy of Vim. It is SO DISORIENTATING when pressing |j|
+in an unconfigured copy of Vim.[1] It is SO DISORIENTATING when pressing |j|
 moves your cursor down more than one line.
 
 The fix is to swap |j| and |k| with their "display lines" counterparts.
+
+[1] Or, even worse, in Xcode's Vim mode. *shudder*
 =
 noremap j gj
 noremap gj j
@@ -222,18 +224,53 @@ nnoremap <C-H> <C-W>h
 nnoremap <C-L> <C-W>l
 
 @heading Use arrow keys for quickfix.
+I am not an hjkl zealot. Really, I'm not! If you want to move your cursor
+around by mashing your arrow keys that is FINE BY ME. You do you.[1]
+
+Nevertheless. At some point in my Vimming history I decided that I wanted to
+wean myself off the arrow keys. So I bound them all[2] to |<nop>|.[3]
+
+Slightly later, eating solids like a boss, it occurred to me that I could use
+the arrow keys for something else. Interacting with the
+//quickfix -> https://vimhelp.org/quickfix.txt.html#quickfix// seemed an ideal
+candidate. Hence:
+
+[1] I draw the line at doing it in INSERT mode though. Ugh. What could be more
+NORMAL than wanting your cursor to be somewhere else in the file? GET OUT OF
+INSERT MODE.
+
+[2] Yes, even in command line mode. I'm really not a zealot! I just wanted to
+train myself to use the
+//command-line window -> https://vimhelp.org/cmdline.txt.html#c_CTRL-F//,
+which is a spectacularly useful bit of Vim,
+
+[3] For the non-programmers out there, |nop| is, in many programming
+languages, a command that does nothing. Yes you read that right. (It's more
+useful than you might imagine.)
 =
 nnoremap <up> :cwindow<CR>
 nnoremap <down> :cc<CR>
 nnoremap <left> :cp<CR>
 nnoremap <right> :cn<CR>
+
+@ Suggestions on a postcard for what I should use left and right for in
+insert and command-line modes.
+=
 noremap! <left> <nop>
 noremap! <right> <nop>
-" We want to be able to use up and down for accessing command/search history
+
+@ I leave up and down unmapped in command-line mode so I can still use them
+to access command/search history.
+=
 inoremap <up> <nop>
 inoremap <down> <nop>
 
 @heading Disable Ex mode.
+One day I will think of a good use for |Q|.[1] Entering Ex mode ain't it,
+though. I am not about that life.
+
+[1] Probably something to do with
+//macros -> https://normalmo.de/tags/macros//.
 =
 nnoremap Q <nop>
 
@@ -283,7 +320,11 @@ nnoremap <leader>cal :let cal_wrap=&whichwrap<cr>:set whichwrap-=l<cr>:silent! n
 nnoremap * *<C-o>
 nnoremap # #<C-o>
 
-@heading Sane behaviour of Y (i.e. like C and D).
+@heading Consistent behaviour of Y.
+(i.e. like C and D)
+
+Instead of mirroring |yy|, I want |Y| to yank from the cursor to the end of
+the line.
 =
 nnoremap Y y$
 
