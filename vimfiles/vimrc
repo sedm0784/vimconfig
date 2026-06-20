@@ -298,23 +298,10 @@ inoremap <down> <nop>
 
 nnoremap Q <nop>
 
-" Turning spell checking on and off {{{
-
 nnoremap <leader>s :setlocal spell!<cr>:set spell?<cr>
-
-" Turning list on and off {{{
-
 nnoremap <leader>l :setlocal list!<cr>:set list?<cr>
-
-" Turn expandtab on and off {{{
-
 nnoremap <leader>e :setlocal expandtab!<cr>:set expandtab?<cr>
-
-" Turning wrap on and off {{{
-
 nnoremap <leader>w :setlocal nowrap!<cr>:set wrap?<cr>
-
-" Turn colour column on and off {{{
 
 function! ToggleColorColumn()
   if ! &colorcolumn
@@ -351,22 +338,15 @@ snoremap <CR> <Esc><CR>
 
 nnoremap <leader>mm :Make<cr>
 
-" Skip entries in the jumplist that are in the same file
 function! s:jump_skipping_file(backwards) abort
   let this_buffer = bufnr('%')
     while this_buffer == bufnr('%')
       execute "normal!" a:backwards ? "\<C-O>" : "1\<C-I>"
     endwhile
 endfunction
+
 nnoremap <leader><C-O> :call <SID>jump_skipping_file(v:true)<CR>
 nnoremap <leader><C-I> :call <SID>jump_skipping_file(v:false)<CR>
-
-"
-" Dictionary completion of natural language words only works if either 'spell'
-" or 'dictionary' is set. If neither is set, set 'spell' temporarily to allow
-" completion.
-"
-inoremap <expr> <C-X><C-K> !empty(&dictionary) <bar><bar> &spell ? '<C-X><C-K>' : '<C-O>:call <SID>dictionary_complete_nospell()<CR><C-X><C-K>'
 
 function! s:dictionary_complete_nospell() abort
   set spell
@@ -375,6 +355,8 @@ function! s:dictionary_complete_nospell() abort
     autocmd CompleteDone <buffer> ++once set nospell
   augroup END
 endfunction
+
+inoremap <expr> <C-X><C-K> !empty(&dictionary) <bar><bar> &spell ? '<C-X><C-K>' : '<C-O>:call <SID>dictionary_complete_nospell()<CR><C-X><C-K>'
 
 nnoremap <leader><C-]> :tselect <C-R><C-W><CR>
 

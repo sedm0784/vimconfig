@@ -274,26 +274,45 @@ though. I am not about that life.
 =
 nnoremap Q <nop>
 
-@heading Setting toggles.
+@heading Option toggles.
+These toggles were a mistake. Not in the sense that I don't use them—they're
+amongst my most frequently used mappings—but it was a poor choice to make them
+single characters.
+
+If one mapping's |lhs| is a prefix of another's, when you type it, Vim doesn't
+know which of the mappings you mean, and so it has to wait to find out. So if
+you want to execute the shorter mapping you have to wait for
+//'timeoutlen' -> https://vimhelp.org/options.txt.html#%27timeoutlen%27// to
+expire before the mapping will be triggered.
+
+So because the |lhs| of these mappings are the leader plus a single character
+I now cannot create any mappings without slowing these mappings down. Annoying!
+
+The obvious solution is to add an extra character to them[1] but then I would
+have to retrain my muscle memory and as we already established above I'm not
+super keen on doing that so instead I will just moan about it here and hope it
+serves as a WARNING to newer Vimmers not to fall into the same trap.
+
+[1] You will see that in my newer leader mappings I've done just this.
+
+@ The toggles for |'spell'|, |'list'|, |'expandtab'|, and |'wrap'| use the
+|:set| command's |:set option!| syntax to toggle the option regardless of its
+current value, and then immediately query the new value in case I forgot while
+I was typing why I was typing it.
 =
-" Turning spell checking on and off {{{
-
 nnoremap <leader>s :setlocal spell!<cr>:set spell?<cr>
-
-" Turning list on and off {{{
-
 nnoremap <leader>l :setlocal list!<cr>:set list?<cr>
-
-" Turn expandtab on and off {{{
-
 nnoremap <leader>e :setlocal expandtab!<cr>:set expandtab?<cr>
-
-" Turning wrap on and off {{{
-
 nnoremap <leader>w :setlocal nowrap!<cr>:set wrap?<cr>
 
-" Turn colour column on and off {{{
+@ The toggle for |'colorcolumn'| is a bit more FANCY, because colorcolumn
+isn't a boolean but is instead a string. What does it even mean to toggle a
+string?!
 
+Well, in this context of my |ToggleColorColumn()| function below, toggling it
+off means saving the current value into a variable, and toggling it on means
+restoring the saved value if it exists, or setting a default one if not.
+=
 function! ToggleColorColumn()
   if ! &colorcolumn
     if !exists("b:oldcolorcolumn")
@@ -306,6 +325,8 @@ function! ToggleColorColumn()
   endif
 endfunction
 
+@ The mapping then just calls the function.
+=
 nnoremap <silent> <leader>c :call ToggleColorColumn()<cr>
 
 @heading Calculator.
@@ -316,6 +337,9 @@ vnoremap <leader>cal y`>a = <c-r>=<c-r>0<cr><esc>:nohls<cr>
 nnoremap <leader>cal :let cal_wrap=&whichwrap<cr>:set whichwrap-=l<cr>:silent! normal l<cr>:silent! normal l<cr>?\d[0-9. ()*/+-]*<cr>y/[0-9. ()*/+-]*\d/e<cr>`]a = <c-r>=<c-r>0<cr><esc>:nohls<cr>:let &whichwrap=cal_wrap<cr>
 
 @heading Don't search when using * and #.
+
+I find it disorienting, and also sometimes I use |*| just to populate the
+search register. (Yes, I know about |:help c_CTRL-R_CTRL-W|).
 =
 nnoremap * *<C-o>
 nnoremap # #<C-o>
@@ -346,26 +370,43 @@ snoremap <CR> <Esc><CR>
 nnoremap <leader>mm :Make<cr>
 
 @heading File Jumps. Ctrl-O/Ctrl-I skipping current file.
+The jumplist, which tracks the cursor location as you move it around, is one
+of Vim's great features. The //s:jump_skipping_file// function allows me to
+navigate more ZIPPILY through the jumplist by skipping entries until we end up
+in a different buffer. The mechanism is simple: it just reads the current
+buffer number and then repeatedly invokes the |<C-O>| or |<C-I>| commands
+until the buffer number changes.[1]
+
+[1] TECHnically there is a bug in this code: if all the remaining entries in
+the jumplist are in the same file, then the buffer number will never change
+and the function gets STUCK in an infinite loop. This would be easy to fix,
+but I haven't gotten around to it because a). I don't employ the mapping WILLY
+NILLY. I use it purposefully when I know that I've jumped from one file to
+another, b). Even if it does get stuck in an infinite loop, it's no biggy: a
+simple |<C-C>| will get me out of it.
 =
-" Skip entries in the jumplist that are in the same file
 function! s:jump_skipping_file(backwards) abort
   let this_buffer = bufnr('%')
     while this_buffer == bufnr('%')
       execute "normal!" a:backwards ? "\<C-O>" : "1\<C-I>"
     endwhile
 endfunction
+
+@ I then have two mappings, each mirroring their corresponding |<C-O>| or
+|<C-I>| command.
+=
 nnoremap <leader><C-O> :call <SID>jump_skipping_file(v:true)<CR>
 nnoremap <leader><C-I> :call <SID>jump_skipping_file(v:false)<CR>
 
 @heading Dictionary completion with 'nospell'.
-=
-"
-" Dictionary completion of natural language words only works if either 'spell'
-" or 'dictionary' is set. If neither is set, set 'spell' temporarily to allow
-" completion.
-"
-inoremap <expr> <C-X><C-K> !empty(&dictionary) <bar><bar> &spell ? '<C-X><C-K>' : '<C-O>:call <SID>dictionary_complete_nospell()<CR><C-X><C-K>'
+Dictionary completion of natural language words only works if either |'spell'|
+or |'dictionary'| is set. If neither is set when invoking it, set |'spell'|
+temporarily to allow completion.
 
+The |s:dictionary_complete_nospell()| function sets |'spell'| and sets up a
+one-shot autocommand with |++once| to unset it again when completion is
+complete.
+=
 function! s:dictionary_complete_nospell() abort
   set spell
   augroup dictionary_complete_nospell
@@ -373,6 +414,11 @@ function! s:dictionary_complete_nospell() abort
     autocmd CompleteDone <buffer> ++once set nospell
   augroup END
 endfunction
+
+@ We map over the top of the usual command to initiate dictionary completion
+to call the function when necessary, and then start dictionary completion.
+=
+inoremap <expr> <C-X><C-K> !empty(&dictionary) <bar><bar> &spell ? '<C-X><C-K>' : '<C-O>:call <SID>dictionary_complete_nospell()<CR><C-X><C-K>'
 
 @heading Faster tselect.
 =
