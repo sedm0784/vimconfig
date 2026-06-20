@@ -107,7 +107,7 @@ set statusline+=\ %Y,%{&fileformat},%{&fileencoding}
 set statusline+=%(\ %{StatuslinePluginItems()}%)
 set statusline+=%=
 set statusline+=\ hex=%02.4B
-set statusline+=\ c%v/%{strlen(getline('.'))}
+set statusline+=\ c%v/%{strdisplaywidth(getline('.'))}
 set statusline+=\ l%l/%L
 set statusline+=\ %p%%
 
