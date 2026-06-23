@@ -361,8 +361,6 @@ inoremap <expr> <C-X><C-K> !empty(&dictionary) <bar><bar> &spell ? '<C-X><C-K>' 
 
 nnoremap <leader><C-]> :tselect <C-R><C-W><CR>
 
-" FIXME: I wrote this for someone asking on Mastodon, but leaving it here for
-"        now so I remember to polish it, and maybe even start using it!
 function! s:visual_zz() abort
   let ends = [line('v'), line('.')]
   let top = min(ends)

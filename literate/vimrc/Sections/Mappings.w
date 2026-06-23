@@ -53,8 +53,8 @@ augroup END
 @ Astute readers will have noticed that this re-creates the mapping EVERY TIME
 I enter insert mode. In practice, I don't find this to be an issue -- it's
 essentially instantaneous. However, for many years before deciding it was
-over-engineered, I used a more complicated version that only fired once before
-deleting all traces of the autocommand that triggered it.
+horrifically over-engineered, I used a more complicated version that only
+fired once before deleting all traces of the autocommand that triggered it.
 
 = (text as code)
 if !exists('g:escape_mapped')
@@ -70,6 +70,10 @@ function! s:setupEscapeMap()
   autocmd! escape_mapping InsertEnter *
   augroup! escape_mapping
 endfunction
+
+@ Vim actually includes a MUCH simpler method of doing this. DISCOVER what it
+is by reading the rest of this section: I use it in another mapping further
+down...
 
 @heading Always use very magic searches.
 By default, Vim's regular expressions are configured in a way intended to make
@@ -422,13 +426,18 @@ to call the function when necessary, and then start dictionary completion.
 inoremap <expr> <C-X><C-K> !empty(&dictionary) <bar><bar> &spell ? '<C-X><C-K>' : '<C-O>:call <SID>dictionary_complete_nospell()<CR><C-X><C-K>'
 
 @heading Faster tselect.
+Vim's ctags integration is a great way of navigating code, but in some of the
+codebases I regularly deal with, executing |:tag| via the |<C-]>| keybinding
+without a count often jumps to the wrong tag. The |:tselect| command is better
+in this scenario, as it allows you to pick a tag from a list. So I have this
+l'il mapping for it.
 =
 nnoremap <leader><C-]> :tselect <C-R><C-W><CR>
 
 @heading Visual mode zz.
+FIXME: I wrote this for someone asking on Mastodon, but leaving it here for
+now so I remember to polish it, and maybe even start using it!
 =
-" FIXME: I wrote this for someone asking on Mastodon, but leaving it here for
-"        now so I remember to polish it, and maybe even start using it!
 function! s:visual_zz() abort
   let ends = [line('v'), line('.')]
   let top = min(ends)
