@@ -241,21 +241,6 @@ set statusline+=\ c%v/%{strdisplaywidth(getline('.'))}
 set statusline+=\ l%l/%L
 set statusline+=\ %p%%
 
-command! -bang Cn cn<bang>
-command! -bang Q q<bang>
-command! -bang Qal qall<bang>
-command! -bang Qall qall<bang>
-command! -bang Wqall wqall<bang>
-
-command! -complete=option -nargs=* Set set <args>
-command! -complete=option -nargs=* Setl setl <args>
-
-cabbrev <expr> W (getcmdtype() == ':' && getcmdpos() == 2) ? 'w' : 'W'
-cabbrev <expr> Wq (getcmdtype() == ':' && getcmdpos() == 3) ? 'wq' : 'Wq'
-
-iabbrev unsinged unsigned
-iabbrev Pythong Python
-
 augroup escape_mapping
   autocmd!
   autocmd InsertEnter * nnoremap <Esc> :nohlsearch<CR><Esc>
@@ -399,6 +384,21 @@ endfunction
 
 command! SyntaxQuery call s:syntax_query()
 
+command! -bang Cn cn<bang>
+command! -bang Q q<bang>
+command! -bang Qal qall<bang>
+command! -bang Qall qall<bang>
+command! -bang Wqall wqall<bang>
+
+command! -complete=option -nargs=* Set set <args>
+command! -complete=option -nargs=* Setl setl <args>
+
+cabbrev <expr> W (getcmdtype() == ':' && getcmdpos() == 2) ? 'w' : 'W'
+cabbrev <expr> Wq (getcmdtype() == ':' && getcmdpos() == 3) ? 'wq' : 'Wq'
+
+iabbrev unsinged unsigned
+iabbrev Pythong Python
+
 let s:blink_length = has('timers') ? 500 : 100
 
 let s:blink_freq = 50
@@ -500,48 +500,6 @@ let &t_EI = "\e[2 q"
 
 endif
 
-if OperatingSystem("ios")
-  isetekbd insert {'buttons':[
-                           \{'keys':[{'title':':',
-                                     \'type':'insert',
-                                     \'contents':':'}]},
-                           \{'keys':[{'title':'~',
-                                    \ 'type':'insert',
-                                    \ 'contents':'~'}],
-                           \'locations':[1]}
-                           \],
-                \'locations':[10,10]}
-
-
-isetekbd replace {'buttons':[{'keys':[{'title':'`',
-                                     \'type':'insert',
-                                     \'contents':'`'}],
-                            \'locations':[0]
-                            \}],
-                \'locations':[9]}
-
-
-
-
-  function! s:vimclippy() abort
-  edit vimclippy
-  silent put! +
-  $delete
-  1
-  augroup vimclippy
-    autocmd!
-    autocmd BufWriteCmd vimclippy %yank + | set nomodified
-  augroup END
-endfunction
-
-command! VimClippy call s:vimclippy()
-
-
-  let g:gitgutter_enabled = 0
-
-
-endif
-
 let g:alternateExtensions_h = "c,cpp,cxx,cc,CC,m,mm"
 let g:alternateExtensions_H = "C,CPP,CXX,CC,M,MM"
 let g:alternateExtensions_cpp = "h,hpp"
@@ -621,6 +579,48 @@ if has('terminal')
   let g:slime_target = "vimterminal"
 else
   let g:slime_target = "tmux"
+endif
+
+if OperatingSystem("ios")
+  isetekbd insert {'buttons':[
+                           \{'keys':[{'title':':',
+                                     \'type':'insert',
+                                     \'contents':':'}]},
+                           \{'keys':[{'title':'~',
+                                    \ 'type':'insert',
+                                    \ 'contents':'~'}],
+                           \'locations':[1]}
+                           \],
+                \'locations':[10,10]}
+
+
+isetekbd replace {'buttons':[{'keys':[{'title':'`',
+                                     \'type':'insert',
+                                     \'contents':'`'}],
+                            \'locations':[0]
+                            \}],
+                \'locations':[9]}
+
+
+
+
+  function! s:vimclippy() abort
+  edit vimclippy
+  silent put! +
+  $delete
+  1
+  augroup vimclippy
+    autocmd!
+    autocmd BufWriteCmd vimclippy %yank + | set nomodified
+  augroup END
+endfunction
+
+command! VimClippy call s:vimclippy()
+
+
+  let g:gitgutter_enabled = 0
+
+
 endif
 
 let g:astronomer_super_secret_debug_option=1

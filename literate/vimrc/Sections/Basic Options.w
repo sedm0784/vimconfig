@@ -48,7 +48,7 @@ is set, and unset it if it is.
 [1] Okay, this is sounding pretty contrived now I'm writing it. You probably
 don't need these lines in your vimrc.
 
-= (early code)
+= (very early code)
 if &compatible
   set nocompatible
 endif
@@ -56,7 +56,7 @@ endif
 @heading Unicode, yo.
 FIXME
 
-= (early code)
+= (very early code)
 set encoding=utf-8
 scriptencoding utf-8
 

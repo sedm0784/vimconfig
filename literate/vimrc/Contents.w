@@ -5,16 +5,16 @@ Language: Vimscript
 
 Sections
   Basic Options
-  Detect Operating System
   Colours and Highlighting
   Status Line
-  Snippets and Typo Correction
   Mappings
   User-Defined Commands
+  Snippets and Typo Correction
+  Detect Operating System
   Die Blinkenmatchen
   Disable Click-Through
   Terminal Vim Cursor Shape
-  iVim Configuration
   Plugin Configuration
+  iVim Configuration
   Ignore This Section
   Original Unconverted Vimscript
