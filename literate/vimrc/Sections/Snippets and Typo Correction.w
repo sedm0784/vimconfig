@@ -26,18 +26,20 @@ command! -complete=option -nargs=* Set set <args>
 command! -complete=option -nargs=* Setl setl <args>
 
 @ Finally, I have a couple that IIRC, can't so easily be implemented as
-commands.[1][2] I use abbreviations for these.
+commands. [1] [2] I use abbreviations for these.
 
 When using an abbreviation in the command line, it's important to make sure
-it doesn't fire when you don't want it to.[3] I use |getcmdtype()| and
+it doesn't fire when you don't want it to. [3] I use |getcmdtype()| and
 |getcmdpos()| here to ensure the abbreviation only kicks in at appropriate
 times.
 
 [1] It's possible these could be handled similar to |:set|, and the only
 reason that they're not is that these abbreviations predate my learning that
 you could use user-defined commands to correct typos in this way!
+
 [2] |:wq| can take an |++opt| and an argument. I actually never use this
 feature, but ¯\_(ツ)_/¯.
+
 [3] Especially ones that have such a short |{lhs}|!
 =
 cabbrev <expr> W (getcmdtype() == ':' && getcmdpos() == 2) ? 'w' : 'W'

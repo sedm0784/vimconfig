@@ -1,5 +1,6 @@
 Title: python.vim
 Author: Rich Cheng
+Notation: InwebClassic
 Purpose: Python file type configuration
 Language: Vimscript
 

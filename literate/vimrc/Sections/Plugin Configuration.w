@@ -86,7 +86,7 @@ let g:GetLatestVimScripts_allowautoinstall=1
 @heading Gundo.
 Gundo is a great plugin for visualising and navigating the undo tree, but it
 doesn't work half the time because most of my Vim installations don't have
-functioning Python integrations[1][2], and so these days I mostly get by with
+functioning Python integrations, [1] [2] and so these days I mostly get by with
 the |g-|/|g+| normal mode commands and the |:earlier| and |:later| ex
 commands. But every now and again it's useful, so I still have this mapping to
 open it quickly.

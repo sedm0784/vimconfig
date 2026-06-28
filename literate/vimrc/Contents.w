@@ -1,5 +1,6 @@
 Title: vimrc
 Author: Rich Cheng
+Notation: InwebClassic
 Purpose: General Configuration
 Language: Vimscript
 

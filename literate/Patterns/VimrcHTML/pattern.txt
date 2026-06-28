@@ -1,3 +1,0 @@
-name: VimrcHTML based on GitHubPages
-
-plugin: VimCSS

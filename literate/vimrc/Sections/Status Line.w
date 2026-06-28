@@ -123,35 +123,38 @@ set statusline+=\ %p%%
 (-*) |%*| -- And revert to the original colouring.
 
 @heading Flags.
-(*) |%r%h%w%q| -- Standard flags:
-(-*) |%r| -- Displays |[RO]| if the file is read-only.
-(-*) |%h| -- Displays |[help]| if the window is displaying a help buffer.
-(-*) |%w| -- Displays |[Preview]| if the window is the preview window. (See
-|:help preview-window|.)
-(-*) |%q| -- Displays |[Quickfix List]| or |[Location List]| as appropriate.
-(See |:help quickfix|.)
-(*) Highlighted modified flag:
-(-*) |%#Error#| -- Set the |Error| highlight colour,
-(-*) |%{StatuslineModified()}| -- Add the highlighted |[+]| modified flag using
-//StatuslineModified//,
-(-*) |%*| -- Revert to original colouring
-(*) |%{StatuslineModifiable()}| -- The |[-]| modifiable flag
-(*) |\ %Y,%{&fileformat},%{&fileencoding}| -- A space followed by the file's
-|filetype|, |fileformat|, and |fileencoding|, separated by commas.
+FIXME
+=
+"(*) |%r%h%w%q| -- Standard flags:
+"(-*) |%r| -- Displays |[RO]| if the file is read-only.
+"(-*) |%h| -- Displays |[help]| if the window is displaying a help buffer.
+"(-*) |%w| -- Displays |[Preview]| if the window is the preview window. (See
+"|:help preview-window|.)
+"(-*) |%q| -- Displays |[Quickfix List]| or |[Location List]| as appropriate.
+"(See |:help quickfix|.)
+"(*) Highlighted modified flag:
+"(-*) |%#Error#| -- Set the |Error| highlight colour,
+"(-*) |%{StatuslineModified()}| -- Add the highlighted |[+]| modified flag using
+"//StatuslineModified//,
+"(-*) |%*| -- Revert to original colouring
+"(*) |%{StatuslineModifiable()}| -- The |[-]| modifiable flag
+"(*) |\ %Y,%{&fileformat},%{&fileencoding}| -- A space followed by the file's
+"|filetype|, |fileformat|, and |fileencoding|, separated by commas.
 
 @heading Plugin items.
 There's one little quirk here. We want a space before the plugin items, but
 ONLY if they actually exist. Wrapping the |\ %{StatuslinePluginItems()}| in an
 item group with |%(...%)| means that if //StatuslinePluginItems// returns an
-empty string[1], the entire group, including the preceding space, will be omitted
+empty string, [1] the entire group, including the preceding space, will be omitted
 from the status line.
 
 In an earlier version of this code I just included the space as part of the
 string returned by //StatuslinePluginItems//, but there seems to be a weird
 quirk here: when the |%{...}| immediately follows another |%{...}| the
-space is dropped.[2]
+space is dropped. [2]
 
 [1] If the plugins are not installed.
+
 [2] It's a known bug in Vim's statusline handling, but it looks like the Vim
 maintainers don't have any plans to fix it. Because fiddly.
 https://github.com/vim/vim/issues/3898

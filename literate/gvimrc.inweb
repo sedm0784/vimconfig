@@ -1,5 +1,6 @@
 Title: gvimrc
 Author: Rich Cheng
+Notation: InwebClassic
 Purpose: GUI-Specific Configuration
 Language: Vimscript
 
@@ -9,7 +10,7 @@ meaningless in the terminal and UGLY |has('gui_running')| checks.
 
 @heading GUI options.
 On Windows, I turn off the menu bar and tool bar. The whole point of Vim is
-not to have to use the mouse![1]
+not to have to use the mouse! [1]
 
 On Mac, I set the default fullscreen options to allow the editing area to fill
 the entire screen and use the |Normal| highlight group for the surrounding

@@ -1,0 +1,4 @@
+Pattern "VimrcHTML" {
+  based on: GitHubPages
+  plugin: VimCSS
+}

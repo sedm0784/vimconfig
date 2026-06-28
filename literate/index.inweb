@@ -4,5 +4,7 @@ Author: Rich Cheng
 @ This is my annotated Vim configuration. And when I say it is my config, I
 mean it IS my config.
 
-@ It's written in the Literate Programming system
-//Inweb -> https://ganelson.github.io/inweb///.
+It's written in the Literate Programming system,
+//Inweb -> https://ganelson.github.io/inweb/// and so it's compiled into both
+my actual |.vim| directory that Vim reads, and also into a human-readable
+version. viz. this website.

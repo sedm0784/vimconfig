@@ -1,0 +1,48 @@
+Colony {
+  patterns: "Patterns"
+  default: pattern "VimrcHTML" breadcrumbs "Home: //overview//"
+
+  using: "vimscript.inweb"
+
+  member: "overview"                                    to "" breadcrumbs ""
+  member: "vimrc"      at "vimrc"
+  member: "gvimrc"     at "gvimrc.inweb"                to ""
+  member: "python.vim" at "after/ftplugin/python.inweb" to "after/ftplugin/"
+
+  Page "overview" {
+    Title: My Vim Configuration
+    Notation: Markdown
+
+    This is my annotated Vim configuration. And when I say it is my
+    config, I mean it IS my config.
+
+    It's written in the Literate Programming system
+    [Inweb](https://ganelson.github.io/inweb/), and so it's compiled into
+    both my actual `.vim` directory that Vim reads, and also into a
+    human-readable version. viz. this website.
+
+    ## Organization
+
+    Conventions {
+      commentary uses Markdown markup
+    }
+  }
+
+  Navigation {
+    <h1>[[Link "overview"]]
+    <img src="[[Docs]]normalmode_logo.png" width=72 height=72">
+    </a></h1>
+    [[Menu "vimrc"]]
+    [[Item "vimrc"]]
+    [[Item "gvimrc"]]
+    [[Menu "Filetype Plugins"]]
+    [[Item "python.vim" -> /after/ftplugin/python.html]]
+    [[Menu "Normal Mode"]]
+    [[Item "Main Site" -> http://tiddler.local:8013/]]
+    [[Item "Mastodon" -> https://mastodon.social/@normalmode]]
+  }
+
+  Conventions {
+    commentary uses simplified markup
+  }
+}

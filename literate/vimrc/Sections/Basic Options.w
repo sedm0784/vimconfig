@@ -1,4 +1,4 @@
-Basic options.
+Basic Options.
 
 Set various options.
 
@@ -255,8 +255,8 @@ the column of the match as well as the line.
 set grepformat^=%f:%l:%c:%m
 
 @ I have two further things elsewhere in my config to improve search
-functionality. //Die Blinkenmatchen//, and FIXME //A mapping to clear search
-highlights//.
+functionality. //Die Blinkenmatchen//, and FIXME A mapping to clear search
+highlights.
 
 @heading Completion. Vim has a remarkably flexible and peculiar set of
 completion features.
