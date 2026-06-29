@@ -26,7 +26,7 @@ rm -r literate/html || exit 1
 mkdir -p literate/docs/docs-assets
 mkdir -p literate/docs/vimrc
 mkdir -p literate/docs/gvimrc
-mkdir -p literate/docs/after/ftplugin/mail
-mkdir -p literate/docs/after/ftplugin/python
+mkdir -p literate/docs/after/ftplugin/mail.vim
+mkdir -p literate/docs/after/ftplugin/python.vim
 inweb weave literate -using literate/vimscript.inweb -using literate/Patterns
 mv literate/docs literate/html

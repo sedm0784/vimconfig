@@ -6,9 +6,9 @@ Colony {
 
   member: "overview"                                    to "" breadcrumbs ""
   member: "vimrc"      at "vimrc"
-  member: "gvimrc"     at "gvimrc.inweb"                to ""
-  member: "mail.vim"   at "after/ftplugin/mail.vim.w"   to "after/ftplugin/"
-  member: "python.vim" at "after/ftplugin/python.inweb" to "after/ftplugin/"
+  member: "gvimrc"     at "gvimrc.inweb"                to "gvimrc/index.html"
+  member: "mail.vim"   at "after/ftplugin/mail.vim.w"   to "after/ftplugin/mail.vim/index.html"
+  member: "python.vim" at "after/ftplugin/python.inweb" to "after/ftplugin/python.vim/index.html"
 
   Page "overview" {
     Title: My Vim Configuration
@@ -34,11 +34,11 @@ Colony {
     <img src="[[Docs]]normalmode_logo.png" width=72 height=72">
     </a></h1>
     [[Menu "vimrc"]]
-    [[Item "vimrc"]]
-    [[Item "gvimrc"]]
+    [[Item "vimrc" -> /vimrc/]]
+    [[Item "gvimrc" -> /gvimrc/]]
     [[Menu "Filetype Plugins"]]
-    [[Item "mail.vim" -> /after/ftplugin/mail.html]]
-    [[Item "python.vim" -> /after/ftplugin/python.html]]
+    [[Item "mail.vim" -> /after/ftplugin/mail.vim/]]
+    [[Item "python.vim" -> /after/ftplugin/python.vim/]]
     [[Menu "Normal Mode"]]
     [[Item "Main Site" -> http://tiddler.local:8013/]]
     [[Item "Mastodon" -> https://mastodon.social/@normalmode]]
