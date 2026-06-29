@@ -1,9 +1,24 @@
+Title: mail.vim
+Author: Rich Cheng
+Purpose: Mail file type configuration
+Language: Vimscript
+
+@ This file, installed at `.vim/after/ftplugins/mail.vim` contains my filetype specific configuration for writing emails.
+
+@ Turn on British spell checking
+=
 set spell
 set spelllang=en_gb
 
+@ Set textwidth and format options
+=
 setlocal textwidth=72
 setlocal formatoptions=tcrqwanj
 
+@ Some commands to run when starting a reply
+This is a tweaked version of
+http://www.mdlerch.com/emailing-mutt-and-vim-advanced-config.html
+=
 function! s:IsReply()
     " FIXME: Instead of doing this, check for sig line first real content, or,
     " possibly better, if content matches sig
@@ -32,4 +47,3 @@ function! FormatReply()
         :1
     endif
 endfunction
-

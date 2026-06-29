@@ -7,6 +7,7 @@ Colony {
   member: "overview"                                    to "" breadcrumbs ""
   member: "vimrc"      at "vimrc"
   member: "gvimrc"     at "gvimrc.inweb"                to ""
+  member: "mail.vim"   at "after/ftplugin/mail.vim.w"   to "after/ftplugin/"
   member: "python.vim" at "after/ftplugin/python.inweb" to "after/ftplugin/"
 
   Page "overview" {
@@ -36,6 +37,7 @@ Colony {
     [[Item "vimrc"]]
     [[Item "gvimrc"]]
     [[Menu "Filetype Plugins"]]
+    [[Item "mail.vim" -> /after/ftplugin/mail.html]]
     [[Item "python.vim" -> /after/ftplugin/python.html]]
     [[Menu "Normal Mode"]]
     [[Item "Main Site" -> http://tiddler.local:8013/]]
