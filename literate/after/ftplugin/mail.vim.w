@@ -5,32 +5,20 @@ Language: Vimscript
 
 @ This file, installed at `.vim/after/ftplugins/mail.vim` contains my filetype specific configuration for writing emails.
 
-@ Turn on British spell checking
+@heading Turn on British spell checking.
 =
 set spell
 set spelllang=en_gb
 
-@ Set textwidth and format options
+@heading Set textwidth and format options.
 =
 setlocal textwidth=72
 setlocal formatoptions=tcrqwanj
 
-@ Some commands to run when starting a reply
-This is a tweaked version of
-http://www.mdlerch.com/emailing-mutt-and-vim-advanced-config.html
+@heading Reply formatting.
+Some commands to run when starting a reply. This is a tweaked version of
+[http://www.mdlerch.com/emailing-mutt-and-vim-advanced-config.html](http://www.mdlerch.com/emailing-mutt-and-vim-advanced-config.html)
 =
-function! s:IsReply()
-    " FIXME: Instead of doing this, check for sig line first real content, or,
-    " possibly better, if content matches sig
-
-    " New emails start with a blank line. Replies start with a header
-    if len(getline(1)) > 0
-        return 1
-    else
-        return 0
-    endif
-endfunction
-
 function! FormatReply()
     " FIXME: This breaks various bits of formatting in some emails
     if (s:IsReply())
@@ -45,5 +33,17 @@ function! FormatReply()
         :1
         :put! =\"\n\n\"
         :1
+    endif
+endfunction
+
+function! s:IsReply()
+    " FIXME: Instead of doing this, check for sig line first real content, or,
+    " possibly better, if content matches sig
+
+    " New emails start with a blank line. Replies start with a header
+    if len(getline(1)) > 0
+        return 1
+    else
+        return 0
     endif
 endfunction
