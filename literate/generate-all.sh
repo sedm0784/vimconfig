@@ -30,3 +30,5 @@ mkdir -p literate/docs/after/ftplugin/mail.vim
 mkdir -p literate/docs/after/ftplugin/python.vim
 inweb weave literate -using literate/vimscript.inweb -using literate/Patterns
 mv literate/docs literate/html
+# FIXME: Copy in nav logo using inweb itself
+cp literate/normalmode_logo.png literate/html
