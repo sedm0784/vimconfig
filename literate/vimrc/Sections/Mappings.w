@@ -16,33 +16,33 @@ probably wouldn't add it today.[1]
 So having established that you don't want it, I should probably explain what
 this mapping is.
 
-Vim's |'hlsearch'| option causes Vim to highlight all search matches. Once
+Vim's `'hlsearch'` option causes Vim to highlight all search matches. Once
 you're done searching, you probably don't want the search matches to remain
-highlighted FOREVER, but you also don't want to turn off |'hlsearch'|
+highlighted FOREVER, but you also don't want to turn off `'hlsearch'`
 entirely, because then you'd have to turn it on again the next time you
 search, which would be a drag.
 
-Vim provides a |:nohlsearch| command to turn off the highlighting temporarily
+Vim provides a `:nohlsearch` command to turn off the highlighting temporarily
 until the next search. Problem solved! Except it's a bit awkward to type all
-the time, even in its maximally abbreviated form, |:noh|.
+the time, even in its maximally abbreviated form, `:noh`.
 
-So it's nice to have a mapping to run this command quickly. I use |<Esc>|
+So it's nice to have a mapping to run this command quickly. I use `<Esc>`
 for this, after reading it suggested at
-//viemu.com -> http://www.viemu.com/blog/2009/06/16/a-vim-and-viemu-mapping-you-really-cant-miss-never-type-noh-again///.
+[viemu.com](http://www.viemu.com/blog/2009/06/16/a-vim-and-viemu-mapping-you-really-cant-miss-never-type-noh-again/).
 
 But after using this for a while I started to find it had a few odd side
 effects.
-//As explained by the good people at the Vi & Vim StackExchange -> https://vi.stackexchange.com/questions/2614/why-does-this-esc-nmap-affect-startup//,
+[As explained by the good people at the Vi & Vim StackExchange](https://vi.stackexchange.com/questions/2614/why-does-this-esc-nmap-affect-startup),
 it turns out this is due to the mapping intefering with the escape codes Vim
 uses for communicating with the terminal at startup.
 
 The solution was to set it up with an autocommand a bit later on after
-startup. |VimEnter| was apparently still too early to avoid the problems I was
-seeing, so, either because my solution predated Vim's |+timers| feature, or
+startup. `VimEnter` was apparently still too early to avoid the problems I was
+seeing, so, either because my solution predated Vim's `+timers` feature, or
 possibly just because I hadn't learned how to use them yet, I set it up to
 create the mapping when I enter insert mode.
 
-[1] I'd likely use |:nnoremap <C-L>:noh<CR><C-L>| instead, tagging along with
+[1] I'd likely use `:nnoremap <C-L>:noh<CR><C-L>` instead, tagging along with
 the "clear-screen" function instead of the "return to normal mode" one.
 =
 augroup escape_mapping
@@ -78,11 +78,11 @@ down...
 @heading Always use very magic searches.
 By default, Vim's regular expressions are configured in a way intended to make
 the average search within source code as easy and quick to type as possible.
-So some characters, such as |.| or |*| have a special meaning[1], and need to be
+So some characters, such as `.` or `*` have a special meaning[1], and need to be
 escaped with a preceding backslash to match their literal values. But others
 work in exactly the opposite way: they need to be escaped in order to access
-their special meaning. so e.g. |?| will match a question mark: you need to use
-|\?| in order to specify that the previous atom is optional. Vim confidently
+their special meaning. so e.g. `?` will match a question mark: you need to use
+`\?` in order to specify that the previous atom is optional. Vim confidently
 labels this behaviour "magic".
 
 While I understand the reasoning behind it, in practice I usually find the
@@ -92,11 +92,11 @@ backslash. Backslash backslash backslash!
 
 Vim provides a BUNCH of mechanisms for altering this behaviour: here I set up
 a mapping that makes all my searches "very magic" by prepopulating the search
-command-line with the |\v| atom. This means almost all non alphanumeric
+command-line with the `\v` atom. This means almost all non alphanumeric
 characters use their special meanings unless you escape them.
 
 If I ever want to quickly use a regular magic[2] search I just hit the
-backspace a couple of times after entering the |/| search to delete the |\v|.
+backspace a couple of times after entering the `/` search to delete the `\v`.
 
 [1] "Any character", and "any number of the previous atom, including zero",
 respectively.
@@ -119,8 +119,8 @@ because I'd have said "yes" and then got shot in the head.
 I don't actually use this. Did I mention NOSTALGIA?
 
 I'm leaving it here just for YOUR benefit, dear reader. Did you know you could
-map the function keys using either |<F3>| or |#3|. Did you know GUI Vim
-offered access to GUI save/open dialogs via the |:browse| command?
+map the function keys using either `<F3>` or `#3`. Did you know GUI Vim
+offered access to GUI save/open dialogs via the `:browse` command?
 
 Well now you do!
 =
@@ -133,7 +133,7 @@ for writing the email bodies.
 
 After reading some article about its superior wrapping algorithms I set up
 these mappings to reformat my hard-wrapped paragraphs using the external tool
-|par|.
+`par`.
 = (text as code)
 nnoremap <leader>rr vip:!par -q 72<CR>
 vnoremap <leader>rr :!par -q 72<CR>
@@ -141,17 +141,17 @@ vnoremap <leader>rr :!par -q 72<CR>
 @ As the world moved on, this stopped working so well. Hard-wrapping can be
 inflexible when emails are viewed on the WILDLY different screen sizes and
 resolutions found today, so I started formatting my emails with
-//format=flowed -> https://joeclark.org/ffaq.html//.
+[format=flowed](https://joeclark.org/ffaq.html).
 
 This was a clever idea some NERDS came up with where you could write emails
 with hard-wrapped lines, but leaving whitespace at the end of a line would
 cause mail clients to DISPLAY them with the lines joined together but also
 soft-wrapped. Ingenious!
 
-|par| didn't support |format=flowed|, but Vim does via the |w| entry in
-|'formatoptions'|! So I updated my mappings to workaround a minor issue in
-|gq|: it won't re-join short lines when |formatoptions| contains |w|. The
-mappings therefore join the lines first with |J| before invoking |gq|. It
+`par` didn't support `format=flowed`, but Vim does via the `w` entry in
+`'formatoptions'`! So I updated my mappings to workaround a minor issue in
+`gq`: it won't re-join short lines when `formatoptions` contains `w`. The
+mappings therefore join the lines first with `J` before invoking `gq`. It
 feels like there must be a reason why the normal-mode mapping also adds an
 extra blank line below the re-formatted paragraph, but I have absolutely no
 idea what that reason might be.
@@ -161,9 +161,9 @@ vnoremap <leader>rr Jgvgq
 
 @ It doesn't matter though, because unfortunately, it turns out there are
 INSUFFICIENT NERDS writing emails. Some prolific email client or other[1]
-couldn't be bothered to implement |format=flowed|, and because of this I
+couldn't be bothered to implement `format=flowed`, and because of this I
 eventually stopped using it and now just write my emails with soft-wrapping
-and am sad forever that the |>| quoted text markers are only visible on the
+and am sad forever that the `>` quoted text markers are only visible on the
 first line of the paragraph.
 
 So the only reason I still have these lines in my vimrc is so I could give you
@@ -187,15 +187,15 @@ nnoremap <leader>vs :source $MYVIMRC<CR>
 WITHOUT my muscle memory or existing vimrc file[1] I might be tempted to leave
 these lines out of my vimrc entirely.
 
-Sourcing any file is easy if you're already in it -- |:so %| isn't so hard to
+Sourcing any file is easy if you're already in it -- `:so %` isn't so hard to
 type -- and Vim provides a NIFTY mechanism for jumping to a preset location,
 viz. uppercase marks.
 
 I didn't see the point of these for YEARS until I found out that one great use
 for them is as permanent bookmarks.
 
-I have my |'T| mark set to a location in a |todo.txt| file, so |'T| will
-quickly jump there whatever I'm doing at the time. Similarly, setting my |V|
+I have my `'T` mark set to a location in a `todo.txt` file, so `'T` will
+quickly jump there whatever I'm doing at the time. Similarly, setting my `V`
 mark to the top of my vimrc would faciliate FAST vimrc access without any
 mappings.
 
@@ -204,10 +204,10 @@ effect caused by ALIENS?
 
 @heading Navigate wrapped lines visually by default.
 This is the part of my configuration that I miss the most when editing
-in an unconfigured copy of Vim.[1] It is SO DISORIENTATING when pressing |j|
+in an unconfigured copy of Vim.[1] It is SO DISORIENTATING when pressing `j`
 moves your cursor down more than one line.
 
-The fix is to swap |j| and |k| with their "display lines" counterparts.
+The fix is to swap `j` and `k` with their "display lines" counterparts.
 
 [1] Or, even worse, in Xcode's Vim mode. *shudder*
 =
@@ -232,11 +232,11 @@ I am not an hjkl zealot. Really, I'm not! If you want to move your cursor
 around by mashing your arrow keys that is FINE BY ME. You do you.[1]
 
 Nevertheless. At some point in my Vimming history I decided that I wanted to
-wean myself off the arrow keys. So I bound them all[2] to |<nop>|.[3]
+wean myself off the arrow keys. So I bound them all[2] to `<nop>`.[3]
 
 Slightly later, eating solids like a boss, it occurred to me that I could use
 the arrow keys for something else. Interacting with the
-//quickfix -> https://vimhelp.org/quickfix.txt.html#quickfix// seemed an ideal
+[quickfix](https://vimhelp.org/quickfix.txt.html#quickfix) seemed an ideal
 candidate. Hence:
 
 [1] I draw the line at doing it in INSERT mode though. Ugh. What could be more
@@ -245,10 +245,10 @@ INSERT MODE.
 
 [2] Yes, even in command line mode. I'm really not a zealot! I just wanted to
 train myself to use the
-//command-line window -> https://vimhelp.org/cmdline.txt.html#c_CTRL-F//,
+[command-line window](https://vimhelp.org/cmdline.txt.html#c_CTRL-F),
 which is a spectacularly useful bit of Vim,
 
-[3] For the non-programmers out there, |nop| is, in many programming
+[3] For the non-programmers out there, `nop` is, in many programming
 languages, a command that does nothing. Yes you read that right. (It's more
 useful than you might imagine.)
 =
@@ -270,11 +270,11 @@ inoremap <up> <nop>
 inoremap <down> <nop>
 
 @heading Disable Ex mode.
-One day I will think of a good use for |Q|.[1] Entering Ex mode ain't it,
+One day I will think of a good use for `Q`.[1] Entering Ex mode ain't it,
 though. I am not about that life.
 
 [1] Probably something to do with
-//macros -> https://normalmo.de/tags/macros//.
+[macros](https://normalmo.de/tags/macros).
 =
 nnoremap Q <nop>
 
@@ -283,13 +283,13 @@ These toggles were a mistake. Not in the sense that I don't use them—they're
 amongst my most frequently used mappings—but it was a poor choice to make them
 single characters.
 
-If one mapping's |lhs| is a prefix of another's, when you type it, Vim doesn't
+If one mapping's `lhs` is a prefix of another's, when you type it, Vim doesn't
 know which of the mappings you mean, and so it has to wait to find out. So if
 you want to execute the shorter mapping you have to wait for
-//'timeoutlen' -> https://vimhelp.org/options.txt.html#%27timeoutlen%27// to
+['timeoutlen'](https://vimhelp.org/options.txt.html#%27timeoutlen%27) to
 expire before the mapping will be triggered.
 
-So because the |lhs| of these mappings are the leader plus a single character
+So because the `lhs` of these mappings are the leader plus a single character
 I now cannot create any mappings without slowing these mappings down. Annoying!
 
 The obvious solution is to add an extra character to them[1] but then I would
@@ -299,8 +299,8 @@ serves as a WARNING to newer Vimmers not to fall into the same trap.
 
 [1] You will see that in my newer leader mappings I've done just this.
 
-@ The toggles for |'spell'|, |'list'|, |'expandtab'|, and |'wrap'| use the
-|:set| command's |:set option!| syntax to toggle the option regardless of its
+@ The toggles for `'spell'`, `'list'`, `'expandtab'`, and `'wrap'` use the
+`:set` command's `:set option!` syntax to toggle the option regardless of its
 current value, and then immediately query the new value in case I forgot while
 I was typing why I was typing it.
 =
@@ -309,11 +309,11 @@ nnoremap <leader>l :setlocal list!<cr>:set list?<cr>
 nnoremap <leader>e :setlocal expandtab!<cr>:set expandtab?<cr>
 nnoremap <leader>w :setlocal nowrap!<cr>:set wrap?<cr>
 
-@ The toggle for |'colorcolumn'| is a bit more FANCY, because colorcolumn
+@ The toggle for `'colorcolumn'` is a bit more FANCY, because colorcolumn
 isn't a boolean but is instead a string. What does it even mean to toggle a
 string?!
 
-Well, in this context of my |ToggleColorColumn()| function below, toggling it
+Well, in this context of my `ToggleColorColumn()` function below, toggling it
 off means saving the current value into a variable, and toggling it on means
 restoring the saved value if it exists, or setting a default one if not.
 =
@@ -343,8 +343,8 @@ nnoremap <leader>cal :let cal_wrap=&whichwrap<cr>:set whichwrap-=l<cr>:silent! n
 
 @heading Don't search when using * and #.
 
-I find it disorienting, and also sometimes I use |*| just to populate the
-search register. (Yes, I know about |:help c_CTRL-R_CTRL-W|).
+I find it disorienting, and also sometimes I use `*` just to populate the
+search register. (Yes, I know about `:help c_CTRL-R_CTRL-W`).
 =
 nnoremap * *<C-o>
 nnoremap # #<C-o>
@@ -352,7 +352,7 @@ nnoremap # #<C-o>
 @heading Consistent behaviour of Y.
 (i.e. like C and D)
 
-Instead of mirroring |yy|, I want |Y| to yank from the cursor to the end of
+Instead of mirroring `yy`, I want `Y` to yank from the cursor to the end of
 the line.
 =
 nnoremap Y y$
@@ -379,7 +379,7 @@ The jumplist, which tracks the cursor location as you move it around, is one
 of Vim's great features. The //s:jump_skipping_file// function allows me to
 navigate more ZIPPILY through the jumplist by skipping entries until we end up
 in a different buffer. The mechanism is simple: it just reads the current
-buffer number and then repeatedly invokes the |<C-O>| or |<C-I>| commands
+buffer number and then repeatedly invokes the `<C-O>` or `<C-I>` commands
 until the buffer number changes.[1]
 
 [1] TECHnically there is a bug in this code: if all the remaining entries in
@@ -388,7 +388,7 @@ and the function gets STUCK in an infinite loop. This would be easy to fix,
 but I haven't gotten around to it because a). I don't employ the mapping WILLY
 NILLY. I use it purposefully when I know that I've jumped from one file to
 another, b). Even if it does get stuck in an infinite loop, it's no biggy: a
-simple |<C-C>| will get me out of it.
+simple `<C-C>` will get me out of it.
 =
 function! s:jump_skipping_file(backwards) abort
   let this_buffer = bufnr('%')
@@ -397,19 +397,19 @@ function! s:jump_skipping_file(backwards) abort
     endwhile
 endfunction
 
-@ I then have two mappings, each mirroring their corresponding |<C-O>| or
-|<C-I>| command.
+@ I then have two mappings, each mirroring their corresponding `<C-O>` or
+`<C-I>` command.
 =
 nnoremap <leader><C-O> :call <SID>jump_skipping_file(v:true)<CR>
 nnoremap <leader><C-I> :call <SID>jump_skipping_file(v:false)<CR>
 
 @heading Dictionary completion with 'nospell'.
-Dictionary completion of natural language words only works if either |'spell'|
-or |'dictionary'| is set. If neither is set when invoking it, set |'spell'|
+Dictionary completion of natural language words only works if either `'spell'`
+or `'dictionary'` is set. If neither is set when invoking it, set `'spell'`
 temporarily to allow completion.
 
-The |s:dictionary_complete_nospell()| function sets |'spell'| and sets up a
-one-shot autocommand with |++once| to unset it again when completion is
+The `s:dictionary_complete_nospell()` function sets `'spell'` and sets up a
+one-shot autocommand with `++once` to unset it again when completion is
 complete.
 =
 function! s:dictionary_complete_nospell() abort
@@ -427,8 +427,8 @@ inoremap <expr> <C-X><C-K> !empty(&dictionary) <bar><bar> &spell ? '<C-X><C-K>' 
 
 @heading Faster tselect.
 Vim's ctags integration is a great way of navigating code, but in some of the
-codebases I regularly deal with, executing |:tag| via the |<C-]>| keybinding
-without a count often jumps to the wrong tag. The |:tselect| command is better
+codebases I regularly deal with, executing `:tag` via the `<C-]>` keybinding
+without a count often jumps to the wrong tag. The `:tselect` command is better
 in this scenario, as it allows you to pick a tag from a list. So I have this
 l'il mapping for it.
 =

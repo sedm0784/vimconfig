@@ -8,7 +8,7 @@ plugins I rarely use. (Whereas the plugins I DO use on a more daily basis seem
 to be more of the out-of-the-box type. Go figure!)
 
 @heading A.vim.
-A is a terrific little plugin that adds the command |:A| for switching quickly
+A is a terrific little plugin that adds the command `:A` for switching quickly
 between "alternate" files. In my use, this means switching between header and
 implementation files. I add a few extra extensions so it works properly with
 Objective-C/C++ files.
@@ -87,7 +87,7 @@ let g:GetLatestVimScripts_allowautoinstall=1
 Gundo is a great plugin for visualising and navigating the undo tree, but it
 doesn't work half the time because most of my Vim installations don't have
 functioning Python integrations, [1] [2] and so these days I mostly get by with
-the |g-|/|g+| normal mode commands and the |:earlier| and |:later| ex
+the `g-`/`g+` normal mode commands and the `:earlier` and `:later` ex
 commands. But every now and again it's useful, so I still have this mapping to
 open it quickly.
 
@@ -144,7 +144,7 @@ Utl is a plugin for detecting and opening various types of links within the
 buffer's contents. I'm pretty sure I only installed it because it's a
 dependency of vim-orgmode[1] and I have no recollection of setting up the
 following options. Looks like they're configuring certain types of links to
-open with macOS's built in |open| command.
+open with macOS's built in `open` command.
 
 [1] which I haven't used for years.
 =
@@ -166,4 +166,4 @@ else
 endif
 
 @ An extra thanks to Vim-Slime's author: Jonathan Palardy, for
-//teaching me awk -> https://blog.jpalardy.com/posts/why-learn-awk///.
+[teaching me awk](https://blog.jpalardy.com/posts/why-learn-awk/).

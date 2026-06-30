@@ -7,7 +7,7 @@ In various places in my config I need things
 to be configured slightly differently depending what operating system Vim is
 running in.
 
-I use this little |OperatingSystem()| function to check for specific OSes:
+I use this little `OperatingSystem()` function to check for specific OSes:
 = (early code)
 function! OperatingSystem(os) abort
   if !exists('s:operating_system')
@@ -17,11 +17,11 @@ function! OperatingSystem(os) abort
 endfunction
 
 @ Vim includes a number of feature flags that get us most of the way to
-determining the OS, but for the last mile we resort to calling |uname| via
-|system()|.
+determining the OS, but for the last mile we resort to calling `uname` via
+`system()`.
 
 In particular, on the versions of Vim included in earlier versions of macOS,
-both |has('mac')| and |has('macunix')| return false.
+both `has('mac')` and `has('macunix')` return false.
 
 @<Detect the operating system@> =
   let s:operating_system = "unknown"
@@ -40,6 +40,6 @@ both |has('mac')| and |has('macunix')| return false.
     endif
   endif
 
-@ I never actually access the |s:operating_system| variable
-directly -- Vimscript doesn't include a |switch| statement, so calling
-//OperatingSystem// repeatedly in an |if-else| chain suffices.
+@ I never actually access the `s:operating_system` variable
+directly -- Vimscript doesn't include a `switch` statement, so calling
+//OperatingSystem// repeatedly in an `if-else` chain suffices.

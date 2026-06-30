@@ -6,7 +6,7 @@ Set various options.
 The simplest way you can configure Vim is by setting some of its various global
 options. These are mostly pretty straightforward and mostly aren't much FUN so
 I won't go into too much detail about all of them. As always in Vim, everything
-is well documented, so if any of the below is unclear, |:help 'option-name'| is
+is well documented, so if any of the below is unclear, `:help 'option-name'` is
 your friend.
 
 @heading Vi-compatibility.
@@ -14,35 +14,35 @@ One of the things I've always liked about Vim is the almost LIMITLESS
 dedication Bram had to backwards compatibility[1]. And one of the ways this
 dedication displayed itself was in Vim's Vi-compatibilty mode. Even though Bram
 named his program Vi improved, he still realised that some of his users may
-want Vim to work more like Vim, and allowed for this with the |'compatible'|
+want Vim to work more like Vim, and allowed for this with the `'compatible'`
 option. When this is on, Vim works more like Vi, instead of in "a more useful
 way."
 
 As such, lots of introductory Vim configuration tutorials will tell you that
-the first thing you should add to your vimrc is |set nocompatible|. This
+the first thing you should add to your vimrc is `set nocompatible`. This
 is almost entirely cargo culting! If Vim finds a vimrc when it is starting
-up it will ALREADY set |'nocompatible'|.
+up it will ALREADY set `'nocompatible'`.
 
 And in rare circumstances it could even be actively harmful to set
-|'nocompatible'| in your vimrc. Because when |'compatible'| is unset, many
-other options are changed, so if you were to |:source| your vimrc to pick up
+`'nocompatible'` in your vimrc. Because when `'compatible'` is unset, many
+other options are changed, so if you were to `:source` your vimrc to pick up
 some changes you have made to it, there could be unwanted sideeffects.
 
 [1] Unlike many Vim users, I really like Apple products. But Apple have a VERY
 different approach to backwards compatibility than Bram did. I... uh... do not
 so much appreciate this particular aspect of Apple.
 
-@ There is, however, one time when you might want |set nocompatible| in your
+@ There is, however, one time when you might want `set nocompatible` in your
 vimrc.
 
-If you load the vimrc by specifying its location with a |-u| flag when
-invoking Vim, then the option's default value is |'compatible'|.
+If you load the vimrc by specifying its location with a `-u` flag when
+invoking Vim, then the option's default value is `'compatible'`.
 
 I have literally never loaded my main vimrc in this way, and if I did, I would
-also use the |-N| flag that sets |'nocompatible'|, but since I'm publishing my
+also use the `-N` flag that sets `'nocompatible'`, but since I'm publishing my
 vimrc, maybe one someone else will download it and load it in this way.[1]
 
-So for this reason, at the very start of my vimrc, I check if |'compatible'|
+So for this reason, at the very start of my vimrc, I check if `'compatible'`
 is set, and unset it if it is.
 
 [1] Okay, this is sounding pretty contrived now I'm writing it. You probably
@@ -61,9 +61,9 @@ set encoding=utf-8
 scriptencoding utf-8
 
 @heading Manually specify a shell.
-I'm quite partial to the |fish| shell. But when this is set as my user shell,
-Vim will attempt to use it for for |:!| commands which caused me problems.[1]
-Setting |'shell'| tells Vim to use the specified shell instead.
+I'm quite partial to the `fish` shell. But when this is set as my user shell,
+Vim will attempt to use it for for `:!` commands which caused me problems.[1]
+Setting `'shell'` tells Vim to use the specified shell instead.
 
 [1] I'm afraid I can't remember what, exactly.
 =
@@ -73,9 +73,9 @@ endif
 
 @heading Enable filetypes fully.
 The Vim runtime includes a BUNCH of helpful handlers for different file types.
-I want all of this good stuff. In the |filetype| command, |plugin| refers to
-filetype plugins (including useful file type dependent behaviours), |indent|
-refers to indent files (autoindenting file types appropriately), and |on|
+I want all of this good stuff. In the `filetype` command, `plugin` refers to
+filetype plugins (including useful file type dependent behaviours), `indent`
+refers to indent files (autoindenting file types appropriately), and `on`
 enables both, also switching on automatic filetype detection (generally based
 on file names, but also occasionally on file contents.
 =
@@ -96,13 +96,13 @@ find the interview since.
 =
 syntax on
 
-@ Yes, both |filetype| and |syntax| are technically commands[1]. But they FEEL
+@ Yes, both `filetype` and `syntax` are technically commands[1]. But they FEEL
 like options, so I'm including them in this section. I'm a loose cannon!
 
-[1] See also |colorscheme|.
+[1] See also `colorscheme`.
 
 @heading Leader.
-I use some of my |<leader>| mappings very frequently, so I want something
+I use some of my `<leader>` mappings very frequently, so I want something
 easier to type than the default backslash.
 
 Someone (I think Romain Lafourcade?) has a fairly persuasive argument that the
@@ -113,11 +113,11 @@ right, but nonetheless: I am not changing my config.
 let mapleader = ","
 
 @ For a long time, I had LocalLeader set to backslash and did an
-opposite-direction |f| repeat by pressing comma and waiting for |'timeout'|.
+opposite-direction `f` repeat by pressing comma and waiting for `'timeout'`.
 This is, let's say, SUBOPTIMAL, so now I'm mapping backslash to comma.
 
 This means I need a new value for my LocalLeader, so I'm using the value
-suggested by |:help maplocalleader| viz. underscore. But it's kind of academic:
+suggested by `:help maplocalleader` viz. underscore. But it's kind of academic:
 I don't think I've EVER used an underscore motion OR a LocalLeader mapping.
 =
 nnoremap \ ,
@@ -143,7 +143,7 @@ set nosmartindent
 
 @heading Line endings.
 Try all file formats. I've only encounted a mac-formatted file once in my
-entire life, but also I don't think there's any harm in trying the |mac|
+entire life, but also I don't think there's any harm in trying the `mac`
 fileformat if it's not either of the other ones.
 =
 if OperatingSystem('windows')
@@ -152,13 +152,13 @@ else
   set fileformats=unix,dos,mac
 endif
 
-@ N.B. |has('win32')| would work just as well here, but I use my custom
+@ N.B. `has('win32')` would work just as well here, but I use my custom
 //OperatingSystem// function for consistency.[1]
 
 [1] And, because, you know, I spent all that time writing it...
 
-@ Do NOT "fix" last line by adding an <EOL> if one not present. If I want to
-add the <EOL> I can do so by either setting |'endofline'| or |'fixeol'| before
+@ Do NOT "fix" last line by adding an `<EOL>` if one not present. If I want to
+add the `<EOL>` I can do so by either setting `'endofline'` or `'fixeol'` before
 writing.
 =
 if exists('+fixeol')
@@ -183,21 +183,21 @@ if exists('+breakindent')
 endif
 
 @ Configure Vim's auto-formatting. See
-|:help fo-table|[1] for a description of the flags. The default value is |tcq|
-so I'm adding |r| and |j|, to improve how Vim handles comments, and |n|, to
+`:help fo-table`[1] for a description of the flags. The default value is `tcq`
+so I'm adding `r` and `j`, to improve how Vim handles comments, and `n`, to
 allow the recognition of numbered lists.
 
 [1] https://vimhelp.org/change.txt.html#fo-table
 =
 set formatoptions=tcqrjn
 
-@ Don't double space sentences when doing |J|, |gq|.
+@ Don't double space sentences when doing `J`, `gq`.
 =
 set nojoinspaces
 
 @ Configure which sideways motions can move the cursor to the next line.
-Backspace |b| and space |s| are included by default. I add the normal mode left
-|h| and right |l| motions too.
+Backspace `b` and space `s` are included by default. I add the normal mode left
+`h` and right `l` motions too.
 =
 set whichwrap=b,s,h,l
 
@@ -220,7 +220,7 @@ set backupdir=$HOME/.vim/backups
 can be used to recover the unsaved contents of the file in case of e.g. a power
 cut. These are stored alongside the original file, but when the buffer has
 never been written, no original exists. By default, Vim would attempt to store
-swap files for new files in |c:\Windows\System32|, but UAC will not allow this
+swap files for new files in `c:\Windows\System32`, but UAC will not allow this
 on Windows 7. Instead, use the temp directory for these.
 =
 if OperatingSystem('windows')
@@ -233,23 +233,23 @@ Use incremental searching, and highlight search matches.
 set incsearch
 set hlsearch
 
-@ Ignore case, if lowercase. |'smartcase'| is a WONDERFUL feature, and I miss it
+@ Ignore case, if lowercase. `'smartcase'` is a WONDERFUL feature, and I miss it
 every time I use another editor.
 =
 set ignorecase
 set smartcase
 
 @ There are many plugins available to use external search tools, but I find
-Vim's built-in |:vimgrep| and |:grep| commands work well enough for me. But if
+Vim's built-in `:vimgrep` and `:grep` commands work well enough for me. But if
 ripgrep or the Silver Searcher are installed, then I use them instead of
-|grep| when invoking |:grep|.
+`grep` when invoking `:grep`.
 =
 if executable('rg')
   let &grepprg = "rg --vimgrep --hidden"
 elseif executable('ag')
   let &grepprg = "ag --vimgrep --hidden"
 endif
-@ Also update |grepformat| so quickfix entries created by |rg| or |ag| jump to
+@ Also update `grepformat` so quickfix entries created by `rg` or `ag` jump to
 the column of the match as well as the line.
 =
 set grepformat^=%f:%l:%c:%m
@@ -277,11 +277,11 @@ set completeopt=menu,longest,preview
 @heading Miscellaneous.
 All the options I'm not sure how to categorise. Many of these just make Vim
 behave more "normally"; they're the sort of thing you might find in
-//defaults.vim -> https://vimhelp.org/starting.txt.html#defaults.vim// or Tim
-Pope's //sensible.vim -> https://github.com/tpope/vim-sensible//.
+[defaults.vim](https://vimhelp.org/starting.txt.html#defaults.vim) or Tim
+Pope's [sensible.vim](https://github.com/tpope/vim-sensible/).
 
 @ Display as much as possible of long lines at the bottom of the window.
-Without this, Vim replaces their content with |@| characters.[1]
+Without this, Vim replaces their content with `@` characters.[1]
 
 [1] By default. The character is configurable with the 'fillchars' option.
 =
@@ -304,11 +304,11 @@ onscreen, which I found very restrictive when I started using Vim and didn't
 know about the exceptions. (I have this vague idea I might revisit this
 option one day.)
 
-[1] //Almost -> http://vimhelp.org/options.txt.html#%27hidden%27// always.
+[1] [Almost](http://vimhelp.org/options.txt.html#%27hidden%27) always.
 =
 set hidden
 
-@ Turn on line numbers. Lots of Vimmers like the |'relativenumber'| option. I
+@ Turn on line numbers. Lots of Vimmers like the `'relativenumber'` option. I
 hate it!
 =
 set number
@@ -328,7 +328,7 @@ set showmatch
 set matchtime=5
 
 @ Show incomplete commands in last line of screen. e.g. if you're halfway
-through typing the command to delete five words, this might display |d5|.
+through typing the command to delete five words, this might display `d5`.
 =
 set showcmd
 
@@ -337,10 +337,10 @@ set showcmd
 let &listchars = "tab:\u25b8 ,eol:\uac,extends:\ubb,precedes:\uab"
 
 @ N.B.
-(1) Instead of |trail| I have a dynamic highlight group set up in
+1. Instead of `trail` I have a dynamic highlight group set up in
 //Colours and Highlighting//
-(2) I'm using |let| instead of |set| in the above only as a workaround for a
+2. I'm using `let` instead of `set` in the above only as a workaround for a
 unicode issue with inweb. In your vimrc, including the unicode characters
-directly is fine, so long as your |'encoding'| is set to "utf-8":
+directly is fine, so long as your `'encoding'` is set to "utf-8":
 = (text as code)
 set listchars=tab:▸\ ,eol:¬,extends:»,precedes:«

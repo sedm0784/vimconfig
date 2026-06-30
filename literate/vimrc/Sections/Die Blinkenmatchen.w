@@ -4,21 +4,21 @@ Find your cursor.
 
 @ This is a fairly heavily modified version of Damian Conway's Die
 Blinkënmatchen -- code that causes the matched text to blink when jumping
-between search results with the |n| and |N| motions, making it easier to see
+between search results with the `n` and `N` motions, making it easier to see
 which result you've just jumped to. Conway discusses his solution in his
 excellent and inspiring More Instantly Better Vim talk (starting at the 4m59s
 mark):
 
 = (embedded YouTube video aHm36-na4-4)
 
-@ The changes I made are to use Vim's |+timers| feature to make the blinking
+@ The changes I made are to use Vim's `+timers` feature to make the blinking
 asynchronous, which allows you to continue interacting with Vim while the
 blinking is in progress.
 
 @ First, we set some constants to indicate how long we want the blinking to go
 on for and how fast we want it to be.
 
-@ How long to blink, in milliseconds. If you're using an earlier Vim without the |+timers|
+@ How long to blink, in milliseconds. If you're using an earlier Vim without the `+timers`
 feature, you need a much shorter blink time because Vim blocks while it
 waits for the blink to complete.
 =
@@ -29,23 +29,23 @@ let s:blink_length = has('timers') ? 500 : 100
 let s:blink_freq = 50
 
 @ If you just want an interruptible non-blinking highlight, set this to match
-|s:blink_length| instead:
+`s:blink_length` instead:
 = (text as code)
 let s:blink_freq = s:blink_length
 
 @heading Mappings.
-Next, we map |n| and |N| to call a new script-local //s:highlight_next//
+Next, we map `n` and `N` to call a new script-local //s:highlight_next//
 function.
 
-Note the use of |<SID>| that is required to access the script-local function
+Note the use of `<SID>` that is required to access the script-local function
 from the context of a mapping. (Because when you execute the mapping, you're
-not in the script, so you can't use the |s:| prefix.)
+not in the script, so you can't use the `s:` prefix.)
 =
 execute printf('nnoremap <silent> n n:call <SID>highlight_next(%d, %d)<cr>', s:blink_length, s:blink_freq)
 execute printf('nnoremap <silent> N N:call <SID>highlight_next(%d, %d)<cr>', s:blink_length, s:blink_freq)
 
 @heading s:highlight_next().
-I suppose we better implement the |s:highlight_next| function too!
+I suppose we better implement the `s:highlight_next` function too!
 =
 function! s:highlight_next(blink_length, blink_freq) abort
   @<Create regular expression to match search matches@>
@@ -58,21 +58,21 @@ endfunction
 
 @ The regular expression we use is fairly simple:
 
-(*) |\c| makes the pattern case insensitive,
-(*) |\%#| matches the position of the cursor,
-(*) we then concatenate this with the contents of the search register |@/|,
+- `\c` makes the pattern case insensitive,
+- `\%#` matches the position of the cursor,
+- we then concatenate this with the contents of the search register `@/`,
 i.e. what we searched for.
 
 @<Create regular expression to match search matches@> =
   let target_pat = '\c\%#'.@/
 
 @ When using timers, we do three things:
-(1) First we stop any existing blinking by calling //BlinkStop//,
-(2) Then we set the initial blink highlight by calling //BlinkToggle//. We need
+1. First we stop any existing blinking by calling //BlinkStop//,
+2. Then we set the initial blink highlight by calling //BlinkToggle//. We need
 to do this before starting the timers so the match is highlighted initially (in
 case of large values of
-|a:blink_freq|.
-(3) Then we set up two timers. The first will call //BlinkToggle// repeatedly
+`a:blink_freq`.
+3. Then we set up two timers. The first will call //BlinkToggle// repeatedly
 to create the blinking. The second will call //BlinkStop// to stop the
 blinking.
 
@@ -92,8 +92,8 @@ endif
   
 @heading Blink functions.
 
-@ The |BlinkToggle| function just turns the blink highlighting on or off using
-the |target_pat| regular expression we set up above.
+@ The `BlinkToggle` function just turns the blink highlighting on or off using
+the `target_pat` regular expression we set up above.
 
 @<Define BlinkToggle@> =
   function! BlinkToggle(target_pat, timer_id)
@@ -107,7 +107,7 @@ the |target_pat| regular expression we set up above.
     endif
   endfunction
 
-@ The |BlinkStop| function cancels all the timers and removes the highlight if
+@ The `BlinkStop` function cancels all the timers and removes the highlight if
 necessary.
 
 @<Define BlinkStop@> =
@@ -147,7 +147,7 @@ user.
 
 @heading Damian Conway's Version.
 
-@ If this instance of Vim doesn't have the |+timers| feature, then we just use
+@ If this instance of Vim doesn't have the `+timers` feature, then we just use
 Conway's original code.
 
 @<Blink without timers@> =

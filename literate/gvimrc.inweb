@@ -5,19 +5,19 @@ Purpose: GUI-Specific Configuration
 Language: Vimscript
 
 @ gvimrc allows you to set up configuration options that only apply in GUI
-Vim without having to POLLUTE your vimrc with |:set| commands that are
-meaningless in the terminal and UGLY |has('gui_running')| checks.
+Vim without having to POLLUTE your vimrc with `:set` commands that are
+meaningless in the terminal and UGLY `has('gui_running')` checks.
 
 @heading GUI options.
 On Windows, I turn off the menu bar and tool bar. The whole point of Vim is
 not to have to use the mouse! [1]
 
 On Mac, I set the default fullscreen options to allow the editing area to fill
-the entire screen and use the |Normal| highlight group for the surrounding
+the entire screen and use the `Normal` highlight group for the surrounding
 area if I change this later (which I occasionally do if I want to edit prose
 in a narrower textarea).
 
-Note that |fuoptions| are only used when the MacVim preferences are set NOT to
+Note that `fuoptions` are only used when the MacVim preferences are set NOT to
 use macOS's native fullscreen feature.
 
 I also turn on antialiased text in MacVim. The fonts I use look pretty gross
@@ -35,8 +35,8 @@ endif
 @heading Fonts.
 TOP TIP for those new to GUI Vim: if you're not sure what font to use, or how
 to compose your choice into the CONVOLUTED format Vim requires for the
-  |guifont| option, you can execute |:set gfn=*|, select something using the
-GUI dialog, and then run |:set gfn?| to find out what you should include in
+  `guifont` option, you can execute `:set gfn=*`, select something using the
+GUI dialog, and then run `:set gfn?` to find out what you should include in
 your gvimrc.
 =
 if OperatingSystem("windows")

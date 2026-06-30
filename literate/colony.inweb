@@ -43,8 +43,4 @@ Colony {
     [[Item "Main Site" -> http://tiddler.local:8013/]]
     [[Item "Mastodon" -> https://mastodon.social/@normalmode]]
   }
-
-  Conventions {
-    commentary uses simplified markup
-  }
 }

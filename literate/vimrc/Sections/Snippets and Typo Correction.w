@@ -19,7 +19,7 @@ command! -bang Qal qall<bang>
 command! -bang Qall qall<bang>
 command! -bang Wqall wqall<bang>
 
-@ The |:set| command is slightly more complicated, because it requires
+@ The `:set` command is slightly more complicated, because it requires
 completion to work and arguments to be passed along.
 =
 command! -complete=option -nargs=* Set set <args>
@@ -29,18 +29,18 @@ command! -complete=option -nargs=* Setl setl <args>
 commands. [1] [2] I use abbreviations for these.
 
 When using an abbreviation in the command line, it's important to make sure
-it doesn't fire when you don't want it to. [3] I use |getcmdtype()| and
-|getcmdpos()| here to ensure the abbreviation only kicks in at appropriate
+it doesn't fire when you don't want it to. [3] I use `getcmdtype()` and
+`getcmdpos()` here to ensure the abbreviation only kicks in at appropriate
 times.
 
-[1] It's possible these could be handled similar to |:set|, and the only
+[1] It's possible these could be handled similar to `:set`, and the only
 reason that they're not is that these abbreviations predate my learning that
 you could use user-defined commands to correct typos in this way!
 
-[2] |:wq| can take an |++opt| and an argument. I actually never use this
+[2] `:wq` can take an `++opt` and an argument. I actually never use this
 feature, but ¯\_(ツ)_/¯.
 
-[3] Especially ones that have such a short |{lhs}|!
+[3] Especially ones that have such a short `{lhs}`!
 =
 cabbrev <expr> W (getcmdtype() == ':' && getcmdpos() == 2) ? 'w' : 'W'
 cabbrev <expr> Wq (getcmdtype() == ':' && getcmdpos() == 3) ? 'wq' : 'Wq'

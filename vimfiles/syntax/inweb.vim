@@ -98,9 +98,10 @@ hi default link inwebEnum Structure
 hi default link inwebHeading Removed
 hi default link inwebNamedParagraph Changed
 hi default link inwebEmbed Normal
-
-hi default link inwebReference Changed
-hi default link inwebReferenceArrow Delimiter
-hi default link inwebCode Added
 hi default link inwebFootnote PreProc
-hi default link inwebListItem PreProc
+
+" Highlight things vigorously that should be replaced with Markdown a.s.a.p.
+hi inwebReference ctermbg=red ctermfg=black
+hi inwebReferenceArrow ctermbg=red ctermfg=black
+hi inwebCode ctermbg=red ctermfg=black
+hi inwebListItem ctermbg=red ctermfg=black

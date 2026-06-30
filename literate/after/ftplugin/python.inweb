@@ -4,44 +4,45 @@ Notation: InwebClassic
 Purpose: Python file type configuration
 Language: Vimscript
 
-@ This file, installed at |.vim/after/ftplugins/python.vim| contains my Python
+@ This file, installed at `.vim/after/ftplugins/python.vim` contains my Python
 filetype specific configuration.
 
 @heading Tab Settings per PEP 8.
 We're going to let tabs display as the standard 8 characters, and use
-|'shiftwidth'| and |'expandtab'| to indent by 4 spaces.
+`'shiftwidth'` and `'expandtab'` to indent by 4 spaces.
 
-|'smarttab'| is also set so that |<BS>| at the start of a line removes
+`'smarttab'` is also set so that `<BS>` at the start of a line removes
 spaces.
 
-We could also have achieved this by setting |'softtabstop'| to a negative value:
-The difference between the two occurs when you press |<Tab>| and you're NOT
+We could also have achieved this by setting `'softtabstop'` to a negative value:
+The difference between the two occurs when you press `<Tab>` and you're NOT
 at the start of a line:
 
-(*) with |set smarttab|, |<Tab>| will jump to the next |'tabstop'|
-(*) with |set softtabstop=-1|, |<Tab>| will jump to the next |'shiftwidth'|
+- with `set smarttab`, `<Tab>` will jump to the next `'tabstop'`
+- with `set softtabstop=-1`, `<Tab>` will jump to the next `'shiftwidth'`
 =
 setlocal tabstop& shiftwidth=4 softtabstop=0 smarttab expandtab
 
-@ We also set |'list'| so any errant |<Tab>| characters that DO make it into
+@ We also set `'list'` so any errant `<Tab>` characters that DO make it into
 the file are easily spotted.
 =
 setlocal list
 
 @heading Auto formatting.
 
-(*) c - automatic formatting of comments (using the |'textwidth'| setting
-below)
-(*) q - Allow formatting comments with |gq|
-(*) j - remove comment leaders when joining lines
-(*) r - add comment leader when pressing |<Enter>|
+| letter | meaning |
+| :---: | :--- |
+| c | automatic formatting of comments (using the `'textwidth'` setting below) |
+| q | Allow formatting comments with `gq` |
+| j | remove comment leaders when joining lines |
+| r | add comment leader when pressing `<Enter>` |
 
-See |:help fo-table| for further details.
+See `:help fo-table` for further details.
 =
 setlocal formatoptions=cqjr
 setlocal textwidth=79
 
-@heading PEP 8 Line Length. We set |'colorcolumn'| to 80: any lines touching
+@heading PEP 8 Line Length. We set `'colorcolumn'` to 80: any lines touching
 the line are over the PEP 8 recommendation.
 =
 setlocal colorcolumn=80

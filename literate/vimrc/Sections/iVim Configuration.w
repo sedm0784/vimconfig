@@ -20,9 +20,9 @@ symbols without easy access to which using Vim would be an ORDEAL.
 
 However!
 
-(1) The default set of keys does not include backtick or tilde.
+1. The default set of keys does not include backtick or tilde.
 
-(2) Some of the symbols are accessed by swiping on the keys, and it's hard to
+2. Some of the symbols are accessed by swiping on the keys, and it's hard to
 enter the forward slash and question mark keys, because they require starting
 a swipe very near the edge of the screen and then swiping off the screen
 diagonally.[1]
@@ -58,6 +58,7 @@ isetekbd insert {'buttons':[
 the end of the keyboard row. The colon is an important key in Vim, but TWO
 seems excessive! We replace the old one -- now on the row's penultimate key --
 with a backtick.
+FIXME: Replace -- with em dashes throughout configuration
 
 @<Replace original colon with backtick@> =
 isetekbd replace {'buttons':[{'keys':[{'title':'`',
@@ -68,12 +69,12 @@ isetekbd replace {'buttons':[{'keys':[{'title':'`',
                 \'locations':[9]}
 
 @heading iVimClippy.
-//vimclippy -> http://normalmo.de/posts/vimclippy/// is a shell
+[vimclippy](http://normalmo.de/posts/vimclippy/) is a shell
 function I wrote that allows you to rapidly edit the contents of your
 clipboard in Vim. iVimClippy is the iOS version, which uses an iOS Shortcut
 to add this functionality to your Home Screen. Check out my blog post for
 details about
-//how it works -> http://normalmo.de/posts/ivimclippy///.
+[how it works](http://normalmo.de/posts/ivimclippy/).
 
 @<iVimClippy@> =
 function! s:vimclippy() abort

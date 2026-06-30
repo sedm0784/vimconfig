@@ -251,22 +251,6 @@ set statusline+=\ c%v/%{strdisplaywidth(getline('.'))}
 set statusline+=\ l%l/%L
 set statusline+=\ %p%%
 
-"(*) |%r%h%w%q| -- Standard flags:
-"(-*) |%r| -- Displays |[RO]| if the file is read-only.
-"(-*) |%h| -- Displays |[help]| if the window is displaying a help buffer.
-"(-*) |%w| -- Displays |[Preview]| if the window is the preview window. (See
-"|:help preview-window|.)
-"(-*) |%q| -- Displays |[Quickfix List]| or |[Location List]| as appropriate.
-"(See |:help quickfix|.)
-"(*) Highlighted modified flag:
-"(-*) |%#Error#| -- Set the |Error| highlight colour,
-"(-*) |%{StatuslineModified()}| -- Add the highlighted |[+]| modified flag using
-"//StatuslineModified//,
-"(-*) |%*| -- Revert to original colouring
-"(*) |%{StatuslineModifiable()}| -- The |[-]| modifiable flag
-"(*) |\ %Y,%{&fileformat},%{&fileencoding}| -- A space followed by the file's
-"|filetype|, |fileformat|, and |fileencoding|, separated by commas.
-
 augroup escape_mapping
   autocmd!
   autocmd InsertEnter * nnoremap <Esc> :nohlsearch<CR><Esc>
