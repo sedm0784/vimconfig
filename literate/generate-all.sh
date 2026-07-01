@@ -3,8 +3,9 @@
 # Tangle
 inweb tangle literate::vimrc -using literate/vimscript.inweb -to vimfiles/vimrc
 inweb tangle literate::gvimrc -using literate/vimscript.inweb -to vimfiles/gvimrc
-inweb tangle literate::python.vim -using literate/vimscript.inweb -to vimfiles/after/ftplugin/python.vim
+inweb tangle literate::help.vim -using literate/vimscript.inweb -to vimfiles/after/ftplugin/help.vim
 inweb tangle literate::mail.vim -using literate/vimscript.inweb -to vimfiles/after/ftplugin/mail.vim
+inweb tangle literate::python.vim -using literate/vimscript.inweb -to vimfiles/after/ftplugin/python.vim
 
 # Weave
 # FIXME: Inweb allows you to specify the output directory with the command
@@ -26,6 +27,7 @@ rm -r literate/html || exit 1
 mkdir -p literate/docs/docs-assets
 mkdir -p literate/docs/vimrc
 mkdir -p literate/docs/gvimrc
+mkdir -p literate/docs/after/ftplugin/help.vim
 mkdir -p literate/docs/after/ftplugin/mail.vim
 mkdir -p literate/docs/after/ftplugin/python.vim
 inweb weave literate -using literate/vimscript.inweb -using literate/Patterns
